@@ -105,6 +105,37 @@ describe('public content schemas', () => {
     expect(normalizeFinalNewline(markdown)).toBe(normalizeFinalNewline(renderEditionMarkdown(edition, papers)));
   });
 
+  it('serializes adversarial public content without creating Markdown or HTML structure', () => {
+    const paper = paperRecordSchema.parse(clone(validPaperRecord));
+    const edition = editionRecordSchema.parse(clone(validEditionRecord));
+    const hostileUrl = 'https://example.org/path)with(space)?q=<tag>&note=one two';
+
+    paper.title = '<script>alert(1)</script> # injected heading';
+    paper.authors[0] = '</li>[injected](https://evil.example)';
+    paper.affiliations[0] = 'Fixture ](https://evil.example)';
+    paper.abstract = '# injected heading\n[raw link](https://evil.example)';
+    paper.links[0].label = 'Fixture label](https://evil.example)';
+    paper.links[0].url = hostileUrl;
+    edition.editorial_theme = '<img src=x onerror=alert(1)> # injected heading';
+    edition.coverage[0].detail = '](https://evil.example) </script>';
+    const [entry] = edition.entries;
+    if (entry.tier !== 'read_first') throw new Error('Expected the read-first fixture');
+    entry.verdict = 'Closing ](https://evil.example) delimiter';
+    for (const claim of entry.claim_provenance) {
+      claim.urls = [hostileUrl];
+    }
+
+    const rendered = renderEditionMarkdown(edition, [paper]);
+
+    expect(rendered).toContain('&lt;script&gt;alert(1)&lt;/script&gt;');
+    expect(rendered).toContain('\\# injected heading ↵ \\[raw link\\](https://evil.example)');
+    expect(rendered).toContain('Fixture label\\](https://evil.example)');
+    expect(rendered).toContain('https://example.org/path%29with%28space%29?q=%3Ctag%3E&note=one%20two');
+    expect(rendered).not.toContain('<script>');
+    expect(rendered).not.toContain('[raw link](https://evil.example)');
+    expect(rendered).not.toContain('[Fixture label](https://evil.example)');
+  });
+
   it('allows only the documented review depths', () => {
     for (const reviewDepth of ['abstract', 'full_paper', 'full_paper_plus_artifacts']) {
       expect(reviewDepthSchema.parse(reviewDepth)).toBe(reviewDepth);

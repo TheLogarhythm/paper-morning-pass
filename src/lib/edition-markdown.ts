@@ -31,6 +31,37 @@ const sourceLabels: Record<SourceName, string> = {
   huggingface_papers: 'Hugging Face Papers',
 };
 
+function escapeMarkdownText(value: string): string {
+  const singleLine = value.replace(/\r\n?|\n/g, ' ↵ ');
+  const escaped = singleLine
+    .replace(/\\/g, '\\\\')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/([`*_\[\]#!|])/g, '\\$1');
+
+  return escaped
+    .replace(/^([-+>])/, '\\$1')
+    .replace(/^(\d+)\./, '$1\\.')
+    .replace(/^([=~])/, '\\$1');
+}
+
+function serializeMarkdownDestination(value: string): string {
+  const url = new URL(value);
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+    throw new Error(`Expected an HTTP(S) URL: ${value}`);
+  }
+  if (url.username || url.password) {
+    throw new Error(`Link destinations must not include credentials: ${value}`);
+  }
+
+  return url.toString().replace(/\(/g, '%28').replace(/\)/g, '%29');
+}
+
+function serializeMarkdownLink(label: string, destination: string): string {
+  return `[${escapeMarkdownText(label)}](${serializeMarkdownDestination(destination)})`;
+}
+
 function formatDeliveryDate(deliveryDate: string): string {
   const [year, month, day] = deliveryDate.split('-').map(Number);
   return `${day} ${monthNames[month - 1]} ${year}`;
@@ -38,7 +69,7 @@ function formatDeliveryDate(deliveryDate: string): string {
 
 function claimSourceLine(claims: ClaimProvenance[], field: ClaimProvenance['field']): string {
   const urls = claims.find((claim) => claim.field === field)?.urls ?? [];
-  return `Primary source: ${urls.map((url) => `[source](${url})`).join(', ')}.`;
+  return `Primary source: ${urls.map((url) => serializeMarkdownLink('source', url)).join(', ')}.`;
 }
 
 function renderReadFirstEntry(entry: Extract<EditionRecord['entries'][number], { tier: 'read_first' }>): string[] {
@@ -56,7 +87,7 @@ function renderReadFirstEntry(entry: Extract<EditionRecord['entries'][number], {
   return sections.flatMap(([heading, text, field]) => [
     `### ${heading}`,
     '',
-    text,
+    escapeMarkdownText(text),
     '',
     claimSourceLine(entry.claim_provenance, field),
     '',
@@ -67,7 +98,7 @@ function renderWorthSkimmingEntry(entry: Extract<EditionRecord['entries'][number
   return [
     '### Editorial note',
     '',
-    entry.editorial_note,
+    escapeMarkdownText(entry.editorial_note),
     '',
     claimSourceLine(entry.claim_provenance, 'editorial_note'),
     '',
@@ -93,12 +124,12 @@ export function renderEditionMarkdown(edition: EditionRecord, papers: PaperRecor
   ];
 
   if (edition.editorial_theme) {
-    lines.push('## Editorial theme', '', edition.editorial_theme, '');
+    lines.push('## Editorial theme', '', escapeMarkdownText(edition.editorial_theme), '');
   }
 
   lines.push('## Coverage', '');
   for (const coverage of edition.coverage) {
-    const detail = coverage.detail ? ` — ${coverage.detail}` : '';
+    const detail = coverage.detail ? ` — ${escapeMarkdownText(coverage.detail)}` : '';
     lines.push(`- ${sourceLabels[coverage.source]}: ${coverage.dates.join(', ')} (${coverage.status})${detail}`);
   }
   lines.push('');
@@ -111,10 +142,10 @@ export function renderEditionMarkdown(edition: EditionRecord, papers: PaperRecor
 
     const fixtureSuffix = fixtureOnly ? ' (fixture)' : '';
     lines.push(
-      `## ${paper.title}`,
+      `## ${escapeMarkdownText(paper.title)}`,
       '',
-      `- Authors: ${paper.authors.join(', ')}`,
-      `- Affiliations: ${paper.affiliations.join(', ') || 'Not provided'}`,
+      `- Authors: ${paper.authors.map(escapeMarkdownText).join(', ')}`,
+      `- Affiliations: ${paper.affiliations.map(escapeMarkdownText).join(', ') || 'Not provided'}`,
       `- Tier: ${entry.tier === 'read_first' ? 'Read first' : 'Worth skimming'}${fixtureSuffix}`,
       `- Lane: ${laneLabels[entry.lane]}`,
       `- Review depth: ${reviewDepthLabels[entry.review_depth]}${fixtureSuffix}`,
@@ -122,7 +153,7 @@ export function renderEditionMarkdown(edition: EditionRecord, papers: PaperRecor
       '',
       '### Abstract',
       '',
-      paper.abstract,
+      escapeMarkdownText(paper.abstract),
       '',
     );
     lines.push(...(entry.tier === 'read_first' ? renderReadFirstEntry(entry) : renderWorthSkimmingEntry(entry)));
@@ -130,7 +161,7 @@ export function renderEditionMarkdown(edition: EditionRecord, papers: PaperRecor
     const canonicalLinks = paper.links.filter(({ kind }) => kind === 'paper' || kind === 'source');
     lines.push('### Canonical links', '');
     for (const link of canonicalLinks) {
-      lines.push(`- [${link.label}](${link.url})`);
+      lines.push(`- ${serializeMarkdownLink(link.label, link.url)}`);
     }
     if (index < edition.entries.length - 1) {
       lines.push('');
