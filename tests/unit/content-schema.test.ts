@@ -183,11 +183,11 @@ describe('public content schemas', () => {
   });
 
   it.each([
-    ['paper', paperRecordSchema, { ...validPaperRecord, private_score: 99 }],
-    ['edition', editionRecordSchema, { ...validEditionRecord, personal_note: 'private' }],
-    ['coverage', editionRecordSchema, { ...validEditionRecord, coverage: [{ ...validEditionRecord.coverage[0], owner_id: 'private' }] }],
-    ['entry', editionRecordSchema, { ...validEditionRecord, entries: [{ ...validReadFirstEntry, selection_rationale: 'private' }] }],
-  ])('rejects unknown private fields on strict %s objects', (_scope, schema, record) => {
+    ['paper', paperRecordSchema, { ...validPaperRecord, unexpected: true }],
+    ['edition', editionRecordSchema, { ...validEditionRecord, unexpected: true }],
+    ['coverage', editionRecordSchema, { ...validEditionRecord, coverage: [{ ...validEditionRecord.coverage[0], unexpected: true }] }],
+    ['entry', editionRecordSchema, { ...validEditionRecord, entries: [{ ...validReadFirstEntry, unexpected: true }] }],
+  ])('rejects unknown keys on strict %s objects', (_scope, schema, record) => {
     expect(() => schema.parse(clone(record))).toThrow();
   });
 });

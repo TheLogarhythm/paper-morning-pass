@@ -122,8 +122,27 @@ test('starred papers honestly reports unavailable reading state', async ({ page 
   await expect(page.locator('[data-state-root="starred"]')).toHaveCount(1);
 
   await expect(page.getByText(fixtureTitle, { exact: true })).toHaveCount(0);
-  await expect(page.getByRole('button', { name: /read|star/i })).toHaveCount(0);
-  await expect(page.getByRole('checkbox')).toHaveCount(0);
+  await expect(page.getByRole('main')).toHaveCount(1);
+  await expect(page.locator('[data-state-root="starred"]').locator([
+    'a[href]',
+    'area[href]',
+    'button',
+    'input',
+    'select',
+    'textarea',
+    'summary',
+    'iframe',
+    'audio[controls]',
+    'video[controls]',
+    '[contenteditable]:not([contenteditable="false"])',
+    '[tabindex]:not([tabindex="-1"])',
+    '[role="button"]',
+    '[role="switch"]',
+    '[role="checkbox"]',
+    '[role="textbox"]',
+    '[role="combobox"]',
+    '[role="link"]',
+  ].join(', '))).toHaveCount(0);
 
   await expect(page).toHaveTitle('Starred papers · Paper Morning Pass');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(

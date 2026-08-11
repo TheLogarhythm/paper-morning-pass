@@ -1,5 +1,6 @@
 ---
 import type { ClaimProvenance, EditionRecord, EditorialLane, PaperRecord, ReviewDepth } from '../schemas/content';
+import { safeExternalUrl } from '../lib/safe-link';
 
 interface Props {
   entry: EditionRecord['entries'][number];
@@ -72,7 +73,7 @@ const sections: Array<{ label: string; text: string; field: ClaimProvenance['fie
           <span>Primary source:</span>{' '}
           {sources.map((url, index) => (
             <>
-              <a href={url} target="_blank" rel="noopener noreferrer external">source</a>
+              <a href={safeExternalUrl(url)} target="_blank" rel="noopener noreferrer external">source</a>
               {index < sources.length - 1 ? ', ' : ''}
             </>
           ))}
@@ -85,7 +86,7 @@ const sections: Array<{ label: string; text: string; field: ClaimProvenance['fie
     <h4>Paper links</h4>
     <ul>
       {paper.links.map((link) => (
-        <li><a href={link.url} target="_blank" rel="noopener noreferrer external">{link.label}</a></li>
+        <li><a href={safeExternalUrl(link.url)} target="_blank" rel="noopener noreferrer external">{link.label}</a></li>
       ))}
     </ul>
   </footer>

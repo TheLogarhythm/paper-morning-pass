@@ -46,7 +46,7 @@ const archiveFilterScript = publicPath(import.meta.env.BASE_URL, '/archive-filte
     </label>
   </fieldset>
 
-  <ol class="archive-list" data-archive-list>
+  <ol class="archive-list" data-archive-list role="list">
     {repository.editions.map((edition) => {
       const date = dateFormatter.format(new Date(`${edition.delivery_date}T00:00:00Z`));
       const topics = [...new Set(edition.entries.map((entry) => entry.lane))];
@@ -66,6 +66,6 @@ const archiveFilterScript = publicPath(import.meta.env.BASE_URL, '/archive-filte
       );
     })}
   </ol>
-  <p class="archive-empty" data-archive-empty hidden>No editions match these filters.</p>
+  <p class="archive-empty" data-archive-empty role="status" hidden>No editions match these filters.</p>
   <script src={archiveFilterScript} is:inline defer></script>
 </BaseLayout>

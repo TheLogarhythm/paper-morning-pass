@@ -38,7 +38,7 @@ const worthSkimming = edition.entries.filter((entry) => entry.tier === 'worth_sk
         <p class="eyebrow">Priority reading</p>
         <h2 id="read-first-heading">Read First</h2>
       </div>
-      <ol class="paper-list">
+      <ol class="paper-list" role="list">
         {readFirst.map((entry) => (
           <li><PaperCard entry={entry} paper={papersById.get(entry.paper_id)!} /></li>
         ))}
@@ -52,7 +52,7 @@ const worthSkimming = edition.entries.filter((entry) => entry.tier === 'worth_sk
         <p class="eyebrow">Secondary reading</p>
         <h2 id="worth-skimming-heading">Worth Skimming</h2>
       </div>
-      <ol class="paper-list">
+      <ol class="paper-list" role="list">
         {worthSkimming.map((entry) => (
           <li><PaperCard entry={entry} paper={papersById.get(entry.paper_id)!} /></li>
         ))}
