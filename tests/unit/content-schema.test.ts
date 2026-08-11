@@ -1,8 +1,11 @@
+import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import {
+  canonicalEditionMarkdownIntegrityMarker,
   editionRecordSchema,
   paperRecordSchema,
   reviewDepthSchema,
+  validateEditionAgainstPapers,
 } from '../../src/schemas/content';
 import { validEditionRecord, validPaperRecord, validReadFirstEntry } from '../fixtures/content';
 
@@ -78,6 +81,23 @@ describe('public content schemas', () => {
     expect(() => editionRecordSchema.parse(missingUrls)).toThrow();
   });
 
+  it('requires each editorial claim URL to be a canonical paper or source link for its referenced paper', () => {
+    expect(() => validateEditionAgainstPapers(validEditionRecord, [validPaperRecord])).not.toThrow();
+
+    const edition = clone(validEditionRecord) as TestEdition;
+    edition.entries[0].claim_provenance[0].urls = ['https://unrelated.example/blog-post'];
+    expect(() => validateEditionAgainstPapers(edition, [validPaperRecord])).toThrow(/canonical paper or source link/);
+  });
+
+  it('contains the deterministic integrity marker generated from the canonical edition JSON', () => {
+    const edition = editionRecordSchema.parse(JSON.parse(
+      readFileSync(new URL('../../src/data/editions/2026-08-10.json', import.meta.url), 'utf8'),
+    ));
+    const markdown = readFileSync(new URL('../../content/editions/2026-08-10.md', import.meta.url), 'utf8');
+
+    expect(markdown).toContain(canonicalEditionMarkdownIntegrityMarker(edition));
+  });
+
   it('allows only the documented review depths', () => {
     for (const reviewDepth of ['abstract', 'full_paper', 'full_paper_plus_artifacts']) {
       expect(reviewDepthSchema.parse(reviewDepth)).toBe(reviewDepth);
@@ -92,6 +112,16 @@ describe('public content schemas', () => {
 
     const invalidSourceDate = clone(validPaperRecord) as TestPaper;
     invalidSourceDate.source_dates[0].date = '2026-08-10T08:00:00Z';
+    expect(() => paperRecordSchema.parse(invalidSourceDate)).toThrow();
+  });
+
+  it.each(['2026-02-31', '2026-99-99'])('rejects calendar-invalid delivery and source dates: %s', (invalidDate) => {
+    const invalidDeliveryDate = clone(validEditionRecord) as TestEdition;
+    invalidDeliveryDate.delivery_date = invalidDate;
+    expect(() => editionRecordSchema.parse(invalidDeliveryDate)).toThrow();
+
+    const invalidSourceDate = clone(validPaperRecord) as TestPaper;
+    invalidSourceDate.source_dates[0].date = invalidDate;
     expect(() => paperRecordSchema.parse(invalidSourceDate)).toThrow();
   });
 

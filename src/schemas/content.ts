@@ -68,7 +68,7 @@ export type EditionRecord = {
 };
 
 const nonEmptyText = z.string().trim().min(1);
-const strictDateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Expected YYYY-MM-DD');
+const strictDateSchema = z.iso.date();
 const safeHttpUrlSchema = z.string().refine((value) => {
   try {
     const { protocol } = new URL(value);
@@ -241,3 +241,35 @@ export const editionRecordSchema = z.object({
     });
   }
 });
+
+export function validateEditionAgainstPapers(editionInput: unknown, papersInput: unknown): EditionRecord {
+  const edition = editionRecordSchema.parse(editionInput);
+  const papers = paperRecordSchema.array().parse(papersInput);
+  const papersById = new Map(papers.map((paper) => [paper.paper_id, paper]));
+
+  for (const entry of edition.entries) {
+    const paper = papersById.get(entry.paper_id);
+    if (!paper) {
+      throw new Error(`Edition entry references an unknown paper: ${entry.paper_id}`);
+    }
+
+    const canonicalSourceUrls = new Set(
+      paper.links
+        .filter(({ kind }) => kind === 'paper' || kind === 'source')
+        .map(({ url }) => url),
+    );
+    for (const claim of entry.claim_provenance) {
+      for (const url of claim.urls) {
+        if (!canonicalSourceUrls.has(url)) {
+          throw new Error(`Claim provenance URL is not a canonical paper or source link: ${url}`);
+        }
+      }
+    }
+  }
+
+  return edition;
+}
+
+export function canonicalEditionMarkdownIntegrityMarker(edition: EditionRecord): string {
+  return `<!-- paper-morning-pass:canonical-edition ${JSON.stringify(edition)} -->`;
+}
