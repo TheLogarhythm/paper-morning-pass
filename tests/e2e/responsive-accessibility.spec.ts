@@ -31,6 +31,18 @@ async function expectVisibleFocusOutline(page: Page) {
   expect(focus.outlineWidth).toBeGreaterThanOrEqual(2);
 }
 
+function expectedFocusStops(page: Page) {
+  const primaryNavigation = page.getByRole('navigation', { name: 'Primary' });
+  return [
+    page.locator('.skip-link'),
+    page.locator('.wordmark'),
+    primaryNavigation.getByRole('link', { name: 'Latest' }),
+    primaryNavigation.getByRole('link', { name: 'Archive' }),
+    primaryNavigation.getByRole('link', { name: 'Starred' }),
+    page.locator('.paper-card a').first(),
+  ];
+}
+
 test.describe('public route accessibility', () => {
   for (const route of publicRoutes) {
     test(`${route.name} has one landmark heading, logical headings, no overflow, and no high-impact axe violations`, async ({ page }) => {
@@ -62,26 +74,31 @@ test.describe('public route accessibility', () => {
     });
   }
 
-  test('keyboard traversal starts at the skip link, covers the header, and reaches a text-labelled paper link', async ({ page, browserName }) => {
+  test('real Tab traversal starts at the skip link, covers the header, and reaches a text-labelled paper link', async ({ page, browserName }) => {
+    test.skip(
+      browserName === 'webkit' && process.platform === 'win32',
+      'Windows WebKit does not expose Safari\'s OS-level “tab to links” preference.',
+    );
     await page.goto(`${basePath}/`);
-    const primaryNavigation = page.getByRole('navigation', { name: 'Primary' });
-    const expectedFocusStops = [
-      page.locator('.skip-link'),
-      page.locator('.wordmark'),
-      primaryNavigation.getByRole('link', { name: 'Latest' }),
-      primaryNavigation.getByRole('link', { name: 'Archive' }),
-      primaryNavigation.getByRole('link', { name: 'Starred' }),
-      page.locator('.paper-card a').first(),
-    ];
 
-    for (const stop of expectedFocusStops) {
-      // Windows WebKit does not expose Safari's OS-level "tab to links"
-      // preference, so exercise the same ordered focus stops directly there.
-      if (browserName === 'webkit') {
-        await stop.focus();
-      } else {
-        await page.keyboard.press('Tab');
-      }
+    for (const stop of expectedFocusStops(page)) {
+      await page.keyboard.press('Tab');
+      await expect(stop).toBeFocused();
+      await expect(stop).toBeVisible();
+      await expectVisibleFocusOutline(page);
+      expect((await stop.innerText()).trim().length).toBeGreaterThan(0);
+    }
+  });
+
+  test('Windows WebKit direct focus renders outlines at ordered stops without exercising Tab traversal', async ({ page, browserName }) => {
+    test.skip(
+      browserName !== 'webkit' || process.platform !== 'win32',
+      'This direct-focus check documents the Windows WebKit keyboard-emulation limitation only.',
+    );
+    await page.goto(`${basePath}/`);
+
+    for (const stop of expectedFocusStops(page)) {
+      await stop.focus();
       await expect(stop).toBeFocused();
       await expect(stop).toBeVisible();
       await expectVisibleFocusOutline(page);
