@@ -1,0 +1,24 @@
+[
+  {
+    "paper_id": "018f4a90-6d31-7b2c-9dd3-7e12c8b77210",
+    "external_ids": [
+      { "kind": "huggingface", "value": "fixture-layered-motion-fields" }
+    ],
+    "title": "Fixture Paper: Layered Motion Fields for Dynamic Scenes",
+    "authors": ["Ada Fixture", "Sam Sample"],
+    "affiliations": ["Fixture Research Lab (fictional)"],
+    "abstract": "This entirely fictional sample record exists only to support Paper Morning Pass interface development. It does not describe a real publication or research result.",
+    "source_dates": [
+      { "source": "arxiv_cs_cv", "date": "2026-08-10" }
+    ],
+    "links": [
+      { "kind": "paper", "label": "Fixture paper record", "url": "https://example.org/papers/layered-motion-fields" },
+      { "kind": "pdf", "label": "Fixture PDF", "url": "https://example.org/papers/layered-motion-fields.pdf" },
+      { "kind": "source", "label": "Fixture source", "url": "https://example.org/sources/arxiv-cs-cv" }
+    ],
+    "tags": ["fixture", "graphics_3d_4d"],
+    "provenance": [
+      { "field": "metadata", "url": "https://example.org/sources/arxiv-cs-cv", "checked_at": "2026-08-10T08:00:00.000Z" }
+    ]
+  }
+]
