@@ -1,0 +1,20 @@
+---
+import { publicPath } from '../lib/public-url';
+
+const links = [
+  { label: 'Latest', route: '/' },
+  { label: 'Archive', route: '/archive' },
+  { label: 'Starred', route: '/starred' },
+];
+---
+
+<header class="site-header">
+  <nav aria-label="Primary">
+    <a class="wordmark" href={publicPath(import.meta.env.BASE_URL, '/')}>Paper Morning Pass</a>
+    <ul>
+      {links.map(({ label, route }) => (
+        <li><a href={publicPath(import.meta.env.BASE_URL, route)}>{label}</a></li>
+      ))}
+    </ul>
+  </nav>
+</header>

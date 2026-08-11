@@ -1,0 +1,52 @@
+---
+import SiteHeader from '../components/SiteHeader.astro';
+import { publicPath } from '../lib/public-url';
+import '../styles/global.css';
+
+interface Props {
+  pageTitle: string;
+  description: string;
+  canonicalPath: string;
+}
+
+const { pageTitle, description, canonicalPath } = Astro.props;
+const title = `${pageTitle} · Paper Morning Pass`;
+const canonical = new URL(publicPath(import.meta.env.BASE_URL, canonicalPath), Astro.site);
+const faviconSvg = publicPath(import.meta.env.BASE_URL, '/favicon.svg');
+const faviconIco = publicPath(import.meta.env.BASE_URL, '/favicon.ico');
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' https: data:",
+  "font-src 'self'",
+  "connect-src 'self'",
+  "object-src 'none'",
+  "frame-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+].join('; ');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="light" />
+    <meta http-equiv="Content-Security-Policy" content={contentSecurityPolicy} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={faviconSvg} />
+    <link rel="icon" href={faviconIco} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <SiteHeader />
+    <main id="main-content">
+      <slot />
+    </main>
+  </body>
+</html>

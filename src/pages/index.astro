@@ -1,20 +1,48 @@
 ---
-import { publicPath } from '../lib/public-url';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EditionHeader from '../components/EditionHeader.astro';
+import PaperCard from '../components/PaperCard.astro';
+import { loadContentRepository } from '../lib/content-repository';
 
-const faviconSvg = publicPath(import.meta.env.BASE_URL, '/favicon.svg');
-const faviconIco = publicPath(import.meta.env.BASE_URL, '/favicon.ico');
+const repository = await loadContentRepository();
+const edition = repository.latest;
+const fixtureOnly = edition.entries.every((entry) => repository.papersById.get(entry.paper_id)?.tags.includes('fixture'));
+const readFirst = edition.entries.filter((entry) => entry.tier === 'read_first');
+const worthSkimming = edition.entries.filter((entry) => entry.tier === 'worth_skimming');
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href={faviconSvg} />
-		<link rel="icon" href={faviconIco} />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  pageTitle="Daily Brief"
+  description="A calm, source-backed daily reading brief for graphics, vision, and AI research."
+  canonicalPath="/"
+>
+  <EditionHeader edition={edition} fixtureOnly={fixtureOnly} />
+
+  {readFirst.length > 0 && (
+    <section class="edition-section" aria-labelledby="read-first-heading">
+      <div class="section-heading">
+        <p class="eyebrow">Priority reading</p>
+        <h2 id="read-first-heading">Read First</h2>
+      </div>
+      <ol class="paper-list">
+        {readFirst.map((entry) => (
+          <li><PaperCard entry={entry} paper={repository.papersById.get(entry.paper_id)!} /></li>
+        ))}
+      </ol>
+    </section>
+  )}
+
+  {worthSkimming.length > 0 && (
+    <section class="edition-section" aria-labelledby="worth-skimming-heading">
+      <div class="section-heading">
+        <p class="eyebrow">Secondary reading</p>
+        <h2 id="worth-skimming-heading">Worth Skimming</h2>
+      </div>
+      <ol class="paper-list">
+        {worthSkimming.map((entry) => (
+          <li><PaperCard entry={entry} paper={repository.papersById.get(entry.paper_id)!} /></li>
+        ))}
+      </ol>
+    </section>
+  )}
+</BaseLayout>

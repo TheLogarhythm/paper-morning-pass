@@ -1,0 +1,37 @@
+---
+import SourceStatus from './SourceStatus.astro';
+import type { EditionRecord } from '../schemas/content';
+
+interface Props {
+  edition: EditionRecord;
+  fixtureOnly?: boolean;
+}
+
+const { edition, fixtureOnly = false } = Astro.props;
+const deliveryDate = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+}).format(new Date(`${edition.delivery_date}T00:00:00Z`));
+const totalMinutes = edition.entries.reduce((total, entry) => total + entry.estimated_minutes, 0);
+const paperLabel = edition.entries.length === 1 ? 'paper' : 'papers';
+---
+
+<header class="edition-header">
+  <p class="eyebrow">Daily Brief</p>
+  <h1>Paper Morning Pass</h1>
+  <p class="edition-date"><time datetime={edition.delivery_date}>{deliveryDate}</time></p>
+  <p class="coverage-summary">{edition.entries.length} {paperLabel} · {totalMinutes} minutes</p>
+  {fixtureOnly && (
+    <p class="fixture-notice">Fixture content for interface development. It is not a claim about a real publication.</p>
+  )}
+  {edition.editorial_theme && <p class="editorial-theme">{edition.editorial_theme}</p>}
+
+  <section class="coverage" aria-labelledby="coverage-heading">
+    <h2 id="coverage-heading">Source status</h2>
+    <ul>
+      {edition.coverage.map((coverage) => <SourceStatus coverage={coverage} />)}
+    </ul>
+  </section>
+</header>

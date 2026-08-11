@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadContentRepository } from '../lib/content-repository';
+import { publicPath } from '../lib/public-url';
+import type { EditorialLane } from '../schemas/content';
+
+const repository = await loadContentRepository();
+const dateFormatter = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+const laneLabels: Record<EditorialLane, string> = {
+  graphics_3d_4d: 'Graphics / 3D / 4D',
+  broader_vision: 'Broader vision',
+  general_ai: 'General AI',
+};
+const topics = [...new Set(repository.editions.flatMap((edition) => edition.entries.map((entry) => entry.lane)))];
+const archiveFilterScript = publicPath(import.meta.env.BASE_URL, '/archive-filter.js');
+---
+
+<BaseLayout
+  pageTitle="Archive"
+  description="Browse every Paper Morning Pass edition by date and research topic."
+  canonicalPath="/archive"
+>
+  <header class="page-header">
+    <p class="eyebrow">Past editions</p>
+    <h1>Archive</h1>
+    <p>Every edition remains available as a plain reading list.</p>
+  </header>
+
+  <fieldset class="archive-filters" data-archive-filters hidden>
+    <legend>Filter editions</legend>
+    <label>
+      <span>Topic</span>
+      <select name="topic">
+        <option value="">All topics</option>
+        {topics.map((topic) => <option value={topic}>{laneLabels[topic]}</option>)}
+      </select>
+    </label>
+    <label>
+      <span>Month</span>
+      <input name="month" type="month" />
+    </label>
+  </fieldset>
+
+  <ol class="archive-list" data-archive-list>
+    {repository.editions.map((edition) => {
+      const date = dateFormatter.format(new Date(`${edition.delivery_date}T00:00:00Z`));
+      const topics = [...new Set(edition.entries.map((entry) => entry.lane))];
+      const totalMinutes = edition.entries.reduce((total, entry) => total + entry.estimated_minutes, 0);
+      return (
+        <li data-month={edition.delivery_date.slice(0, 7)} data-topics={topics.join(' ')}>
+          <article>
+            <h2>
+              <a href={publicPath(import.meta.env.BASE_URL, `/editions/${edition.delivery_date}`)}>
+                <time datetime={edition.delivery_date}>{date}</time>
+              </a>
+            </h2>
+            <p>{edition.entries.length} {edition.entries.length === 1 ? 'paper' : 'papers'} · {totalMinutes} minutes</p>
+            {edition.editorial_theme && <p>{edition.editorial_theme}</p>}
+          </article>
+        </li>
+      );
+    })}
+  </ol>
+  <p class="archive-empty" data-archive-empty hidden>No editions match these filters.</p>
+  <script src={archiveFilterScript} is:inline defer></script>
+</BaseLayout>

@@ -1,0 +1,92 @@
+---
+import type { ClaimProvenance, EditionRecord, EditorialLane, PaperRecord, ReviewDepth } from '../schemas/content';
+
+interface Props {
+  entry: EditionRecord['entries'][number];
+  paper: PaperRecord;
+}
+
+const laneLabels: Record<EditorialLane, string> = {
+  graphics_3d_4d: 'Graphics / 3D / 4D',
+  broader_vision: 'Broader vision',
+  general_ai: 'General AI',
+};
+const reviewDepthLabels: Record<ReviewDepth, string> = {
+  abstract: 'Abstract',
+  full_paper: 'Full paper',
+  full_paper_plus_artifacts: 'Full paper plus artifacts',
+};
+
+const { entry, paper } = Astro.props;
+const anchor = `paper-${paper.paper_id}`;
+const sections: Array<{ label: string; text: string; field: ClaimProvenance['field'] }> = entry.tier === 'read_first'
+  ? [
+      { label: 'Verdict', text: entry.verdict, field: 'verdict' },
+      { label: 'Contribution', text: entry.contribution, field: 'contribution' },
+      { label: 'Why it matters', text: entry.why_it_matters, field: 'why_it_matters' },
+      { label: 'Evidence', text: entry.evidence, field: 'evidence' },
+      { label: 'Limitation', text: entry.limitation, field: 'limitation' },
+      ...(entry.venue_context
+        ? [{ label: 'Venue context', text: entry.venue_context, field: 'venue_context' as const }]
+        : []),
+    ]
+  : [{ label: 'Editorial note', text: entry.editorial_note, field: 'editorial_note' }];
+---
+
+<article class="paper-card" id={anchor}>
+  <header>
+    <p class="paper-card__lane">{laneLabels[entry.lane]}</p>
+    <h3><a class="paper-card__anchor" href={`#${anchor}`}>{paper.title}</a></h3>
+    <p class="paper-card__authors">{paper.authors.join(', ')}</p>
+  </header>
+
+  <dl class="paper-card__metadata">
+    <div>
+      <dt>Review depth</dt>
+      <dd>{reviewDepthLabels[entry.review_depth]}</dd>
+    </div>
+    <div>
+      <dt>Estimated reading time</dt>
+      <dd>{entry.estimated_minutes} minutes</dd>
+    </div>
+    {paper.affiliations.length > 0 && (
+      <div>
+        <dt>Affiliations</dt>
+        <dd>{paper.affiliations.join(', ')}</dd>
+      </div>
+    )}
+  </dl>
+
+  <section class="paper-card__abstract" aria-labelledby={`${anchor}-abstract`}>
+    <h4 id={`${anchor}-abstract`}>Abstract</h4>
+    <p>{paper.abstract}</p>
+  </section>
+
+  {sections.map(({ label, text, field }) => {
+    const sources = entry.claim_provenance.find((claim) => claim.field === field)?.urls ?? [];
+    return (
+      <section class="paper-card__section" aria-labelledby={`${anchor}-${field}`}>
+        <h4 id={`${anchor}-${field}`}>{label}</h4>
+        <p>{text}</p>
+        <p class="primary-sources">
+          <span>Primary source:</span>{' '}
+          {sources.map((url, index) => (
+            <>
+              <a href={url} target="_blank" rel="noopener noreferrer external">source</a>
+              {index < sources.length - 1 ? ', ' : ''}
+            </>
+          ))}
+        </p>
+      </section>
+    );
+  })}
+
+  <footer class="paper-card__links">
+    <h4>Paper links</h4>
+    <ul>
+      {paper.links.map((link) => (
+        <li><a href={link.url} target="_blank" rel="noopener noreferrer external">{link.label}</a></li>
+      ))}
+    </ul>
+  </footer>
+</article>

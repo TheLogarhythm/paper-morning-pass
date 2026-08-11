@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EditionHeader from '../../components/EditionHeader.astro';
+import PaperCard from '../../components/PaperCard.astro';
+import { loadContentRepository } from '../../lib/content-repository';
+import type { EditionRecord, PaperRecord } from '../../schemas/content';
+
+export async function getStaticPaths() {
+  const repository = await loadContentRepository();
+  return repository.editions.map((edition) => ({
+    params: { date: edition.delivery_date },
+    props: { edition, papers: [...repository.papersById.values()] },
+  }));
+}
+
+interface Props {
+  edition: EditionRecord;
+  papers: PaperRecord[];
+}
+
+const { edition, papers } = Astro.props;
+const papersById = new Map(papers.map((paper) => [paper.paper_id, paper]));
+const fixtureOnly = edition.entries.every((entry) => papersById.get(entry.paper_id)?.tags.includes('fixture'));
+const readFirst = edition.entries.filter((entry) => entry.tier === 'read_first');
+const worthSkimming = edition.entries.filter((entry) => entry.tier === 'worth_skimming');
+---
+
+<BaseLayout
+  pageTitle={`Edition ${edition.delivery_date}`}
+  description={`Paper Morning Pass edition for ${edition.delivery_date}.`}
+  canonicalPath={`/editions/${edition.delivery_date}`}
+>
+  <EditionHeader edition={edition} fixtureOnly={fixtureOnly} />
+
+  {readFirst.length > 0 && (
+    <section class="edition-section" aria-labelledby="read-first-heading">
+      <div class="section-heading">
+        <p class="eyebrow">Priority reading</p>
+        <h2 id="read-first-heading">Read First</h2>
+      </div>
+      <ol class="paper-list">
+        {readFirst.map((entry) => (
+          <li><PaperCard entry={entry} paper={papersById.get(entry.paper_id)!} /></li>
+        ))}
+      </ol>
+    </section>
+  )}
+
+  {worthSkimming.length > 0 && (
+    <section class="edition-section" aria-labelledby="worth-skimming-heading">
+      <div class="section-heading">
+        <p class="eyebrow">Secondary reading</p>
+        <h2 id="worth-skimming-heading">Worth Skimming</h2>
+      </div>
+      <ol class="paper-list">
+        {worthSkimming.map((entry) => (
+          <li><PaperCard entry={entry} paper={papersById.get(entry.paper_id)!} /></li>
+        ))}
+      </ol>
+    </section>
+  )}
+</BaseLayout>

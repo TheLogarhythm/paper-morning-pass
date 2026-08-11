@@ -1,0 +1,33 @@
+---
+import type { EditionRecord, SourceName } from '../schemas/content';
+
+interface Props {
+  coverage: EditionRecord['coverage'][number];
+}
+
+const sourceLabels: Record<SourceName, string> = {
+  arxiv_cs_cv: 'arXiv cs.CV',
+  arxiv_cs_gr: 'arXiv cs.GR',
+  huggingface_papers: 'Hugging Face Papers',
+};
+
+const { coverage } = Astro.props;
+const statusLabel = coverage.status === 'complete' ? 'Complete' : 'Degraded';
+const statusDescription = coverage.status === 'complete'
+  ? 'All expected source records were available.'
+  : 'Some expected source records were unavailable.';
+---
+
+<li class:list={['source-status', `source-status--${coverage.status}`]}>
+  <div class="source-status__line">
+    <span>{sourceLabels[coverage.source]}</span>
+    <strong>{statusLabel}</strong>
+  </div>
+  <span class="source-status__description">{statusDescription}</span>
+  <span class="source-status__dates">
+    {coverage.dates.map((date, index) => (
+      <><time datetime={date}>{date}</time>{index < coverage.dates.length - 1 ? ', ' : ''}</>
+    ))}
+  </span>
+  {coverage.detail && <p>{coverage.detail}</p>}
+</li>

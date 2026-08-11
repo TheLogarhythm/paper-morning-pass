@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { publicPath } from '../lib/public-url';
+---
+
+<BaseLayout
+  pageTitle="Page not found"
+  description="The requested Paper Morning Pass page could not be found."
+  canonicalPath="/404"
+>
+  <section class="not-found">
+    <p class="eyebrow">404</p>
+    <h1>Page not found</h1>
+    <p>The edition or page you requested is not in the archive.</p>
+    <a class="button-link" href={publicPath(import.meta.env.BASE_URL, '/')}>Return to the latest edition</a>
+  </section>
+</BaseLayout>
