@@ -154,38 +154,79 @@ export function buildContentRepository(
   };
 }
 
-function valuesFromViteGlob(glob: Record<string, unknown>, kind: 'paper' | 'edition'): { values: unknown[]; labels: string[] } {
-  const entries = Object.entries(glob).sort(([left], [right]) => left.localeCompare(right));
-  if (kind === 'paper') {
-    const paperEntry = entries.find(([path]) => path.endsWith('/papers/index.json'));
-    if (!paperEntry) throw contentValidationError(['Missing required content file: src/data/papers/index.json']);
-    if (!Array.isArray(paperEntry[1])) {
-      throw contentValidationError(['src/data/papers/index.json: expected a JSON array']);
+function parseRawJsonModule(raw: unknown, label: string, errors: string[]): unknown | undefined {
+  if (typeof raw !== 'string') {
+    errors.push(`${label}: expected a raw JSON module`);
+    return undefined;
+  }
+  try {
+    return JSON.parse(raw);
+  } catch {
+    errors.push(`${label}: invalid JSON`);
+    return undefined;
+  }
+}
+
+/**
+ * Pure Vite-module adapter used by the production eager glob loader and tests.
+ * Raw JSON keeps parse failures inside the aggregate validator rather than
+ * failing during Vite's JSON transformation step.
+ */
+export function buildContentRepositoryFromViteModules(
+  paperModules: Record<string, unknown>,
+  editionModules: Record<string, unknown>,
+): ContentRepository {
+  const errors: string[] = [];
+  const paperEntry = Object.entries(paperModules)
+    .find(([path]) => path.endsWith('/papers/index.json'));
+  let papers: unknown[] = [];
+  if (!paperEntry) {
+    errors.push('Missing required content file: src/data/papers/index.json');
+  } else {
+    const document = parseRawJsonModule(paperEntry[1], 'src/data/papers/index.json', errors);
+    if (document !== undefined) {
+      if (Array.isArray(document)) papers = document;
+      else errors.push('src/data/papers/index.json: expected a JSON array');
     }
-    return {
-      values: paperEntry[1],
-      labels: paperEntry[1].map((_, index) => `src/data/papers/index.json[${index}]`),
-    };
   }
 
-  if (entries.length === 0) throw contentValidationError(['Missing edition files: src/data/editions/*.json']);
-  return {
-    values: entries.map(([, value]) => value),
-    labels: entries.map(([path]) => path.replace(/^\.\.\//, 'src/')),
-  };
+  const editionEntries = Object.entries(editionModules).sort(([left], [right]) => left.localeCompare(right));
+  if (editionEntries.length === 0) errors.push('Missing edition files: src/data/editions/*.json');
+  const editions: unknown[] = [];
+  const labels: string[] = [];
+  for (const [path, raw] of editionEntries) {
+    const label = path.replace(/^\.\.\//, 'src/');
+    const document = parseRawJsonModule(raw, label, errors);
+    if (document !== undefined) {
+      editions.push(document);
+      labels.push(label);
+    }
+  }
+
+  return buildContentRepository(
+    papers,
+    editions,
+    {
+      papers: papers.map((_, index) => `src/data/papers/index.json[${index}]`),
+      editions: labels,
+    },
+    errors,
+  );
 }
 
 /** Vite/Astro loader for production site builds. */
 export async function loadContentRepository(): Promise<ContentRepository> {
-  const papers = valuesFromViteGlob(
-    import.meta.glob('../data/papers/index.json', { eager: true, import: 'default' }),
-    'paper',
-  );
-  const editions = valuesFromViteGlob(
-    import.meta.glob('../data/editions/*.json', { eager: true, import: 'default' }),
-    'edition',
-  );
-  return buildContentRepository(papers.values, editions.values, { papers: papers.labels, editions: editions.labels });
+  const papers = import.meta.glob('../data/papers/index.json', {
+    eager: true,
+    query: '?raw',
+    import: 'default',
+  }) as Record<string, unknown>;
+  const editions = import.meta.glob('../data/editions/*.json', {
+    eager: true,
+    query: '?raw',
+    import: 'default',
+  }) as Record<string, unknown>;
+  return buildContentRepositoryFromViteModules(papers, editions);
 }
 
 async function readJsonFile(path: URL, label: string): Promise<{ value: unknown } | { error: string }> {

@@ -3,7 +3,11 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { buildContentRepository, loadContentRepositoryFromFileSystem } from '../../src/lib/content-repository';
+import {
+  buildContentRepository,
+  buildContentRepositoryFromViteModules,
+  loadContentRepositoryFromFileSystem,
+} from '../../src/lib/content-repository';
 import { validEditionRecord, validPaperRecord } from '../fixtures/content';
 
 function clone<T>(value: T): T {
@@ -127,5 +131,77 @@ describe('content repository', () => {
     expect(error).toBeInstanceOf(Error);
     expect((error as Error).message).toContain('https://unrelated.example/one');
     expect((error as Error).message).toContain('https://unrelated.example/two');
+  });
+
+  it('aggregates raw Vite module errors with independent alias, schema, and reference errors without source payloads', () => {
+    const duplicateAliasPaper = clone(validPaperRecord);
+    duplicateAliasPaper.paper_id = '018f4a90-6d31-7b2c-9dd3-7e12c8b77211';
+    const unresolvedEdition = clone(validEditionRecord);
+    unresolvedEdition.entries[0].paper_id = '018f4a90-6d31-7b2c-9dd3-7e12c8b77212';
+    const schemaInvalidEdition = clone(validEditionRecord) as Record<string, unknown>;
+    schemaInvalidEdition.validation_status = 'unvalidated';
+
+    const error = (() => {
+      try {
+        buildContentRepositoryFromViteModules(
+          { '../data/papers/index.json': JSON.stringify([validPaperRecord, duplicateAliasPaper]) },
+          {
+            '../data/editions/broken.json': '{"abstract":"DO_NOT_DISCLOSE"',
+            '../data/editions/first.json': JSON.stringify(validEditionRecord),
+            '../data/editions/invalid.json': JSON.stringify(schemaInvalidEdition),
+            '../data/editions/second.json': JSON.stringify(unresolvedEdition),
+          },
+        );
+      } catch (reason) {
+        return reason;
+      }
+      throw new Error('Expected validation to fail');
+    })();
+
+    expect(error).toBeInstanceOf(Error);
+    const message = (error as Error).message;
+    expect(message).toContain('src/data/editions/broken.json: invalid JSON');
+    expect(message).toContain('Duplicate external-ID alias');
+    expect(message).toContain('validation_status');
+    expect(message).toContain('unknown paper');
+    expect(message).not.toContain('DO_NOT_DISCLOSE');
+  });
+
+  it('aggregates missing and wrong-shaped raw Vite modules with remaining module errors', () => {
+    const unresolvedEdition = clone(validEditionRecord);
+    unresolvedEdition.entries[0].paper_id = '018f4a90-6d31-7b2c-9dd3-7e12c8b77212';
+    const schemaInvalidEdition = clone(validEditionRecord) as Record<string, unknown>;
+    schemaInvalidEdition.validation_status = 'unvalidated';
+
+    const missingError = (() => {
+      try {
+        buildContentRepositoryFromViteModules({}, {
+          '../data/editions/broken.json': '{not JSON',
+          '../data/editions/unresolved.json': JSON.stringify(unresolvedEdition),
+        });
+      } catch (reason) {
+        return reason;
+      }
+      throw new Error('Expected validation to fail');
+    })();
+    expect(missingError).toBeInstanceOf(Error);
+    expect((missingError as Error).message).toContain('Missing required content file: src/data/papers/index.json');
+    expect((missingError as Error).message).toContain('src/data/editions/broken.json: invalid JSON');
+    expect((missingError as Error).message).toContain('unknown paper');
+
+    const shapeError = (() => {
+      try {
+        buildContentRepositoryFromViteModules(
+          { '../data/papers/index.json': '{}' },
+          { '../data/editions/invalid.json': JSON.stringify(schemaInvalidEdition) },
+        );
+      } catch (reason) {
+        return reason;
+      }
+      throw new Error('Expected validation to fail');
+    })();
+    expect(shapeError).toBeInstanceOf(Error);
+    expect((shapeError as Error).message).toContain('src/data/papers/index.json: expected a JSON array');
+    expect((shapeError as Error).message).toContain('validation_status');
   });
 });
