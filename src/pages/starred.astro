@@ -1,0 +1,19 @@
+---
+import StateUnavailable from '../components/StateUnavailable.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  pageTitle="Starred papers"
+  description="The Paper Morning Pass starred reading list and its current availability."
+  canonicalPath="/starred"
+>
+  <header class="page-header">
+    <p class="eyebrow">Personal reading list</p>
+    <h1>Starred papers</h1>
+  </header>
+
+  <div data-state-root="starred">
+    <StateUnavailable />
+  </div>
+</BaseLayout>

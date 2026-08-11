@@ -104,3 +104,42 @@ test('paper links provide at least 44px touch targets', async ({ page }) => {
     expect(box?.height).toBeGreaterThanOrEqual(44);
   }
 });
+
+test('starred papers honestly reports unavailable reading state', async ({ page }) => {
+  await page.goto(`${basePath}/starred`);
+
+  await expect(page.locator('h1')).toHaveCount(1);
+  await expect(page.getByRole('heading', { level: 1, name: 'Starred papers' })).toBeVisible();
+
+  const unavailableState = page.getByRole('status');
+  await expect(unavailableState.getByText('Reading state unavailable', { exact: true })).toBeVisible();
+  await expect(
+    unavailableState.getByText(
+      'No paper is inferred to be unread or unstarred while reading state is unavailable.',
+      { exact: true },
+    ),
+  ).toBeVisible();
+  await expect(page.locator('[data-state-root="starred"]')).toHaveCount(1);
+
+  await expect(page.getByText(fixtureTitle, { exact: true })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /read|star/i })).toHaveCount(0);
+  await expect(page.getByRole('checkbox')).toHaveCount(0);
+
+  await expect(page).toHaveTitle('Starred papers · Paper Morning Pass');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    'href',
+    'https://thelogarhythm.github.io/paper-morning-pass/starred',
+  );
+  await expect(page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'Latest' })).toHaveAttribute(
+    'href',
+    `${basePath}/`,
+  );
+  await expect(page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'Archive' })).toHaveAttribute(
+    'href',
+    `${basePath}/archive`,
+  );
+  await expect(page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'Starred' })).toHaveAttribute(
+    'href',
+    `${basePath}/starred`,
+  );
+});
