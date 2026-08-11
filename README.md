@@ -1,43 +1,35 @@
-# Astro Starter Kit: Minimal
+# Paper Morning Pass
+
+Paper Morning Pass is a static, content-first Astro foundation for a calm daily research reading brief. It renders the latest edition, dated editions, an archive, and an honest unavailable state for personal starred-paper data.
+
+The committed sample paper and edition are explicitly fictional fixtures for interface development. They are not claims about a real publication.
+
+## Local setup
+
+Use Node.js 22.12 or newer and npm:
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npx playwright install chromium webkit
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Start the development server with `npm run dev`. Production output is built for the `/paper-morning-pass/` base path.
 
-## 🚀 Project Structure
+## Verification
 
-Inside of your Astro project, you'll see the following folders and files:
+Run the complete foundation gate from the repository root:
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+npm run check
+npm test
+npm run test:e2e
+npm run build
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+`npm test` is self-contained and does not require an existing `dist/` directory. Playwright starts and stops its own local Astro server.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Content model
 
-Any static assets, like images, can be placed in the `public/` directory.
+JSON under `src/data/` is the canonical, schema-validated public build input. Markdown under `content/editions/` is a human-reviewable projection generated from the same edition object; it is not loaded as canonical data.
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The Starred page does not invent unread or unstarred defaults when no personal-state provider is connected. It displays `Reading state unavailable` and remains inert until a future provider is explicitly integrated.

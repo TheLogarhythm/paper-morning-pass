@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { safeExternalUrl } from '../lib/safe-link';
 
 export const sourceNameSchema = z.enum(['arxiv_cs_cv', 'arxiv_cs_gr', 'huggingface_papers']);
 export const reviewDepthSchema = z.enum(['abstract', 'full_paper', 'full_paper_plus_artifacts']);
@@ -71,12 +72,12 @@ const nonEmptyText = z.string().trim().min(1);
 const strictDateSchema = z.iso.date();
 const safeHttpUrlSchema = z.string().refine((value) => {
   try {
-    const { protocol } = new URL(value);
-    return protocol === 'http:' || protocol === 'https:';
+    safeExternalUrl(value);
+    return true;
   } catch {
     return false;
   }
-}, 'Expected an HTTP(S) URL');
+}, 'External URL is not permitted.');
 
 function uniqueBy<T>(values: readonly T[], key: (value: T) => string): boolean {
   return new Set(values.map(key)).size === values.length;
@@ -228,7 +229,7 @@ export const editionRecordSchema = z.object({
     'Coverage sources must be unique',
   ),
   editorial_theme: nonEmptyText.optional(),
-  entries: z.array(z.discriminatedUnion('tier', [readFirstEntrySchema, worthSkimmingEntrySchema])).min(1),
+  entries: z.array(z.discriminatedUnion('tier', [readFirstEntrySchema, worthSkimmingEntrySchema])),
   exceptional_length: z.boolean(),
   validation_status: z.literal('validated'),
 }).strict().superRefine((edition, ctx) => {
@@ -261,7 +262,7 @@ export function validateEditionAgainstPapers(editionInput: unknown, papersInput:
     for (const claim of entry.claim_provenance) {
       for (const url of claim.urls) {
         if (!canonicalSourceUrls.has(url)) {
-          throw new Error(`Claim provenance URL is not a canonical paper or source link: ${url}`);
+          throw new Error(`Claim provenance for ${claim.field} is not a canonical paper or source link.`);
         }
       }
     }

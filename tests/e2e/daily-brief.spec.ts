@@ -38,14 +38,6 @@ test('archive keeps edition links in server-rendered HTML', async ({ page }) => 
   await expect(page.locator('input[name="month"][type="month"]')).toBeVisible();
 });
 
-test('archive edition links provide at least 44px touch targets', async ({ page }) => {
-  await page.goto(`${basePath}/archive`);
-
-  const editionLink = page.getByRole('link', { name: '10 August 2026' });
-  const box = await editionLink.boundingBox();
-  expect(box?.height).toBeGreaterThanOrEqual(44);
-});
-
 test('dated edition renders the fixture at its stable paper anchor', async ({ page }) => {
   await page.goto(`${basePath}/editions/2026-08-10`);
 
@@ -74,6 +66,14 @@ test('content links are safe and site URLs honor the production base', async ({ 
     'href',
     'https://thelogarhythm.github.io/paper-morning-pass/',
   );
+  await expect(page.locator('link[rel="icon"][type="image/svg+xml"]')).toHaveAttribute(
+    'href',
+    `${basePath}/favicon.svg`,
+  );
+  await expect(page.locator('link[rel="icon"]:not([type])')).toHaveAttribute(
+    'href',
+    `${basePath}/favicon.ico`,
+  );
   await expect(page).toHaveTitle('Daily Brief · Paper Morning Pass');
   await expect(page.getByRole('link', { name: 'Skip to content' })).toHaveAttribute('href', '#main-content');
   await expect(page.getByRole('main')).toHaveAttribute('id', 'main-content');
@@ -94,14 +94,32 @@ test('content links are safe and site URLs honor the production base', async ({ 
   }
 });
 
-test('paper links provide at least 44px touch targets', async ({ page }) => {
-  await page.goto(`${basePath}/`);
+test('essential navigation and content links provide at least 44 by 44px touch targets', async ({ page }) => {
+  const routeTargets = [
+    {
+      path: `${basePath}/`,
+      selectors: '.site-header nav a, .paper-card__anchor, .primary-sources a, .paper-card__links a',
+    },
+    {
+      path: `${basePath}/archive`,
+      selectors: '.site-header nav a, .archive-list h2 a',
+    },
+    {
+      path: `${basePath}/editions/1900-01-01`,
+      selectors: '.site-header nav a, .button-link',
+    },
+  ];
 
-  const paperLinks = page.locator('.paper-card a');
-  expect(await paperLinks.count()).toBeGreaterThan(0);
-  for (const link of await paperLinks.all()) {
-    const box = await link.boundingBox();
-    expect(box?.height).toBeGreaterThanOrEqual(44);
+  for (const { path, selectors } of routeTargets) {
+    await page.goto(path);
+    const links = page.locator(selectors);
+    expect(await links.count()).toBeGreaterThan(0);
+    for (const link of await links.all()) {
+      const box = await link.boundingBox();
+      expect(box, `${path}: ${await link.innerText()}`).not.toBeNull();
+      expect(box!.width, `${path}: ${await link.innerText()} width`).toBeGreaterThanOrEqual(44);
+      expect(box!.height, `${path}: ${await link.innerText()} height`).toBeGreaterThanOrEqual(44);
+    }
   }
 });
 

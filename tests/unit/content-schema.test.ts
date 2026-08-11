@@ -7,6 +7,7 @@ import {
   validateEditionAgainstPapers,
 } from '../../src/schemas/content';
 import { renderEditionMarkdown } from '../../src/lib/edition-markdown';
+import { getEditionViewState } from '../../src/lib/edition-view-state';
 import { validEditionRecord, validPaperRecord, validReadFirstEntry } from '../fixtures/content';
 
 function clone<T>(value: T): T {
@@ -19,6 +20,7 @@ function normalizeFinalNewline(value: string): string {
 
 type TestPaper = Record<string, unknown> & {
   links: Array<{ url: string }>;
+  provenance: Array<{ url: string }>;
   source_dates: Array<{ date: string }>;
 };
 
@@ -43,6 +45,47 @@ describe('public content schemas', () => {
     const paper = clone(validPaperRecord) as TestPaper;
     paper.links[0].url = url;
     expect(() => paperRecordSchema.parse(paper)).toThrow();
+  });
+
+  it.each([
+    ['public links', (paper: TestPaper, _edition: TestEdition, url: string) => { paper.links[0].url = url; }],
+    ['record provenance', (paper: TestPaper, _edition: TestEdition, url: string) => { paper.provenance[0].url = url; }],
+    ['claim provenance', (_paper: TestPaper, edition: TestEdition, url: string) => { edition.entries[0].claim_provenance[0].urls = [url]; }],
+  ])('rejects credential-bearing %s without reflecting credentials', (_scope, mutate) => {
+    const marker = 'TEST_ONLY_SECRET_MARKER_9QK';
+    const unsafeUrl = `https://fixture:${marker}@example.org/private?token=${marker}`;
+    const paper = clone(validPaperRecord) as TestPaper;
+    const edition = clone(validEditionRecord) as TestEdition;
+    mutate(paper, edition, unsafeUrl);
+
+    const result = _scope === 'claim provenance'
+      ? editionRecordSchema.safeParse(edition)
+      : paperRecordSchema.safeParse(paper);
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      expect(JSON.stringify(result.error.issues)).not.toContain(marker);
+      expect(JSON.stringify(result.error.issues)).not.toContain('fixture:');
+    }
+  });
+
+  it('rejects credential-bearing Markdown destinations without reflecting credentials', () => {
+    const marker = 'TEST_ONLY_SECRET_MARKER_9QK';
+    const unsafeUrl = `https://fixture:${marker}@example.org/private?token=${marker}`;
+    const paper = clone(validPaperRecord) as TestPaper;
+    const edition = clone(validEditionRecord) as TestEdition;
+    paper.links[0].url = unsafeUrl;
+    for (const claim of edition.entries[0].claim_provenance) claim.urls = [unsafeUrl];
+
+    let message = '';
+    try {
+      renderEditionMarkdown(edition as never, [paper] as never);
+    } catch (error) {
+      message = error instanceof Error ? error.message : String(error);
+    }
+
+    expect(message.length).toBeGreaterThan(0);
+    expect(message).not.toContain(marker);
+    expect(message).not.toContain(unsafeUrl);
   });
 
   it('requires every read-first editorial field and positive minutes', () => {
@@ -180,6 +223,44 @@ describe('public content schemas', () => {
 
     edition.exceptional_length = true;
     expect(editionRecordSchema.parse(edition).exceptional_length).toBe(true);
+  });
+
+  it('allows a zero-entry edition when exceptional length is false', () => {
+    const edition = clone(validEditionRecord) as TestEdition;
+    edition.entries = [];
+    edition.exceptional_length = false;
+
+    const parsed = editionRecordSchema.parse(edition);
+    expect(parsed.entries).toEqual([]);
+    expect(parsed.exceptional_length).toBe(false);
+  });
+
+  it('projects a zero-entry edition as non-fixture with a neutral quality-bar message', () => {
+    const edition = clone(validEditionRecord) as TestEdition;
+    edition.entries = [];
+    edition.exceptional_length = false;
+
+    const rendered = renderEditionMarkdown(
+      editionRecordSchema.parse(edition),
+      paperRecordSchema.array().parse([validPaperRecord]),
+    );
+
+    expect(rendered).toContain('fixture_only: false');
+    expect(rendered).toContain('No papers met the quality bar for this edition.');
+    expect(rendered.endsWith('\n')).toBe(true);
+  });
+
+  it('reports the same neutral zero-selection state for page rendering', () => {
+    const edition = clone(validEditionRecord) as TestEdition;
+    edition.entries = [];
+    edition.exceptional_length = false;
+    const parsedEdition = editionRecordSchema.parse(edition);
+    const paper = paperRecordSchema.parse(validPaperRecord);
+
+    expect(getEditionViewState(parsedEdition, new Map([[paper.paper_id, paper]]))).toEqual({
+      fixtureOnly: false,
+      emptyMessage: 'No papers met the quality bar for this edition.',
+    });
   });
 
   it.each([

@@ -18,4 +18,19 @@ describe('publicPath', () => {
     expect(() => publicPath('/paper-morning-pass/', '//attacker.example')).toThrow();
     expect(() => publicPath('/paper-morning-pass/', 'https://attacker.example')).toThrow();
   });
+
+  it.each([
+    '/\\attacker.example',
+    '/\\\\attacker.example',
+  ])('rejects backslash authority paths that browsers can resolve off-origin: %s', (route) => {
+    expect(() => publicPath('/', route)).toThrow('Route must be a root-relative path.');
+
+    let resolvedOrigin = 'https://expected.example';
+    try {
+      resolvedOrigin = new URL(publicPath('/', route), `${resolvedOrigin}/`).origin;
+    } catch {
+      // Rejection is the desired outcome; the origin remains the expected origin.
+    }
+    expect(resolvedOrigin).toBe('https://expected.example');
+  });
 });

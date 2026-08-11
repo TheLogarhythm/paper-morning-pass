@@ -3,10 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import EditionHeader from '../components/EditionHeader.astro';
 import PaperCard from '../components/PaperCard.astro';
 import { loadContentRepository } from '../lib/content-repository';
+import { getEditionViewState } from '../lib/edition-view-state';
 
 const repository = await loadContentRepository();
 const edition = repository.latest;
-const fixtureOnly = edition.entries.every((entry) => repository.papersById.get(entry.paper_id)?.tags.includes('fixture'));
+const { fixtureOnly, emptyMessage } = getEditionViewState(edition, repository.papersById);
 const readFirst = edition.entries.filter((entry) => entry.tier === 'read_first');
 const worthSkimming = edition.entries.filter((entry) => entry.tier === 'worth_skimming');
 ---
@@ -17,6 +18,8 @@ const worthSkimming = edition.entries.filter((entry) => entry.tier === 'worth_sk
   canonicalPath="/"
 >
   <EditionHeader edition={edition} fixtureOnly={fixtureOnly} />
+
+  {emptyMessage && <p class="empty-edition">{emptyMessage}</p>}
 
   {readFirst.length > 0 && (
     <section class="edition-section" aria-labelledby="read-first-heading">

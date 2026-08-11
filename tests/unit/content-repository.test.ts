@@ -113,11 +113,12 @@ describe('content repository', () => {
     }
   });
 
-  it('aggregates every invalid provenance URL in one entry', () => {
+  it('aggregates invalid provenance context without reflecting URLs or query tokens', () => {
+    const marker = 'TEST_ONLY_SECRET_MARKER_9QK';
     const edition = clone(validEditionRecord);
     edition.entries[0].claim_provenance[0].urls = [
-      'https://unrelated.example/one',
-      'https://unrelated.example/two',
+      `https://unrelated.example/one?access_token=${marker}-one`,
+      `https://unrelated.example/two?access_token=${marker}-two`,
     ];
 
     const error = (() => {
@@ -129,8 +130,11 @@ describe('content repository', () => {
       throw new Error('Expected validation to fail');
     })();
     expect(error).toBeInstanceOf(Error);
-    expect((error as Error).message).toContain('https://unrelated.example/one');
-    expect((error as Error).message).toContain('https://unrelated.example/two');
+    const message = (error as Error).message;
+    expect(message).toContain(`Edition ${validEditionRecord.delivery_date}, paper ${validPaperRecord.paper_id}`);
+    expect(message.match(/not a canonical paper or source link/g)).toHaveLength(2);
+    expect(message).not.toContain(marker);
+    expect(message).not.toContain('unrelated.example');
   });
 
   it('aggregates raw Vite module errors with independent alias, schema, and reference errors without source payloads', () => {

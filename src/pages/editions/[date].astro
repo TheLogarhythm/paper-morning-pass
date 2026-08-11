@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import EditionHeader from '../../components/EditionHeader.astro';
 import PaperCard from '../../components/PaperCard.astro';
 import { loadContentRepository } from '../../lib/content-repository';
+import { getEditionViewState } from '../../lib/edition-view-state';
 import type { EditionRecord, PaperRecord } from '../../schemas/content';
 
 export async function getStaticPaths() {
@@ -20,7 +21,7 @@ interface Props {
 
 const { edition, papers } = Astro.props;
 const papersById = new Map(papers.map((paper) => [paper.paper_id, paper]));
-const fixtureOnly = edition.entries.every((entry) => papersById.get(entry.paper_id)?.tags.includes('fixture'));
+const { fixtureOnly, emptyMessage } = getEditionViewState(edition, papersById);
 const readFirst = edition.entries.filter((entry) => entry.tier === 'read_first');
 const worthSkimming = edition.entries.filter((entry) => entry.tier === 'worth_skimming');
 ---
@@ -31,6 +32,8 @@ const worthSkimming = edition.entries.filter((entry) => entry.tier === 'worth_sk
   canonicalPath={`/editions/${edition.delivery_date}`}
 >
   <EditionHeader edition={edition} fixtureOnly={fixtureOnly} />
+
+  {emptyMessage && <p class="empty-edition">{emptyMessage}</p>}
 
   {readFirst.length > 0 && (
     <section class="edition-section" aria-labelledby="read-first-heading">

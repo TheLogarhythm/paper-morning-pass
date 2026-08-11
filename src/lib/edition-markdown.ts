@@ -7,6 +7,8 @@ import {
   type ReviewDepth,
   type SourceName,
 } from '../schemas/content';
+import { safeExternalUrl } from './safe-link';
+import { getEditionViewState } from './edition-view-state';
 
 const monthNames = [
   'January', 'February', 'March', 'April', 'May', 'June',
@@ -47,15 +49,7 @@ function escapeMarkdownText(value: string): string {
 }
 
 function serializeMarkdownDestination(value: string): string {
-  const url = new URL(value);
-  if (url.protocol !== 'http:' && url.protocol !== 'https:') {
-    throw new Error(`Expected an HTTP(S) URL: ${value}`);
-  }
-  if (url.username || url.password) {
-    throw new Error(`Link destinations must not include credentials: ${value}`);
-  }
-
-  return url.toString().replace(/\(/g, '%28').replace(/\)/g, '%29');
+  return safeExternalUrl(value).replace(/\(/g, '%28').replace(/\)/g, '%29');
 }
 
 function serializeMarkdownLink(label: string, destination: string): string {
@@ -108,7 +102,7 @@ function renderWorthSkimmingEntry(entry: Extract<EditionRecord['entries'][number
 export function renderEditionMarkdown(edition: EditionRecord, papers: PaperRecord[]): string {
   validateEditionAgainstPapers(edition, papers);
   const papersById = new Map(papers.map((paper) => [paper.paper_id, paper]));
-  const fixtureOnly = edition.entries.every((entry) => papersById.get(entry.paper_id)?.tags.includes('fixture'));
+  const { fixtureOnly, emptyMessage } = getEditionViewState(edition, papersById);
   const lines = [
     '---',
     `delivery_date: ${edition.delivery_date}`,
@@ -133,6 +127,10 @@ export function renderEditionMarkdown(edition: EditionRecord, papers: PaperRecor
     lines.push(`- ${sourceLabels[coverage.source]}: ${coverage.dates.join(', ')} (${coverage.status})${detail}`);
   }
   lines.push('');
+
+  if (emptyMessage) {
+    lines.push(emptyMessage, '');
+  }
 
   for (const [index, entry] of edition.entries.entries()) {
     const paper = papersById.get(entry.paper_id);

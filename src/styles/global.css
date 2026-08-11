@@ -92,6 +92,7 @@ a:hover {
 .site-header a {
   display: inline-flex;
   align-items: center;
+  min-inline-size: 44px;
   min-height: 44px;
   font-family: system-ui, sans-serif;
   font-size: 0.9rem;
@@ -249,6 +250,13 @@ h4 {
   padding-top: clamp(3rem, 8vw, 5rem);
 }
 
+.empty-edition {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
 .section-heading {
   margin-bottom: 1.5rem;
 }
@@ -285,6 +293,7 @@ h4 {
 .paper-card a {
   display: inline-flex;
   align-items: center;
+  min-inline-size: 44px;
   min-height: 44px;
 }
 
@@ -329,6 +338,7 @@ h4 {
 .button-link {
   display: inline-flex;
   align-items: center;
+  min-inline-size: 44px;
   min-height: 44px;
 }
 
@@ -399,6 +409,7 @@ input {
 .archive-list h2 a {
   display: inline-flex;
   align-items: center;
+  min-inline-size: 44px;
   min-height: 44px;
 }
 
