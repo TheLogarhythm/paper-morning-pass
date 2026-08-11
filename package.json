@@ -11,7 +11,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "build": "astro build",
+    "validate:content": "tsx scripts/validate-content.ts",
+    "build": "npm run validate:content && astro build",
     "preview": "astro preview"
   },
   "dependencies": {
