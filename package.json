@@ -21,6 +21,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@axe-core/playwright": "^4.12.1",
+    "@types/node": "^26.2.0",
     "@vitest/coverage-v8": "^4.1.10",
     "playwright": "^1.62.1",
     "tsx": "^4.23.12",
