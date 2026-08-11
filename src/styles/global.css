@@ -396,6 +396,12 @@ input {
   font-size: 1.5rem;
 }
 
+.archive-list h2 a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
 .archive-list p {
   margin-bottom: 0.3rem;
 }

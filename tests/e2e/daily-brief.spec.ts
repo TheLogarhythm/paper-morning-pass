@@ -38,6 +38,14 @@ test('archive keeps edition links in server-rendered HTML', async ({ page }) => 
   await expect(page.locator('input[name="month"][type="month"]')).toBeVisible();
 });
 
+test('archive edition links provide at least 44px touch targets', async ({ page }) => {
+  await page.goto(`${basePath}/archive`);
+
+  const editionLink = page.getByRole('link', { name: '10 August 2026' });
+  const box = await editionLink.boundingBox();
+  expect(box?.height).toBeGreaterThanOrEqual(44);
+});
+
 test('dated edition renders the fixture at its stable paper anchor', async ({ page }) => {
   await page.goto(`${basePath}/editions/2026-08-10`);
 
