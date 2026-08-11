@@ -1,16 +1,20 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import {
-  canonicalEditionMarkdownIntegrityMarker,
   editionRecordSchema,
   paperRecordSchema,
   reviewDepthSchema,
   validateEditionAgainstPapers,
 } from '../../src/schemas/content';
+import { renderEditionMarkdown } from '../../src/lib/edition-markdown';
 import { validEditionRecord, validPaperRecord, validReadFirstEntry } from '../fixtures/content';
 
 function clone<T>(value: T): T {
   return structuredClone(value);
+}
+
+function normalizeFinalNewline(value: string): string {
+  return value.endsWith('\n') ? value : `${value}\n`;
 }
 
 type TestPaper = Record<string, unknown> & {
@@ -89,13 +93,16 @@ describe('public content schemas', () => {
     expect(() => validateEditionAgainstPapers(edition, [validPaperRecord])).toThrow(/canonical paper or source link/);
   });
 
-  it('contains the deterministic integrity marker generated from the canonical edition JSON', () => {
+  it('regenerates the complete committed Markdown artifact from canonical JSON', () => {
     const edition = editionRecordSchema.parse(JSON.parse(
       readFileSync(new URL('../../src/data/editions/2026-08-10.json', import.meta.url), 'utf8'),
     ));
+    const papers = paperRecordSchema.array().parse(JSON.parse(
+      readFileSync(new URL('../../src/data/papers/index.json', import.meta.url), 'utf8'),
+    ));
     const markdown = readFileSync(new URL('../../content/editions/2026-08-10.md', import.meta.url), 'utf8');
 
-    expect(markdown).toContain(canonicalEditionMarkdownIntegrityMarker(edition));
+    expect(normalizeFinalNewline(markdown)).toBe(normalizeFinalNewline(renderEditionMarkdown(edition, papers)));
   });
 
   it('allows only the documented review depths', () => {

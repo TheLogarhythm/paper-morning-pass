@@ -269,7 +269,3 @@ export function validateEditionAgainstPapers(editionInput: unknown, papersInput:
 
   return edition;
 }
-
-export function canonicalEditionMarkdownIntegrityMarker(edition: EditionRecord): string {
-  return `<!-- paper-morning-pass:canonical-edition ${JSON.stringify(edition)} -->`;
-}
