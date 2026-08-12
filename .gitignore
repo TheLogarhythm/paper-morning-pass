@@ -7,6 +7,9 @@ dist/
 test-results/
 playwright-report/
 
+# local Daily Brief preparation evidence
+.paper-morning-pass/runs/
+
 # dependencies
 node_modules/
 

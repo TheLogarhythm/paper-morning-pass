@@ -1,0 +1,14 @@
+[
+  {
+    "paper": {
+      "id": "2608.07468",
+      "authors": [{ "name": "Zongchuang Zhao" }, { "name": "Xin Zhou" }],
+      "submittedOnDailyAt": "2026-08-10T00:00:00.000Z",
+      "title": "SimWAM: A Simple World Action Model",
+      "summary": "A fixture abstract describing a world-action model.",
+      "githubRepo": "https://github.com/example/simwam"
+    },
+    "title": "SimWAM: A Simple World Action Model",
+    "summary": "A fixture abstract describing a world-action model."
+  }
+]

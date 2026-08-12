@@ -42,7 +42,12 @@ export const validReadFirstEntry = {
 export const validEditionRecord = {
   delivery_date: '2026-08-10',
   generated_at: '2026-08-10T08:00:00.000Z',
-  coverage: [{ source: 'arxiv_cs_cv', dates: ['2026-08-10'], status: 'complete' }],
+  publication_status: 'complete',
+  coverage: [
+    { source: 'arxiv_cs_cv', dates: ['2026-08-10'], status: 'complete' },
+    { source: 'arxiv_cs_gr', dates: ['2026-08-10'], status: 'complete' },
+    { source: 'huggingface_papers', dates: ['2026-08-10'], status: 'complete' },
+  ],
   editorial_theme: 'Fixture edition for interface development.',
   entries: [validReadFirstEntry],
   exceptional_length: false,

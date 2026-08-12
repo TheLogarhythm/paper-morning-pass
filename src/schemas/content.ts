@@ -61,6 +61,7 @@ export type WorthSkimmingEntry = {
 export type EditionRecord = {
   delivery_date: string;
   generated_at: string;
+  publication_status: 'complete' | 'partial';
   coverage: Array<{ source: SourceName; dates: string[]; status: 'complete' | 'degraded'; detail?: string }>;
   editorial_theme?: string;
   entries: Array<ReadFirstEntry | WorthSkimmingEntry>;
@@ -211,6 +212,8 @@ const worthSkimmingEntrySchema = z.object({
   }
 });
 
+export const editionEntrySchema = z.discriminatedUnion('tier', [readFirstEntrySchema, worthSkimmingEntrySchema]);
+
 const coverageSchema = z.object({
   source: sourceNameSchema,
   dates: z.array(strictDateSchema).min(1).refine(
@@ -219,20 +222,54 @@ const coverageSchema = z.object({
   ),
   status: z.enum(['complete', 'degraded']),
   detail: nonEmptyText.optional(),
-}).strict();
+}).strict().superRefine((coverage, ctx) => {
+  if (coverage.status === 'degraded' && !coverage.detail) {
+    ctx.addIssue({ code: 'custom', path: ['detail'], message: 'Degraded coverage requires a public-safe detail' });
+  }
+});
+
+const approvedSources = ['arxiv_cs_cv', 'arxiv_cs_gr', 'huggingface_papers'] as const;
 
 export const editionRecordSchema = z.object({
   delivery_date: strictDateSchema,
   generated_at: z.iso.datetime(),
+  publication_status: z.enum(['complete', 'partial']),
   coverage: z.array(coverageSchema).min(1).refine(
     (coverage) => uniqueBy(coverage, ({ source }) => source),
     'Coverage sources must be unique',
   ),
   editorial_theme: nonEmptyText.optional(),
-  entries: z.array(z.discriminatedUnion('tier', [readFirstEntrySchema, worthSkimmingEntrySchema])),
+  entries: z.array(editionEntrySchema),
   exceptional_length: z.boolean(),
   validation_status: z.literal('validated'),
 }).strict().superRefine((edition, ctx) => {
+  const actualSources = new Set(edition.coverage.map(({ source }) => source));
+  if (actualSources.size !== approvedSources.length || approvedSources.some((source) => !actualSources.has(source))) {
+    ctx.addIssue({
+      code: 'custom',
+      path: ['coverage'],
+      message: 'Coverage must contain exactly the three approved sources',
+    });
+  }
+
+  const completeSources = edition.coverage.filter(({ status }) => status === 'complete').length;
+  if (completeSources === 0) {
+    ctx.addIssue({
+      code: 'custom',
+      path: ['coverage'],
+      message: 'An edition cannot be published when all sources are degraded',
+    });
+  } else {
+    const expectedStatus = completeSources === approvedSources.length ? 'complete' : 'partial';
+    if (edition.publication_status !== expectedStatus) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['publication_status'],
+        message: `publication_status must be ${expectedStatus} for the declared source coverage`,
+      });
+    }
+  }
+
   const totalMinutes = edition.entries.reduce((total, entry) => total + entry.estimated_minutes, 0);
   if (edition.exceptional_length !== (totalMinutes > 20)) {
     ctx.addIssue({

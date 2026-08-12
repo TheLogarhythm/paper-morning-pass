@@ -12,11 +12,15 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "validate:content": "tsx scripts/validate-content.ts",
+    "daily:prepare": "tsx scripts/prepare-daily-brief.ts",
+    "daily:finalize": "tsx scripts/finalize-daily-brief.ts",
+    "daily:preflight": "tsx scripts/daily-preflight.ts",
     "build": "npm run validate:content && astro build",
     "preview": "astro preview"
   },
   "dependencies": {
     "astro": "^7.2.0",
+    "cheerio": "^1.1.2",
     "zod": "^4.4.3"
   },
   "devDependencies": {

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Publish Daily Brief"
+  short_description: "Research, validate, and publish the morning brief"
+  default_prompt: "Use $publish-daily-brief to prepare and publish today's Paper Morning Pass edition."
+policy:
+  allow_implicit_invocation: false

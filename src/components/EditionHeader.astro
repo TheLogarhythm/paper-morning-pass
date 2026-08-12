@@ -16,6 +16,7 @@ const deliveryDate = new Intl.DateTimeFormat('en-GB', {
 }).format(new Date(`${edition.delivery_date}T00:00:00Z`));
 const totalMinutes = edition.entries.reduce((total, entry) => total + entry.estimated_minutes, 0);
 const paperLabel = edition.entries.length === 1 ? 'paper' : 'papers';
+const publicationLabel = edition.publication_status === 'complete' ? 'Complete coverage' : 'Partial coverage';
 ---
 
 <header class="edition-header">
@@ -23,6 +24,10 @@ const paperLabel = edition.entries.length === 1 ? 'paper' : 'papers';
   <h1>Paper Morning Pass</h1>
   <p class="edition-date"><time datetime={edition.delivery_date}>{deliveryDate}</time></p>
   <p class="coverage-summary">{edition.entries.length} {paperLabel} · {totalMinutes} minutes</p>
+  <p class:list={['publication-status', `publication-status--${edition.publication_status}`]} role="status">
+    <strong>{publicationLabel}</strong>
+    {edition.publication_status === 'partial' && <span>Some approved sources could not be verified after retries.</span>}
+  </p>
   {fixtureOnly && (
     <p class="fixture-notice">Fixture content for interface development. It is not a claim about a real publication.</p>
   )}

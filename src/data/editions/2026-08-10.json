@@ -1,9 +1,22 @@
 {
   "delivery_date": "2026-08-10",
   "generated_at": "2026-08-10T08:00:00.000Z",
+  "publication_status": "complete",
   "coverage": [
     {
       "source": "arxiv_cs_cv",
+      "dates": ["2026-08-10"],
+      "status": "complete",
+      "detail": "Fixture-only source coverage for interface development."
+    },
+    {
+      "source": "arxiv_cs_gr",
+      "dates": ["2026-08-10"],
+      "status": "complete",
+      "detail": "Fixture-only source coverage for interface development."
+    },
+    {
+      "source": "huggingface_papers",
       "dates": ["2026-08-10"],
       "status": "complete",
       "detail": "Fixture-only source coverage for interface development."

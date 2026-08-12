@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "arxiv_cs_cv": {
+      "processed_through": "2026-08-09",
+      "recent_counts": []
+    },
+    "arxiv_cs_gr": {
+      "processed_through": "2026-08-09",
+      "recent_counts": []
+    },
+    "huggingface_papers": {
+      "processed_through": "2026-08-09",
+      "recent_counts": []
+    }
+  }
+}

@@ -212,6 +212,63 @@ describe('public content schemas', () => {
     expect(() => editionRecordSchema.parse(edition)).toThrow();
   });
 
+  it('requires exact three-source coverage consistent with the edition publication status', () => {
+    const complete = {
+      ...clone(validEditionRecord),
+      publication_status: 'complete',
+      coverage: [
+        { source: 'arxiv_cs_cv', dates: ['2026-08-10'], status: 'complete', detail: undefined as string | undefined },
+        { source: 'arxiv_cs_gr', dates: ['2026-08-10'], status: 'complete', detail: undefined as string | undefined },
+        { source: 'huggingface_papers', dates: ['2026-08-10'], status: 'complete', detail: undefined as string | undefined },
+      ],
+    };
+    expect(() => editionRecordSchema.parse(complete)).not.toThrow();
+
+    const partial = clone(complete);
+    partial.publication_status = 'partial';
+    partial.coverage[1].status = 'degraded';
+    partial.coverage[1].detail = 'Source response could not be verified.';
+    expect(() => editionRecordSchema.parse(partial)).not.toThrow();
+
+    const falselyComplete = clone(partial);
+    falselyComplete.publication_status = 'complete';
+    expect(() => editionRecordSchema.parse(falselyComplete)).toThrow(/publication_status/i);
+
+    const allDegraded = clone(partial);
+    allDegraded.coverage = allDegraded.coverage.map((coverage) => ({
+      ...coverage,
+      status: 'degraded',
+      detail: 'Source response could not be verified.',
+    }));
+    expect(() => editionRecordSchema.parse(allDegraded)).toThrow(/all sources are degraded/i);
+
+    const missingSource = clone(complete);
+    missingSource.coverage.pop();
+    expect(() => editionRecordSchema.parse(missingSource)).toThrow(/approved sources/i);
+  });
+
+  it('projects complete and partial publication status explicitly in canonical Markdown', () => {
+    const complete = editionRecordSchema.parse(clone(validEditionRecord));
+    const completeMarkdown = renderEditionMarkdown(complete, [paperRecordSchema.parse(validPaperRecord)]);
+    expect(completeMarkdown).toContain('publication_status: complete');
+    expect(completeMarkdown).toContain('## Publication status\n\nComplete coverage');
+
+    const partial = clone(validEditionRecord) as TestEdition;
+    partial.publication_status = 'partial';
+    partial.coverage[1] = {
+      ...partial.coverage[1],
+      status: 'degraded',
+      detail: 'The requested arXiv cs.GR date could not be verified.',
+    };
+    const partialMarkdown = renderEditionMarkdown(
+      editionRecordSchema.parse(partial),
+      [paperRecordSchema.parse(validPaperRecord)],
+    );
+    expect(partialMarkdown).toContain('publication_status: partial');
+    expect(partialMarkdown).toContain('## Publication status\n\nPartial coverage');
+    expect(partialMarkdown).toContain('arXiv cs.GR: 2026-08-10 (degraded)');
+  });
+
   it('requires exceptional length when total reading time exceeds twenty minutes', () => {
     const edition = clone(validEditionRecord) as TestEdition;
     edition.entries = [

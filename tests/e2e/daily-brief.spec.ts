@@ -9,6 +9,7 @@ test('latest edition is a content-first Daily Brief', async ({ page }) => {
 
   await expect(page.locator('h1')).toHaveCount(1);
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Paper Morning Pass');
+  await expect(page.getByText('Complete coverage', { exact: true })).toBeVisible();
   await expect(page.getByRole('main')).toContainText('10 August 2026');
   await expect(page.getByRole('main')).toContainText('1 paper · 8 minutes');
   await expect(page.getByRole('main')).toContainText('arXiv cs.CV');

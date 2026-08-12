@@ -106,6 +106,7 @@ export function renderEditionMarkdown(edition: EditionRecord, papers: PaperRecor
   const lines = [
     '---',
     `delivery_date: ${edition.delivery_date}`,
+    `publication_status: ${edition.publication_status}`,
     `fixture_only: ${fixtureOnly}`,
     '---',
     '',
@@ -116,6 +117,13 @@ export function renderEditionMarkdown(edition: EditionRecord, papers: PaperRecor
       : '> A curated technical reading brief from public source records.',
     '',
   ];
+
+  lines.push(
+    '## Publication status',
+    '',
+    edition.publication_status === 'complete' ? 'Complete coverage' : 'Partial coverage',
+    '',
+  );
 
   if (edition.editorial_theme) {
     lines.push('## Editorial theme', '', escapeMarkdownText(edition.editorial_theme), '');
