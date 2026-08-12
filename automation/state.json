@@ -2,7 +2,7 @@
   "schema_version": 1,
   "sources": {
     "arxiv_cs_cv": {
-      "processed_through": "2026-08-11",
+      "processed_through": "2026-08-12",
       "recent_counts": [
         {
           "date": "2026-08-10",
@@ -11,11 +11,15 @@
         {
           "date": "2026-08-11",
           "count": 313
+        },
+        {
+          "date": "2026-08-12",
+          "count": 148
         }
       ]
     },
     "arxiv_cs_gr": {
-      "processed_through": "2026-08-11",
+      "processed_through": "2026-08-12",
       "recent_counts": [
         {
           "date": "2026-08-10",
@@ -24,11 +28,15 @@
         {
           "date": "2026-08-11",
           "count": 13
+        },
+        {
+          "date": "2026-08-12",
+          "count": 5
         }
       ]
     },
     "huggingface_papers": {
-      "processed_through": "2026-08-11",
+      "processed_through": "2026-08-12",
       "recent_counts": [
         {
           "date": "2026-08-10",
@@ -37,6 +45,10 @@
         {
           "date": "2026-08-11",
           "count": 38
+        },
+        {
+          "date": "2026-08-12",
+          "count": 22
         }
       ]
     }

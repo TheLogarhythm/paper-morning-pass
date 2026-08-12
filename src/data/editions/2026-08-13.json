@@ -1,0 +1,317 @@
+{
+  "delivery_date": "2026-08-13",
+  "generated_at": "2026-08-12T22:01:00.709Z",
+  "publication_status": "complete",
+  "coverage": [
+    {
+      "source": "arxiv_cs_cv",
+      "dates": [
+        "2026-08-12"
+      ],
+      "status": "complete"
+    },
+    {
+      "source": "arxiv_cs_gr",
+      "dates": [
+        "2026-08-12"
+      ],
+      "status": "complete"
+    },
+    {
+      "source": "huggingface_papers",
+      "dates": [
+        "2026-08-12"
+      ],
+      "status": "complete"
+    }
+  ],
+  "editorial_theme": "Structured 3D and 4D representations, from rendering systems and surface reconstruction to physical simulation and scene reasoning.",
+  "entries": [
+    {
+      "paper_id": "69d73e0c-c05a-5d9c-9803-5e3378c68db4",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "verdict": "The day's strongest pure-graphics systems paper: a sparse explicit scene cache raises display rate while preserving visibility information for disocclusions instead of hallucinating them.",
+      "contribution": "Amulet rasterizes potentially visible geometry into a sparse tiled layered representation, caches predictive shading information, and schedules tile updates adaptively so rasterization, shading, and display refresh can run at different rates.",
+      "why_it_matters": "Frame generation is increasingly neural, but interactive graphics still benefits from methods with explicit geometry, predictable failure modes, and no training dependency. Amulet's representation-level approach is especially relevant to high-refresh and high-resolution rendering.",
+      "evidence": "The abstract reports converting typical 60 Hz shading to 240 Hz display and reaching up to 250 Hz at 4K, while remaining competitive with DLSS and neural-flow baselines on multiple quality metrics.",
+      "limitation": "The performance and quality statements are author-reported abstract results; the full paper is needed to understand scene-dependent memory cost, latency, and failure behavior under rapid camera or content changes.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.10423"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.10423"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.10423"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.10423"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.10423"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "44a9d280-b54b-534b-9f7a-0fc6f5be97d6",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "verdict": "A clean architectural bridge between video generation and explicit 4D reconstruction: reuse the shared VAE latent rather than repeatedly translating through RGB or retraining for each video backbone.",
+      "contribution": "Latent-to-4D aligns denoised video latents with a pretrained 4D decoder's token grid and refines them with local and global spatiotemporal attention; one checkpoint can transfer among video diffusion transformers that share the same VAE.",
+      "why_it_matters": "A stable latent interface could make advances in video priors immediately useful for dynamic 3D generation while avoiding cascade error and reducing coupling to a specific generator.",
+      "evidence": "Trained on roughly 1,000 reconstruction clips, the method improves projection-based DINO-F1 over matched Wan-plus-4RC cascades by 2.88–3.45 points on Text4D-200 and 5.81 points on I4D-200; the abstract also reports human preference for geometry, temporal stability, and overall quality.",
+      "limitation": "Transfer is limited to generators sharing a VAE family, and the evidence is reported by the authors on two 200-example benchmarks; broader motion, topology, and camera regimes need inspection.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.10744"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.10744"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.10744"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.10744"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.10744"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "4f1b534a-76ca-59e1-a764-11a4d92e672b",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "verdict": "A compelling representation-coupling idea: Gaussian primitives become optimization instruments for an explicit surface, combining rendering flexibility with a controllable geometric output.",
+      "contribution": "The method anchors Gaussians to an evolving differentiable surface, isolates their respective gradients through bilevel training, aligns the two representations with explicit constraints, and adds detail through multi-resolution subdivision.",
+      "why_it_matters": "Surface reconstruction from limited views often oscillates between visually effective volumetric primitives and meshes or fields that are easier to edit and simulate. Jointly optimizing both could make the strengths of 3DGS useful for higher-quality explicit geometry.",
+      "evidence": "The abstract reports removing redundant surfaces and recovering missing structure in limited-view object reconstruction, with particularly strong performance at low input resolution.",
+      "limitation": "The abstract provides no numerical comparisons or evidence on large scenes, and joint field–Gaussian optimization may introduce substantial training complexity that requires full-paper evaluation.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.10602"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.10602"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.10602"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.10602"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.10602"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "042a7d09-aed6-537f-b4f3-050cef621ac6",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "verdict": "An unusual and useful graphics–simulation intersection: it turns a captured Gaussian forest into a semantically and physically actionable wildfire environment without an intermediate mesh or grid.",
+      "contribution": "WildFireGS attaches vegetation, material, and fuel attributes to Gaussian primitives and runs a particle-based combustion model directly over the enriched reconstruction.",
+      "why_it_matters": "Gaussian splats are usually treated as appearance representations. Making them carry simulation state could broaden captured-scene workflows toward environmental analysis, planning, and counterfactual experiments.",
+      "evidence": "Across synthetic and aerial forest captures, the abstract reports physically consistent responses to vegetation density, wind, and slope, together with firebreak and biomass-loss experiments.",
+      "limitation": "The abstract does not quantify agreement with measured fires or operational simulators, so 'physics-based' should not yet be interpreted as validated predictive accuracy.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.11100"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.11100"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.11100"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.11100"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.11100"
+          ]
+        }
+      ],
+      "estimated_minutes": 7
+    },
+    {
+      "paper_id": "ded52a9a-6183-5aea-a9ff-bb6c2f56ae48",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "verdict": "A notable step from labeling Gaussian scenes toward asking structured spatial, functional, and counterfactual questions about them, backed by purpose-built 3D reasoning benchmarks.",
+      "contribution": "CausalSplat integrates vision-language reasoning with 3D Gaussian scene graphs and introduces Causal-LERF and Causal-ScanNet to evaluate commonsense, spatial, affordance, and counterfactual reasoning.",
+      "why_it_matters": "If Gaussian scenes are to support agents and editing systems, they need queryable semantics that extend beyond open-vocabulary masks. Hierarchical reasoning is a natural bridge between scene representation and action.",
+      "evidence": "The ECCV 2026 abstract reports state-of-the-art performance on its new reasoning benchmarks and generalization gains on referring and open-vocabulary 3D segmentation.",
+      "limitation": "The benchmarks are introduced by the same work and exact baselines and margins are absent from the abstract; independent robustness and benchmark leakage need full-paper scrutiny.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.11150"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.11150"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.11150"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.11150"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.11150"
+          ]
+        }
+      ],
+      "estimated_minutes": 7
+    },
+    {
+      "paper_id": "86039524-79d6-55e9-a64e-273c6add8175",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "Self-Geometry uses explicit cross-view correspondences as pseudo-ground truth for plug-and-play test-time adaptation of 3D vision foundation models. Its geometric disentanglement, multiview and epipolar consistency, SO(3)-aware sampling, and LoRA updates improve six model configurations across four benchmarks according to the abstract. It is worth skimming as a broadly reusable adaptation recipe, though online optimization cost and failure under bad correspondences need closer inspection.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.10708"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "4b318e62-239f-5ad9-9dcc-72e738ad9450",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "This postprocessor compresses feed-forward 3DGS predictions through saliency-aware spatial grouping, learned encoding, cross-view merging, and level-of-detail decoding. The headline result—retaining reconstruction quality with one twentieth of the Gaussian primitives—is practically significant and backbone-agnostic. The abstract does not expose runtime, memory, or thin-structure tradeoffs, so the main value of a skim is to inspect what survives aggressive merging.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.10712"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "0c06e9cb-e884-568f-b148-a32548bda397",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "GENEA 2026 is valuable less as another gesture model than as a large human-evaluation snapshot: four studies collected more than 23,000 votes from 869 participants while separating motion quality, speech alignment, dyadic interaction, and semantics. Motion quality is approaching reference capture for some systems, but alignment and especially dyadic and semantic behavior remain far behind. Public outputs and votes should make this a useful benchmark audit resource.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.10839"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "ade5a44a-4ba4-53da-a950-b3f7d3fb97eb",
+      "tier": "worth_skimming",
+      "lane": "broader_vision",
+      "review_depth": "abstract",
+      "editorial_note": "R4DSG stores persistent objects, stable anchors, relative changes, time, place, and interactions as compact queryable memory rather than demanding a globally aligned 3D reconstruction of free-motion egocentric video. On a 255-question EgoLifeQA subset, question-only retrieval improves 6.7 points overall and 12.5 points on 'when' questions over EgoRAG-Text. The object-memory design is the interesting part; broader validation beyond this subset remains open.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.11017"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "exceptional_length": true,
+  "validation_status": "validated"
+}

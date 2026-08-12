@@ -1087,5 +1087,522 @@
         "checked_at": "2026-08-12T04:03:47.617Z"
       }
     ]
+  },
+  {
+    "paper_id": "69d73e0c-c05a-5d9c-9803-5e3378c68db4",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.10423"
+      }
+    ],
+    "title": "Amulet: Frame Extrapolation Through Sparse Layered Scene Representation and Adaptive Shading",
+    "authors": [
+      "Sebastian Künzel",
+      "Fabian Schmierer",
+      "Sergej Geringer",
+      "Guido Reina",
+      "Daniel Weiskopf",
+      "Dieter Schmalstieg"
+    ],
+    "affiliations": [],
+    "abstract": "Amulet accelerates interactive rendering with a sparse, tiled, layered scene cache that stores potentially visible geometry and predictive shading information for future views. An adaptive scheduler distributes shading work while display refresh proceeds at a higher rate, including newly disoccluded regions without relying on neural synthesis.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_gr",
+        "date": "2026-08-12"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.10423"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.10423"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.GR recent",
+        "url": "https://arxiv.org/list/cs.GR/recent"
+      }
+    ],
+    "tags": [
+      "real-time-rendering",
+      "frame-extrapolation",
+      "adaptive-shading",
+      "scene-representation"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.10423",
+        "checked_at": "2026-08-12T22:01:00.709Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "44a9d280-b54b-534b-9f7a-0fc6f5be97d6",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.10744"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.10744"
+      }
+    ],
+    "title": "Beyond Pixels: From Video Priors to 4D Worlds",
+    "authors": [
+      "Zihao Liu",
+      "Xiaolong Shen",
+      "Zhenglin Zhou",
+      "Ruijie Quan",
+      "Yi Yang"
+    ],
+    "affiliations": [],
+    "abstract": "Latent-to-4D treats the final denoised latent of a video diffusion model as a reusable interface to an explicit 4D decoder. It bypasses RGB reconstruction, aligns video latents with the decoder token grid, and refines them with frame-wise and global spatiotemporal attention.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-12"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-12"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.10744"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.10744"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-12"
+      }
+    ],
+    "tags": [
+      "4d-generation",
+      "video-diffusion",
+      "latent-representations",
+      "dynamic-scenes"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.10744",
+        "checked_at": "2026-08-12T22:01:00.709Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "4f1b534a-76ca-59e1-a764-11a4d92e672b",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.10602"
+      }
+    ],
+    "title": "Gaussian Sculpting: End-to-End Controllable Surface Reconstruction via Field Optimization",
+    "authors": [
+      "Ke Jiaxin",
+      "Juncheng Liu",
+      "Yi Wang",
+      "Zhouhui Lian",
+      "Bin Liu",
+      "Shengfa Wang",
+      "Xiangjia He"
+    ],
+    "affiliations": [],
+    "abstract": "Gaussian Sculpting couples 3D Gaussians to an evolving differentiable surface so they guide signed-distance-field optimization rather than merely render the result. Bilevel training, alignment constraints, and multi-resolution subdivision aim to remove redundant surfaces and recover missing structure from limited views.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-12"
+      },
+      {
+        "source": "arxiv_cs_gr",
+        "date": "2026-08-12"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.10602"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.10602"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.GR recent",
+        "url": "https://arxiv.org/list/cs.GR/recent"
+      }
+    ],
+    "tags": [
+      "surface-reconstruction",
+      "3d-gaussian-splatting",
+      "signed-distance-fields",
+      "differentiable-rendering"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.10602",
+        "checked_at": "2026-08-12T22:01:00.709Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "042a7d09-aed6-537f-b4f3-050cef621ac6",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.11100"
+      }
+    ],
+    "title": "WildFireGS: Physics-Based Wildfire Simulation in Large-Scale Semantics-Enriched Gaussian Splatting Forest Scenes",
+    "authors": [
+      "Nienke Driessen",
+      "Joris Rijsdijk",
+      "Sören Pirk",
+      "Wojtek Palubicki",
+      "Dominik L. Michels",
+      "Michael Weinmann"
+    ],
+    "affiliations": [],
+    "abstract": "WildFireGS performs physics-based wildfire simulation directly in large-scale Gaussian-splat forest reconstructions. It augments Gaussian primitives with vegetation, material, and fuel attributes and couples them to particle combustion without first converting the scene to a mesh or voxel grid.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_gr",
+        "date": "2026-08-12"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.11100"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.11100"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.GR recent",
+        "url": "https://arxiv.org/list/cs.GR/recent"
+      }
+    ],
+    "tags": [
+      "physical-simulation",
+      "wildfire",
+      "3d-gaussian-splatting",
+      "environmental-modeling"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.11100",
+        "checked_at": "2026-08-12T22:01:00.709Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "ded52a9a-6183-5aea-a9ff-bb6c2f56ae48",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.11150"
+      }
+    ],
+    "title": "CausalSplat: Towards Comprehensive Hierarchical Reasoning in 3D Gaussian Splatting",
+    "authors": [
+      "Jiayu Ding",
+      "Meilu Song",
+      "Yun Chen",
+      "Wei Gao",
+      "Ge Li"
+    ],
+    "affiliations": [],
+    "abstract": "CausalSplat combines 3D Gaussian scene representations, vision-language models, and scene graphs to support hierarchical reasoning over 3D environments. The work introduces benchmarks spanning commonsense, spatial, affordance, and counterfactual questions in addition to evaluating referring and open-vocabulary segmentation.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-12"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.11150"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.11150"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "3d-reasoning",
+      "3d-gaussian-splatting",
+      "scene-graphs",
+      "open-vocabulary-segmentation"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.11150",
+        "checked_at": "2026-08-12T22:01:00.709Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "86039524-79d6-55e9-a64e-273c6add8175",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.10708"
+      }
+    ],
+    "title": "Self-Geometry: GT-Free and Plug-and-Play Test-Time Adaptation for Geometrically Consistent 3D Vision Foundation Models",
+    "authors": [
+      "Seokhyun Youn",
+      "Dahyeon Kye",
+      "Sung-Ho Bae",
+      "Jihyong Oh"
+    ],
+    "affiliations": [],
+    "abstract": "Self-Geometry adapts 3D vision foundation models at test time using multiview pixel correspondences as geometric pseudo-labels. Its consistency objectives and gradient disentanglement are designed to improve geometry without ground-truth depth or camera annotations, using lightweight LoRA updates.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-12"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.10708"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.10708"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "test-time-adaptation",
+      "3d-foundation-models",
+      "multiview-geometry",
+      "geometric-consistency"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.10708",
+        "checked_at": "2026-08-12T22:01:00.709Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "4b318e62-239f-5ad9-9dcc-72e738ad9450",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.10712"
+      }
+    ],
+    "title": "Compact Feed-Forward 3D Gaussians via Saliency-Guided Primitive Merging",
+    "authors": [
+      "Tim-Felix Fassch",
+      "Jochen Kall",
+      "Cyrill Stachniss"
+    ],
+    "affiliations": [],
+    "abstract": "This backbone-agnostic postprocessor compresses feed-forward 3D Gaussian predictions by clustering coherent primitives with saliency-guided adaptive superpixels, encoding them, and merging them across views. A level-of-detail decoder supports adjustable reconstruction budgets.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-12"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.10712"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.10712"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "3d-gaussian-splatting",
+      "compression",
+      "feed-forward-3d",
+      "level-of-detail"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.10712",
+        "checked_at": "2026-08-12T22:01:00.709Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "0c06e9cb-e884-568f-b148-a32548bda397",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.10839"
+      }
+    ],
+    "title": "The GENEA Challenge 2026: A Large-Scale Disentangled Evaluation of Speech-Driven Gesture Generation on the Seamless Interaction Dataset",
+    "authors": [
+      "Rajmund Nagy",
+      "Silvia Arellano García",
+      "Hendric Voss",
+      "Mihail Tsakov",
+      "Taras Kucherenko",
+      "Youngwoo Yoon",
+      "Gustav Eje Henter"
+    ],
+    "affiliations": [],
+    "abstract": "GENEA Challenge 2026 evaluates speech-driven gesture generation through four large user studies that separate motion quality, speech alignment, dyadic interaction, and semantic appropriateness. The results expose substantial remaining gaps to motion-capture references, particularly for interaction and meaning.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-12"
+      },
+      {
+        "source": "arxiv_cs_gr",
+        "date": "2026-08-12"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.10839"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.10839"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.GR recent",
+        "url": "https://arxiv.org/list/cs.GR/recent"
+      }
+    ],
+    "tags": [
+      "gesture-generation",
+      "human-motion",
+      "evaluation",
+      "human-computer-interaction"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.10839",
+        "checked_at": "2026-08-12T22:01:00.709Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "ade5a44a-4ba4-53da-a950-b3f7d3fb97eb",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.11017"
+      }
+    ],
+    "title": "R4DSG: Relative 4D Scene Graph Memory for Object-Centric Question Answering in Long Egocentric Video",
+    "authors": [
+      "Ke Ma",
+      "Yamin Mao",
+      "Weiming Li",
+      "Shuai Tan",
+      "Yijie Zhong",
+      "Hao Chen",
+      "Haofen Wang",
+      "Meng Wang"
+    ],
+    "affiliations": [],
+    "abstract": "R4DSG represents long egocentric video as compact memory entries indexed by time, place, persistent objects, anchor-relative change, and interaction context. Stable anchors and relative transitions avoid requiring a globally aligned reconstruction while preserving object identity for question answering.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-12"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.11017"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.11017"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "4d-scene-graphs",
+      "egocentric-video",
+      "long-video-understanding",
+      "object-memory"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.11017",
+        "checked_at": "2026-08-12T22:01:00.709Z"
+      }
+    ]
   }
 ]
