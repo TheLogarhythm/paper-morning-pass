@@ -542,5 +542,550 @@
         "checked_at": "2026-08-12T03:10:00.000Z"
       }
     ]
+  },
+  {
+    "paper_id": "fc800983-9fe3-5d88-a6f6-ccdde3883174",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.08559"
+      }
+    ],
+    "title": "Differentiate the Solver, Not the Equation: Reverse-Sweep Adjoints for Block Implicit Simulation",
+    "authors": [
+      "Lei Shu",
+      "Ying Jiang",
+      "Kui Wu",
+      "Yin Yang",
+      "Leonidas Guibas",
+      "Chenfanfu Jiang"
+    ],
+    "affiliations": [],
+    "abstract": "This work differentiates the finite block-implicit solver that actually runs rather than differentiating only its converged equation. Reversing the sequence of local implicit updates yields a solver-level adjoint whose backward pass mirrors the locality of the forward solver and avoids a global adjoint system.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_gr",
+        "date": "2026-08-11"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.08559"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.08559"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.GR recent",
+        "url": "https://arxiv.org/list/cs.GR/recent"
+      }
+    ],
+    "tags": [
+      "differentiable-simulation",
+      "implicit-solvers",
+      "adjoint-methods",
+      "elastodynamics"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.08559",
+        "checked_at": "2026-08-12T04:03:47.617Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "98eb9d5a-52e8-58ce-a6b1-5556f8b23c03",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.09604"
+      }
+    ],
+    "title": "A Hybrid Neural-Microfacet BRDF Model for Real-Time Rendering",
+    "authors": [
+      "Louis De Oliveira",
+      "Anastasia Karpova",
+      "Georges Nader",
+      "Antoine Houdard",
+      "Pierre Mezieres",
+      "Damien Rioux-Lavoie",
+      "Romain Pacanowski"
+    ],
+    "affiliations": [],
+    "abstract": "This EGSR 2026 paper combines an editable GGX-style microfacet model with a compact neural residual that corrects appearance effects the analytic component misses. The hybrid design targets measured or simulated BRDF fidelity while retaining importance sampling and low enough overhead for real-time rendering.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-11"
+      },
+      {
+        "source": "arxiv_cs_gr",
+        "date": "2026-08-11"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.09604"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.09604"
+      },
+      {
+        "kind": "project",
+        "label": "Project page",
+        "url": "https://ubisoft-laforge.github.io/world/hybridrdf/"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.GR recent",
+        "url": "https://arxiv.org/list/cs.GR/recent"
+      }
+    ],
+    "tags": [
+      "brdf",
+      "neural-rendering",
+      "microfacet-models",
+      "real-time-rendering"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.09604",
+        "checked_at": "2026-08-12T04:03:47.617Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "816fa7c6-af82-56e8-b17d-6d53533efeb1",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.07937"
+      }
+    ],
+    "title": "FlexSplat: Flexible Feed-Forward 3D Gaussian Splatting without Point Cloud Correspondence",
+    "authors": [
+      "Amir Sabbaghziarani",
+      "Hanting Ye",
+      "Maria Gorlatova",
+      "Yi Ding"
+    ],
+    "affiliations": [],
+    "abstract": "FlexSplat reconstructs an object-centric Gaussian representation from uncalibrated multi-view images by jointly predicting cameras and depth, then aggregating evidence into a compact set of query-based 3D Gaussians. Its primitive budget is decoupled from image resolution and input-view count, avoiding pixel-aligned point-cloud correspondence.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-11"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.07937"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.07937"
+      },
+      {
+        "kind": "code",
+        "label": "Code repository",
+        "url": "https://github.com/amir-sbg/FlexSplat"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "3d-gaussian-splatting",
+      "novel-view-synthesis",
+      "uncalibrated-reconstruction",
+      "feed-forward-3d"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.07937",
+        "checked_at": "2026-08-12T04:03:47.617Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "8694225d-c248-58f7-8d76-7d6f551b1444",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.08053"
+      }
+    ],
+    "title": "PhysX-CoT: Structured Physical Reasoning from a Single Image to Simulation-Ready 3D Assets",
+    "authors": [
+      "Jie Huang",
+      "Xiaohe Li",
+      "Jiahao Li",
+      "Fangli Mou",
+      "Chen Qian",
+      "Yuqiang Fang",
+      "Junhao Fan",
+      "Kaixin Zhang",
+      "Zide Fan"
+    ],
+    "affiliations": [],
+    "abstract": "PhysX-CoT exposes single-image 3D asset generation as a supervised, machine-parseable sequence of part decomposition, grounding, relations, geometry, and surface cues. It factorizes placement into 3D boxes and local shape codes, then aligns reinforcement-learning rewards with parse validity, geometry, and physical consistency.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-11"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.08053"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.08053"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "image-to-3d",
+      "simulation-assets",
+      "physical-reasoning",
+      "embodied-ai"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.08053",
+        "checked_at": "2026-08-12T04:03:47.617Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "cd59210e-c9f1-5544-b35c-b4104e930ac5",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.09613"
+      }
+    ],
+    "title": "Marrying Optimal Transport and ODEs for Unified Continuous-Time 4D Reconstruction and Tracking",
+    "authors": [
+      "Liying Yang",
+      "Hao Mo",
+      "Jialun Liu",
+      "Chen Liu",
+      "Xinxing Yu",
+      "Chenhao Guan",
+      "Hui Ma",
+      "Xiao Cao",
+      "Ajian Liu",
+      "Yanyan Liang"
+    ],
+    "affiliations": [],
+    "abstract": "Uni4R learns a continuous velocity field shared by 4D reconstruction and point tracking. Optimal-transport flow matching supplies a global kinematic prior, while ODE integration turns integer-timestamp supervision into predictions at arbitrary intermediate times.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-11"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.09613"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.09613"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "4d-reconstruction",
+      "point-tracking",
+      "optimal-transport",
+      "neural-odes"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.09613",
+        "checked_at": "2026-08-12T04:03:47.617Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "e99990bd-eb61-50a9-a7e6-10a249bbf158",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.07598"
+      }
+    ],
+    "title": "NewtonGS: Physics-Structured Object-Level Neural Newtonian Dynamics for Gaussian Scene Animation",
+    "authors": [
+      "Lianlei Shan",
+      "Feiyang Ye",
+      "Yan Chen",
+      "Yong Wu"
+    ],
+    "affiliations": [],
+    "abstract": "NewtonGS gives objects in static Gaussian scenes an explicit 22-dimensional physical state and rolls that state forward with analytic Newtonian structure plus learned continuous and contact residuals. Predicted poses and scales then update each object's Gaussian means and covariances through a shared affine transform.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-11"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.07598"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.07598"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "gaussian-splatting",
+      "scene-animation",
+      "neural-dynamics",
+      "physics"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.07598",
+        "checked_at": "2026-08-12T04:03:47.617Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "9f48c05b-ab54-50cd-a355-9e1d61afd081",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.09873"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.09873"
+      }
+    ],
+    "title": "Sci-VBench: Evaluating Knowledge- and Reasoning-Intensive Video Generation in Science Domains",
+    "authors": [
+      "Diandian Zhang",
+      "Tingyu Song",
+      "Lin Fu",
+      "Zheyuan Yang",
+      "Yilun Zhao"
+    ],
+    "affiliations": [],
+    "abstract": "Sci-VBench evaluates whether generated videos preserve scientific and causal correctness rather than only visual plausibility. It supplies 1,253 expert-annotated prompts across 60 subjects, a rubric-based evaluation protocol, and results from 16 proprietary and open video-generation models.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-11"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-11"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.09873"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.09873"
+      },
+      {
+        "kind": "code",
+        "label": "Benchmark repository",
+        "url": "https://github.com/sci-vbench/sci-vbench"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-11"
+      }
+    ],
+    "tags": [
+      "video-generation",
+      "scientific-reasoning",
+      "benchmark",
+      "multimodal-evaluation"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.09873",
+        "checked_at": "2026-08-12T04:03:47.617Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "39bb1d41-a355-5f4f-b464-a269c676c8bc",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.06296"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.06296"
+      }
+    ],
+    "title": "On-Policy Self-Distillation without Any Supervision",
+    "authors": [
+      "Yijiang Li",
+      "Bingyang Wang",
+      "Yijun Liang",
+      "Yunjie Tian",
+      "Di Fu",
+      "Nuno Vasconcelos"
+    ],
+    "affiliations": [],
+    "abstract": "U-OPSD constructs pseudo-solutions from self-consistent model rollouts and distills the model specifically on disagreeing completions, avoiding ground-truth labels, environment rewards, or a larger teacher. The reported experiments focus on mathematical reasoning with Qwen3 models at 4B and 8B scales.",
+    "source_dates": [
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-11"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.06296"
+      },
+      {
+        "kind": "code",
+        "label": "Code repository",
+        "url": "https://github.com/williamium3000/u-opsd"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-11"
+      }
+    ],
+    "tags": [
+      "self-distillation",
+      "post-training",
+      "reasoning",
+      "language-models"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.06296",
+        "checked_at": "2026-08-12T04:03:47.617Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "4aa6ee7d-5124-5464-b511-8da9fd43e979",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.08132"
+      }
+    ],
+    "title": "When Does An Extra View Help? Adapting Single-View 3D Reconstruction with Extra Imagery",
+    "authors": [
+      "Y Huynh",
+      "Duc Thanh Nguyen",
+      "Thao Minh Le",
+      "Mohamed Abdelrazek"
+    ],
+    "affiliations": [],
+    "abstract": "ASV3D adapts existing single-view 3D reconstruction systems at test time using one additional unconstrained image. It offers a zero-shot adaptation route and a contrastive optimized route intended to improve fidelity and cross-view consistency without redesigning the base reconstruction pipeline.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-11"
+      },
+      {
+        "source": "arxiv_cs_gr",
+        "date": "2026-08-11"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.08132"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.08132"
+      },
+      {
+        "kind": "code",
+        "label": "Code and dataset",
+        "url": "https://github.com/YNhuHuynh/ASV3D"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.GR recent",
+        "url": "https://arxiv.org/list/cs.GR/recent"
+      }
+    ],
+    "tags": [
+      "single-view-reconstruction",
+      "test-time-adaptation",
+      "multi-view-consistency",
+      "image-to-3d"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.08132",
+        "checked_at": "2026-08-12T04:03:47.617Z"
+      }
+    ]
   }
 ]

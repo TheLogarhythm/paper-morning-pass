@@ -1,0 +1,289 @@
+{
+  "delivery_date": "2026-08-12",
+  "generated_at": "2026-08-12T04:03:47.617Z",
+  "publication_status": "complete",
+  "coverage": [
+    {
+      "source": "arxiv_cs_cv",
+      "dates": [
+        "2026-08-11"
+      ],
+      "status": "complete"
+    },
+    {
+      "source": "arxiv_cs_gr",
+      "dates": [
+        "2026-08-11"
+      ],
+      "status": "complete"
+    },
+    {
+      "source": "huggingface_papers",
+      "dates": [
+        "2026-08-11"
+      ],
+      "status": "complete"
+    }
+  ],
+  "editorial_theme": "Differentiable graphics, compact 3D representations, and physically grounded visual generation.",
+  "entries": [
+    {
+      "paper_id": "fc800983-9fe3-5d88-a6f6-ccdde3883174",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "verdict": "The day's clearest graphics-method contribution: it preserves the executed implicit solver's local structure in the adjoint instead of replacing it with a global equation-level differentiation problem.",
+      "contribution": "For block implicit updates, the method reverses the forward update order and solves only local adjoint blocks; its Vertex Block Descent instance uses local 3-by-3 solves and builds no global adjoint system.",
+      "why_it_matters": "Differentiable simulation often becomes impractical because unrolling consumes memory and global implicit differentiation discards solver locality. A solver-mirroring backward pass could make inverse design and learning through large contact-rich simulations substantially more usable.",
+      "evidence": "The abstract reports machine-precision agreement with automatic differentiation of the same finite forward solve, 33x speed and 71x memory improvements over unrolled differentiation in a controlled comparison, and a one-GPU demonstration with one million contact-coupled soft bodies.",
+      "limitation": "These are author-reported abstract results for a block-implicit solver family; the abstract does not establish how directly the construction transfers to substantially different nonlinear solvers or hardware regimes.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.08559"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.08559"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.08559"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.08559"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.08559"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "98eb9d5a-52e8-58ce-a6b1-5556f8b23c03",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "verdict": "A pragmatic rendering paper that uses an analytic BRDF for structure and editability while reserving a small network for the residual appearance that microfacet models miss.",
+      "contribution": "The hybrid representation augments a GGX-type microfacet base with a neural correction, retaining artist controls and importance sampling while reducing the network size needed to approximate measured, simulated, or procedural reflectance.",
+      "why_it_matters": "Pure neural BRDFs can be expensive and hard to edit, while specialized analytic models lose generality. The residual formulation offers a potentially deployable middle ground for real-time material appearance.",
+      "evidence": "The EGSR 2026 abstract reports better approximation of measured BRDF data than prior neural models at equal memory cost, with low evaluation overhead relative to a microfacet model and an available project page.",
+      "limitation": "The abstract does not quantify the runtime overhead or show how fidelity changes across the full range of difficult optical effects, so deployment tradeoffs require paper-level inspection.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.09604"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.09604"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.09604"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.09604"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.09604"
+          ]
+        }
+      ],
+      "estimated_minutes": 7
+    },
+    {
+      "paper_id": "816fa7c6-af82-56e8-b17d-6d53533efeb1",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "verdict": "A strong calibration-free extension of query-based feed-forward 3DGS, especially relevant because it decouples the Gaussian budget from pixels, point correspondences, and view count.",
+      "contribution": "FlexSplat jointly predicts cameras and depth, uses them to ground a compact Gaussian parameterization, and aggregates multi-view evidence through depth-guided deformable attention with uncertainty-weighted depth consistency.",
+      "why_it_matters": "Removing known-camera and point-cloud assumptions makes feed-forward Gaussian reconstruction more useful for ordinary image collections, while a fixed compact primitive budget addresses a practical scaling weakness of pixel-aligned approaches.",
+      "evidence": "The BMVC 2026 abstract reports performance within 0.7 dB PSNR of posed methods and matching best perceptual quality on Google Scanned Objects despite using neither ground-truth camera poses nor depth; code is linked from arXiv.",
+      "limitation": "The reported evaluation is object-centric on ShapeNet-SRN and Google Scanned Objects, so the abstract does not establish behavior on large, cluttered, or non-rigid scenes.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.07937"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.07937"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.07937"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.07937"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.07937"
+          ]
+        }
+      ],
+      "estimated_minutes": 7
+    },
+    {
+      "paper_id": "8694225d-c248-58f7-8d76-7d6f551b1444",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "verdict": "A promising attempt to make image-to-3D assets inspectably physical by exposing intermediate part states rather than asking a model to emit one opaque serialized asset.",
+      "contribution": "PhysX-CoT supervises an ordered trajectory of part decomposition, 2D/3D grounding, relations, coarse geometry, and surface cues, then uses those states both to condition geometry and to define reinforcement-learning rewards.",
+      "why_it_matters": "Simulation-ready assets need more than visual resemblance: their parts must be placed, parsed, collided, and articulated coherently. Explicit intermediate states provide handles for training, verification, and later editing.",
+      "evidence": "Under a protocol that retrains learned baselines on the same backbone, data, and frozen decoder, the abstract reports gains across geometry, scale, and physical-attribute metrics, plus high parse, collision, and articulation validity in Unreal Engine 5.",
+      "limitation": "The evidence is tied to a shared frozen decoder and the abstract does not report downstream robot-policy gains, so simulation validity should not yet be read as task-level effectiveness.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.08053"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.08053"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.08053"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.08053"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.08053"
+          ]
+        }
+      ],
+      "estimated_minutes": 7
+    },
+    {
+      "paper_id": "cd59210e-c9f1-5544-b35c-b4104e930ac5",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "Uni4R replaces integer-frame-only 4D reconstruction and tracking with a continuous velocity field, using optimal-transport flow matching as a kinematic prior and ODE integration for fractional-time supervision. The abstract claims state-of-the-art reconstruction, tracking, and continuous-time benchmark results, but labels the paper preliminary; the continuous-time formulation is the reason to watch it rather than the headline ranking alone.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.09613"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "e99990bd-eb61-50a9-a7e6-10a249bbf158",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "NewtonGS gives each Gaussian-scene object an explicit Newtonian state and combines analytic translation, quaternion kinematics, gravity, damping, and contact handling with learned residuals. That is a useful control-oriented alternative to merely reconstructing time-varying Gaussians. The reported evidence comes from two procedurally generated 32-object datasets, so real-scene generalization remains the main question.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.07598"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "9f48c05b-ab54-50cd-a355-9e1d61afd081",
+      "tier": "worth_skimming",
+      "lane": "broader_vision",
+      "review_depth": "abstract",
+      "editorial_note": "Sci-VBench asks whether generated videos obey scientific and causal constraints, not just whether frames look plausible. Its 1,253 expert-annotated examples span 60 subjects, and its evaluation of 16 models finds tightly clustered perceptual scores but large differences in grounding and scientific correctness. It is worth tracking as evidence that video-generation evaluation needs domain reasoning, though the benchmark's own rubric and judge calibration merit close inspection.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.09873"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "39bb1d41-a355-5f4f-b464-a269c676c8bc",
+      "tier": "worth_skimming",
+      "lane": "general_ai",
+      "review_depth": "abstract",
+      "editorial_note": "U-OPSD turns agreement among a model's own sampled solutions into a pseudo-target and distills only the disagreeing trajectories, removing explicit labels, environment feedback, and a larger teacher. On five math benchmarks, the abstract reports average non-thinking-mode gains of 8.5 and 10.7 percent over Qwen3 4B and 8B bases, with code available. The evaluation is concentrated on mathematical reasoning, so transfer to broader language or multimodal tasks remains open.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.06296"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "4aa6ee7d-5124-5464-b511-8da9fd43e979",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "ASV3D is a practical test-time adaptation wrapper: give a single-view reconstructor one extra unconstrained image, then use either zero-shot adaptation or a contrastive optimized variant to improve fidelity and cross-view consistency. The abstract reports gains across two base pipelines, benchmark and real-world data, plus released code and a real-object dataset. Its appeal is compatibility with existing single-view systems rather than a new reconstruction backbone.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.08132"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "exceptional_length": true,
+  "validation_status": "validated"
+}

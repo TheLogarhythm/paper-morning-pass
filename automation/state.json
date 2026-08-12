@@ -2,29 +2,41 @@
   "schema_version": 1,
   "sources": {
     "arxiv_cs_cv": {
-      "processed_through": "2026-08-10",
+      "processed_through": "2026-08-11",
       "recent_counts": [
         {
           "date": "2026-08-10",
           "count": 102
+        },
+        {
+          "date": "2026-08-11",
+          "count": 313
         }
       ]
     },
     "arxiv_cs_gr": {
-      "processed_through": "2026-08-10",
+      "processed_through": "2026-08-11",
       "recent_counts": [
         {
           "date": "2026-08-10",
           "count": 4
+        },
+        {
+          "date": "2026-08-11",
+          "count": 13
         }
       ]
     },
     "huggingface_papers": {
-      "processed_through": "2026-08-10",
+      "processed_through": "2026-08-11",
       "recent_counts": [
         {
           "date": "2026-08-10",
           "count": 35
+        },
+        {
+          "date": "2026-08-11",
+          "count": 38
         }
       ]
     }
