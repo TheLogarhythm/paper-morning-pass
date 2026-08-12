@@ -350,12 +350,6 @@ h4 {
   margin-top: 1.75rem;
 }
 
-.primary-sources {
-  color: var(--muted);
-  font-family: system-ui, sans-serif;
-  font-size: 0.86rem;
-}
-
 .button-link {
   display: inline-flex;
   align-items: center;

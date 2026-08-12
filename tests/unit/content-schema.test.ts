@@ -148,6 +148,17 @@ describe('public content schemas', () => {
     expect(normalizeFinalNewline(markdown)).toBe(normalizeFinalNewline(renderEditionMarkdown(edition, papers)));
   });
 
+  it('keeps canonical links without repeating claim provenance in rendered Markdown', () => {
+    const paper = paperRecordSchema.parse(clone(validPaperRecord));
+    const edition = editionRecordSchema.parse(clone(validEditionRecord));
+
+    const rendered = renderEditionMarkdown(edition, [paper]);
+
+    expect(rendered).not.toContain('Primary source:');
+    expect(rendered).toContain('### Canonical links');
+    expect(rendered).toContain('[Fixture paper record](https://example.org/papers/layered-motion-fields)');
+  });
+
   it('serializes adversarial public content without creating Markdown or HTML structure', () => {
     const paper = paperRecordSchema.parse(clone(validPaperRecord));
     const edition = editionRecordSchema.parse(clone(validEditionRecord));

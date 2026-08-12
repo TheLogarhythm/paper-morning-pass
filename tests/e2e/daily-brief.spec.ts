@@ -31,6 +31,8 @@ test('latest edition is a content-first Daily Brief', async ({ page }) => {
   ]) {
     await expect(firstPriorityPaper.getByText(label, { exact: true })).toBeVisible();
   }
+  await expect(firstPriorityPaper.getByText('Primary source:', { exact: true })).toHaveCount(0);
+  await expect(firstPriorityPaper.getByRole('link', { name: 'arXiv abstract' })).toBeVisible();
 });
 
 test('archive keeps edition links in server-rendered HTML', async ({ page }) => {
@@ -102,7 +104,7 @@ test('essential navigation and content links provide at least 44 by 44px touch t
   const routeTargets = [
     {
       path: `${basePath}/`,
-      selectors: '.site-header nav a, .paper-card__anchor, .primary-sources a, .paper-card__links a',
+      selectors: '.site-header nav a, .paper-card__anchor, .paper-card__links a',
     },
     {
       path: `${basePath}/archive`,

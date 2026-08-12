@@ -1,5 +1,5 @@
 ---
-import type { ClaimProvenance, EditionRecord, EditorialLane, PaperRecord, ReviewDepth } from '../schemas/content';
+import type { EditionRecord, EditorialLane, PaperRecord, ReviewDepth } from '../schemas/content';
 import { safeExternalUrl } from '../lib/safe-link';
 
 interface Props {
@@ -20,7 +20,7 @@ const reviewDepthLabels: Record<ReviewDepth, string> = {
 
 const { entry, paper } = Astro.props;
 const anchor = `paper-${paper.paper_id}`;
-const sections: Array<{ label: string; text: string; field: ClaimProvenance['field'] }> = entry.tier === 'read_first'
+const sections: Array<{ label: string; text: string; field: string }> = entry.tier === 'read_first'
   ? [
       { label: 'Verdict', text: entry.verdict, field: 'verdict' },
       { label: 'Contribution', text: entry.contribution, field: 'contribution' },
@@ -63,24 +63,12 @@ const sections: Array<{ label: string; text: string; field: ClaimProvenance['fie
     <p>{paper.abstract}</p>
   </section>
 
-  {sections.map(({ label, text, field }) => {
-    const sources = entry.claim_provenance.find((claim) => claim.field === field)?.urls ?? [];
-    return (
-      <section class="paper-card__section" aria-labelledby={`${anchor}-${field}`}>
-        <h4 id={`${anchor}-${field}`}>{label}</h4>
-        <p>{text}</p>
-        <p class="primary-sources">
-          <span>Primary source:</span>{' '}
-          {sources.map((url, index) => (
-            <>
-              <a href={safeExternalUrl(url)} target="_blank" rel="noopener noreferrer external">source</a>
-              {index < sources.length - 1 ? ', ' : ''}
-            </>
-          ))}
-        </p>
-      </section>
-    );
-  })}
+  {sections.map(({ label, text, field }) => (
+    <section class="paper-card__section" aria-labelledby={`${anchor}-${field}`}>
+      <h4 id={`${anchor}-${field}`}>{label}</h4>
+      <p>{text}</p>
+    </section>
+  ))}
 
   <footer class="paper-card__links">
     <h4>Paper links</h4>

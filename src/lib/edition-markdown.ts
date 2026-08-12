@@ -1,6 +1,5 @@
 import {
   validateEditionAgainstPapers,
-  type ClaimProvenance,
   type EditorialLane,
   type EditionRecord,
   type PaperRecord,
@@ -61,29 +60,22 @@ function formatDeliveryDate(deliveryDate: string): string {
   return `${day} ${monthNames[month - 1]} ${year}`;
 }
 
-function claimSourceLine(claims: ClaimProvenance[], field: ClaimProvenance['field']): string {
-  const urls = claims.find((claim) => claim.field === field)?.urls ?? [];
-  return `Primary source: ${urls.map((url) => serializeMarkdownLink('source', url)).join(', ')}.`;
-}
-
 function renderReadFirstEntry(entry: Extract<EditionRecord['entries'][number], { tier: 'read_first' }>): string[] {
-  const sections: Array<[string, string, ClaimProvenance['field']]> = [
-    ['Verdict', entry.verdict, 'verdict'],
-    ['Contribution', entry.contribution, 'contribution'],
-    ['Why it matters', entry.why_it_matters, 'why_it_matters'],
-    ['Evidence', entry.evidence, 'evidence'],
-    ['Limitation', entry.limitation, 'limitation'],
+  const sections: Array<[string, string]> = [
+    ['Verdict', entry.verdict],
+    ['Contribution', entry.contribution],
+    ['Why it matters', entry.why_it_matters],
+    ['Evidence', entry.evidence],
+    ['Limitation', entry.limitation],
   ];
   if (entry.venue_context) {
-    sections.push(['Venue context', entry.venue_context, 'venue_context']);
+    sections.push(['Venue context', entry.venue_context]);
   }
 
-  return sections.flatMap(([heading, text, field]) => [
+  return sections.flatMap(([heading, text]) => [
     `### ${heading}`,
     '',
     escapeMarkdownText(text),
-    '',
-    claimSourceLine(entry.claim_provenance, field),
     '',
   ]);
 }
@@ -93,8 +85,6 @@ function renderWorthSkimmingEntry(entry: Extract<EditionRecord['entries'][number
     '### Editorial note',
     '',
     escapeMarkdownText(entry.editorial_note),
-    '',
-    claimSourceLine(entry.claim_provenance, 'editorial_note'),
     '',
   ];
 }
