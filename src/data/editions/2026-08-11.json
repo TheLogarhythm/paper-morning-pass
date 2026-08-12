@@ -1,0 +1,245 @@
+{
+  "delivery_date": "2026-08-11",
+  "generated_at": "2026-08-12T03:10:00.000Z",
+  "publication_status": "complete",
+  "coverage": [
+    {
+      "source": "arxiv_cs_cv",
+      "dates": [
+        "2026-08-10"
+      ],
+      "status": "complete"
+    },
+    {
+      "source": "arxiv_cs_gr",
+      "dates": [
+        "2026-08-10"
+      ],
+      "status": "complete"
+    },
+    {
+      "source": "huggingface_papers",
+      "dates": [
+        "2026-08-10"
+      ],
+      "status": "complete"
+    }
+  ],
+  "editorial_theme": "Structured 3D scene understanding, sparse-capture reconstruction, and persistent visual worlds.",
+  "entries": [
+    {
+      "paper_id": "208d10f4-b162-5bb8-8daa-8324642e8831",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "full_paper",
+      "verdict": "A strong graphics-to-robotics bridge that frames missing robot-camera support as targeted scene refinement rather than indiscriminate reconstruction densification.",
+      "contribution": "The method couples executable robot-view queries with capture-anchored geometry, selects structurally supported deficits, generates registered ego observations, and feeds them back into both the 3DGS asset and collision proxy.",
+      "why_it_matters": "It connects sparse-view rendering quality to a downstream embodied-control outcome and offers a concrete design for spending generative reconstruction budget where a robot will consume it.",
+      "evidence": "With six real views, the paper reports 19.062 dB PSNR versus 14.226 dB for its strongest reported real-to-sim baseline across 48 held-out ego views, plus 33 of 40 successful real-G1 sitting trials versus 4 of 40 for GaussGym.",
+      "limitation": "The controlled evaluation covers three Replica scenes, one robot embodiment and sitting behavior, and does not independently validate the metric or collision accuracy of prior-completed geometry.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.06827"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.06827"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.06827"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.06827"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.06827"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "7d670b5e-53cf-57d8-bc31-35d941a9dfbb",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "full_paper",
+      "verdict": "A particularly relevant unification of feed-forward 3DGS reconstruction with instance-level and open-vocabulary scene understanding.",
+      "contribution": "InstanceSplat predicts pose-free multi-view Gaussians carrying appearance, geometry, instance identity, and language-aligned semantics, then couples instance structure back into boundaries and semantic aggregation.",
+      "why_it_matters": "The work treats rendering and recognition as mutually useful signals in a single explicit 3D representation, which is more interesting than simply attaching semantic features after reconstruction.",
+      "evidence": "On ScanNet, the paper reports the best PSNR and LPIPS among reconstruction-reporting feed-forward methods and the highest mIoU among non-ablation methods across 2, 4, 8, and 16 input views, with additional unseen-dataset evaluation.",
+      "limitation": "The authors identify feature clustering cost as a scaling bottleneck as the number of views and Gaussians grows.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.07144"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.07144"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.07144"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.07144"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.07144"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "b6a8561b-712c-5ae9-ae5f-cc21c258dab4",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "full_paper",
+      "verdict": "Executable scene programs are a compelling intermediate representation for turning sparse visual observations into structured, editable 3D scenes.",
+      "contribution": "Scenix predicts room and object programs from uncalibrated views, grounds generated assets in observations, and closes the loop with critic-editor-verifier spatial refinement; XScene supplies roughly 110,000 supervised cases.",
+      "why_it_matters": "The representation separates perception, layout, and asset realization, preserving object-level editability while addressing the correspondence and global-consistency problems of sparse scene capture.",
+      "evidence": "The paper evaluates held-out synthetic and real XScene cases, single-view baselines, and zero-shot SpatialGen transfer, reporting stronger layout recovery and consistent gains from grounded residual refinement.",
+      "limitation": "About 91 percent of XScene training cases are synthetic, while the real test subset is 242 single-view SUN RGB-D cases, so real sparse multi-view generalization remains less directly established.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.07012"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.07012"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.07012"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.07012"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.07012"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "1b3ae4f6-fc83-5dfe-8503-ced3ce770ed2",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "The optimizer-corrector split is a clean response to latent-manifold drift in high-dimensional 3D generators: optimize the engineering objective freely, then use guided flow matching to restore shape validity. The reported drag and compliance examples make it relevant to graphics-adjacent geometry processing and computer-aided engineering, although the abstract alone does not establish how broadly the correction scales.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.07199"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "6ea6db85-aa5c-520b-8ad2-156808c43594",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "C2Dex makes object-side contacts the shared currency between monocular hand-object reconstruction and robot-hand retargeting, a sensible way to preserve task geometry across embodiments. The abstract reports end-to-end success of 57.78 percent on DexYCB and 26.67 percent on TACO versus 17.78 and 10.00 percent for the strongest baselines, with real-robot replays as a physical-feasibility check. Its value is at the vision, geometry, and manipulation boundary rather than as a general reconstruction method.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.07045"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "ebbfcb33-30ab-5bb8-b03a-96cb36c84dc8",
+      "tier": "worth_skimming",
+      "lane": "broader_vision",
+      "review_depth": "abstract",
+      "editorial_note": "WorldTrace identifies a concrete long-horizon failure in video world models: cache content becomes difficult to address when temporal RoPE offsets move out of the training range, and naive compression mixes incompatible phases. Its training-free virtual-position memory reports 15.5 percent better temporal consistency and 19.5 percent better episodic recall on LoopBench. This is worth tracking as a systems idea for persistent visual generation, though the benchmark is introduced by the same work.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.07408"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "2fb090fa-717c-5e2e-88f1-dba6e4a73b42",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "SubtleTalk focuses on the facial motions that lip-sync objectives underspecify, combining interpretable affect and intensity controls with residual flow matching around a stable speech-driven prior. The accompanying SubtleTalk-Face dataset covers about 3,900 identities and 74 hours, which may be as useful to follow as the model itself. The abstract claims better realism and diversity while retaining lip synchronization, but full metric and generalization details need paper-level inspection.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.06408"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "c45382dc-19cc-5901-9edc-30a748dede18",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "CANIS uses a frozen image-to-3D model as a semantic orientation prior, then bridges generated canonical proxies back to input geometry through image-patch anchors and depth back-projection. The category-agnostic, no-task-training setup is appealing for shape pipelines that need consistent coordinates. Evidence is strongest on synthetic benchmarks, while results on partial and real scans are described qualitatively, so it remains a promising idea rather than a settled solution.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.07256"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "exceptional_length": true,
+  "validation_status": "validated"
+}

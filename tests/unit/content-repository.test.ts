@@ -82,8 +82,13 @@ describe('content repository', () => {
   it('loads the canonical repository through the Node filesystem adapter', async () => {
     const repository = await loadContentRepositoryFromFileSystem();
 
-    expect(repository.papersById.size).toBe(1);
-    expect(repository.latest.delivery_date).toBe('2026-08-10');
+    expect(repository.papersById.size).toBeGreaterThan(0);
+    expect(repository.editions.length).toBeGreaterThan(0);
+    expect(repository.latest).toBe(repository.editions[0]);
+    expect(repository.editions.map(({ delivery_date }) => delivery_date)).toEqual(
+      [...repository.editions.map(({ delivery_date }) => delivery_date)].sort().reverse(),
+    );
+    expect(repository.papersById.has(validPaperRecord.paper_id)).toBe(true);
   });
 
   it('aggregates filesystem, alias, date, and reference errors from a fixture directory', async () => {

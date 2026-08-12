@@ -2,23 +2,545 @@
   {
     "paper_id": "018f4a90-6d31-7b2c-9dd3-7e12c8b77210",
     "external_ids": [
-      { "kind": "huggingface", "value": "fixture-layered-motion-fields" }
+      {
+        "kind": "huggingface",
+        "value": "fixture-layered-motion-fields"
+      }
     ],
     "title": "Fixture Paper: Layered Motion Fields for Dynamic Scenes",
-    "authors": ["Ada Fixture", "Sam Sample"],
-    "affiliations": ["Fixture Research Lab (fictional)"],
+    "authors": [
+      "Ada Fixture",
+      "Sam Sample"
+    ],
+    "affiliations": [
+      "Fixture Research Lab (fictional)"
+    ],
     "abstract": "This entirely fictional sample record exists only to support Paper Morning Pass interface development. It does not describe a real publication or research result.",
     "source_dates": [
-      { "source": "arxiv_cs_cv", "date": "2026-08-10" }
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-10"
+      }
     ],
     "links": [
-      { "kind": "paper", "label": "Fixture paper record", "url": "https://example.org/papers/layered-motion-fields" },
-      { "kind": "pdf", "label": "Fixture PDF", "url": "https://example.org/papers/layered-motion-fields.pdf" },
-      { "kind": "source", "label": "Fixture source", "url": "https://example.org/sources/arxiv-cs-cv" }
+      {
+        "kind": "paper",
+        "label": "Fixture paper record",
+        "url": "https://example.org/papers/layered-motion-fields"
+      },
+      {
+        "kind": "pdf",
+        "label": "Fixture PDF",
+        "url": "https://example.org/papers/layered-motion-fields.pdf"
+      },
+      {
+        "kind": "source",
+        "label": "Fixture source",
+        "url": "https://example.org/sources/arxiv-cs-cv"
+      }
     ],
-    "tags": ["fixture", "graphics_3d_4d"],
+    "tags": [
+      "fixture",
+      "graphics_3d_4d"
+    ],
     "provenance": [
-      { "field": "metadata", "url": "https://example.org/sources/arxiv-cs-cv", "checked_at": "2026-08-10T08:00:00.000Z" }
+      {
+        "field": "metadata",
+        "url": "https://example.org/sources/arxiv-cs-cv",
+        "checked_at": "2026-08-10T08:00:00.000Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "208d10f4-b162-5bb8-8daa-8324642e8831",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.06827"
+      }
+    ],
+    "title": "R2S-EGO: Dual-Proxy Refinement for Sparse-Capture Real-to-Sim",
+    "authors": [
+      "Shuai Fang",
+      "Xin Deng",
+      "Yuchen Kang",
+      "Zhenjiang Li",
+      "Jie Chen"
+    ],
+    "affiliations": [
+      "XPENG Robotics",
+      "The Hong Kong Polytechnic University"
+    ],
+    "abstract": "R2S-EGO refines sparsely captured real-to-sim scenes around the camera views an embodied robot will actually use. It couples a simulator-derived robot proxy for executable ego-view queries with capture-anchored geometry for structurally conditioned view synthesis, then folds registered generated observations back into the visual asset and collision proxy.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-10"
+      },
+      {
+        "source": "arxiv_cs_gr",
+        "date": "2026-08-10"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.06827"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.06827"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.GR recent",
+        "url": "https://arxiv.org/list/cs.GR/recent"
+      }
+    ],
+    "tags": [
+      "real-to-sim",
+      "3d-gaussian-splatting",
+      "robotics",
+      "sparse-view-reconstruction"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.06827",
+        "checked_at": "2026-08-12T03:10:00.000Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "7d670b5e-53cf-57d8-bc31-35d941a9dfbb",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.07144"
+      }
+    ],
+    "title": "InstanceSplat: Instance-Aware Feed-Forward 3D Gaussian Splatting for Scene Understanding",
+    "authors": [
+      "Minchao Jiang",
+      "Xiaoxuan Ma",
+      "Shunyu Jia",
+      "Haoru Wang",
+      "Zhang Liang",
+      "Wentao Zhu"
+    ],
+    "affiliations": [],
+    "abstract": "InstanceSplat is a pose-free feed-forward 3D Gaussian Splatting system that jointly represents appearance, geometry, instance identity, and language-aligned semantics. Its shared Gaussians ground instances across views, while instance-centric coupling lets reconstruction and semantic understanding improve one another.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-10"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.07144"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.07144"
+      },
+      {
+        "kind": "project",
+        "label": "Project page",
+        "url": "https://jamchaos.github.io/InstanceSplat/"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "3d-gaussian-splatting",
+      "instance-segmentation",
+      "open-vocabulary",
+      "scene-understanding"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.07144",
+        "checked_at": "2026-08-12T03:10:00.000Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "b6a8561b-712c-5ae9-ae5f-cc21c258dab4",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.07012"
+      }
+    ],
+    "title": "Scenix: Sparse-View 3D Scene Reconstruction via Executable Scene Programs",
+    "authors": [
+      "Kai Li",
+      "Lutao Jiang",
+      "Zhenyang Li",
+      "Jiayu Dong",
+      "Jierui Zhang",
+      "Yingda Yin",
+      "Runze Zhang",
+      "Kai Yan",
+      "Xiaoyang Huang",
+      "Keyang Luo",
+      "Xin Wang",
+      "Xiangyu Zhao",
+      "Weikai Chen"
+    ],
+    "affiliations": [],
+    "abstract": "Scenix reconstructs editable indoor scenes from a few uncalibrated RGB views by predicting executable scene programs rather than a monolithic field. It combines structured scene induction, perception-grounded asset instantiation, and a critic-editor-verify refinement loop, supported by the roughly 110,000-scene XScene dataset.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-10"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.07012"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.07012"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "3d-scene-reconstruction",
+      "scene-programs",
+      "sparse-views",
+      "editable-scenes"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.07012",
+        "checked_at": "2026-08-12T03:10:00.000Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "1b3ae4f6-fc83-5dfe-8503-ced3ce770ed2",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.07199"
+      }
+    ],
+    "title": "Flow-Corrected Shape Optimization: Taming Manifold Drift in High-Dimensional 3D Models",
+    "authors": [
+      "Emilien Seiler",
+      "Nicolas Talabot",
+      "Yingxuan You",
+      "Federico Stella",
+      "Pascal Fua"
+    ],
+    "affiliations": [],
+    "abstract": "This work targets manifold drift during gradient-based optimization in high-dimensional 3D generative latents. It alternates free objective-minimization steps with guided flow-matching corrections that return the state toward the learned shape manifold, and evaluates the design on engineering objectives including drag and compliance.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-10"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.07199"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.07199"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "3d-shape-optimization",
+      "flow-matching",
+      "generative-priors",
+      "computer-aided-engineering"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.07199",
+        "checked_at": "2026-08-12T03:10:00.000Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "6ea6db85-aa5c-520b-8ad2-156808c43594",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.07045"
+      }
+    ],
+    "title": "C2Dex: Contact-Consistent Reconstruction and Retargeting for Dexterous Manipulation from Monocular Video",
+    "authors": [
+      "Jie Ren",
+      "Zhehao Jiang",
+      "Yinhong Yang",
+      "Haorui Jia",
+      "Han Jiang",
+      "Ben Li",
+      "Yao Yao",
+      "Cheng Lin",
+      "Qiu Shen",
+      "Zhenshan Bing",
+      "Xiao-Xiao Long",
+      "Xun Cao"
+    ],
+    "affiliations": [],
+    "abstract": "C2Dex turns monocular human manipulation video into dexterous-robot trajectories through stable object-side contacts aggregated in canonical object space. Those contacts constrain human hand-object reconstruction and provide transfer targets for geometry-preserving retargeting, followed by simulation refinement.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-10"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.07045"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.07045"
+      },
+      {
+        "kind": "project",
+        "label": "Project page",
+        "url": "https://k-jie.github.io/C2Dex/"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "hand-object-reconstruction",
+      "dexterous-manipulation",
+      "contact-modeling",
+      "robotics"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.07045",
+        "checked_at": "2026-08-12T03:10:00.000Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "ebbfcb33-30ab-5bb8-b03a-96cb36c84dc8",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.07408"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.07408"
+      }
+    ],
+    "title": "Addressable Memory for Video World Models",
+    "authors": [
+      "Xindi Wu",
+      "Sven Elflein",
+      "James Lucas",
+      "Olga Russakovsky",
+      "Laura Leal-Taixé",
+      "Despoina Paschalidou",
+      "Jonathan Lorraine",
+      "Aljoša Ošep"
+    ],
+    "affiliations": [],
+    "abstract": "WorldTrace is a training-free memory framework for interactive video world models whose temporal positional encodings otherwise drift beyond the training horizon. It assigns compressed summaries in-distribution virtual positions and separates temporal field compression from landmark-like episodic traces, with a LoopBench evaluation for scene revisitation.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-10"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-10"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.07408"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.07408"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-10"
+      }
+    ],
+    "tags": [
+      "video-world-models",
+      "long-horizon-memory",
+      "kv-cache",
+      "video-generation"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.07408",
+        "checked_at": "2026-08-12T03:10:00.000Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "2fb090fa-717c-5e2e-88f1-dba6e4a73b42",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.06408"
+      }
+    ],
+    "title": "SubtleTalk: Generating Controllable Weakly-correlated Facial Dynamics for 3D Talking Heads via Residual Flow Matching",
+    "authors": [
+      "Chenyang Ding",
+      "Shuai Tan",
+      "Qunfen Lin",
+      "Xinwei Jiang",
+      "Zijiao Zeng",
+      "Ye Pan"
+    ],
+    "affiliations": [],
+    "abstract": "SubtleTalk models upper-face, blink, and head dynamics that are only weakly tied to speech in 3D talking heads. It adds interpretable prosody, regional-intensity, and affect controls to a speech-driven prior, then uses residual flow matching to generate diverse deviations, supported by a 74-hour facial-animation dataset.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-10"
+      },
+      {
+        "source": "arxiv_cs_gr",
+        "date": "2026-08-10"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.06408"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.06408"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.GR recent",
+        "url": "https://arxiv.org/list/cs.GR/recent"
+      }
+    ],
+    "tags": [
+      "facial-animation",
+      "3d-talking-heads",
+      "flow-matching",
+      "controllable-generation"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.06408",
+        "checked_at": "2026-08-12T03:10:00.000Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "c45382dc-19cc-5901-9edc-30a748dede18",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.07256"
+      }
+    ],
+    "title": "CANIS: Generation-Assisted 3D Canonicalization via an Image-Semantic Bridge",
+    "authors": [
+      "Kendong Liu",
+      "Yuxin Yao",
+      "Junhui Hou"
+    ],
+    "affiliations": [],
+    "abstract": "CANIS transfers semantic orientation priors from a frozen image-to-3D generator into category-agnostic 3D object canonicalization. It creates a canonical proxy, uses rendered image patches as a semantic bridge, back-projects semantic anchors, and estimates a rigid alignment without canonicalization-specific training or templates.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-10"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.07256"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.07256"
+      },
+      {
+        "kind": "project",
+        "label": "Project page",
+        "url": "https://kenkenzaii.github.io/CANIS/"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "3d-canonicalization",
+      "image-to-3d",
+      "semantic-alignment",
+      "shape-analysis"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.07256",
+        "checked_at": "2026-08-12T03:10:00.000Z"
+      }
     ]
   }
 ]

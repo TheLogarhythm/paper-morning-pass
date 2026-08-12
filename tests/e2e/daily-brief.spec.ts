@@ -10,13 +10,16 @@ test('latest edition is a content-first Daily Brief', async ({ page }) => {
   await expect(page.locator('h1')).toHaveCount(1);
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Paper Morning Pass');
   await expect(page.getByText('Complete coverage', { exact: true })).toBeVisible();
-  await expect(page.getByRole('main')).toContainText('10 August 2026');
-  await expect(page.getByRole('main')).toContainText('1 paper · 8 minutes');
+  await expect(page.getByRole('main').locator('time[datetime]').first()).toBeVisible();
+  await expect(page.getByRole('main')).toContainText(/\d+ papers? · \d+ minutes?/);
   await expect(page.getByRole('main')).toContainText('arXiv cs.CV');
+  await expect(page.getByRole('main')).toContainText('arXiv cs.GR');
+  await expect(page.getByRole('main')).toContainText('Hugging Face Papers');
   await expect(page.getByRole('main')).toContainText('Complete');
 
   const readFirst = page.getByRole('region', { name: 'Read First' });
-  await expect(readFirst).toContainText(fixtureTitle);
+  const firstPriorityPaper = readFirst.locator('.paper-card').first();
+  await expect(firstPriorityPaper).toBeVisible();
   for (const label of [
     'Verdict',
     'Contribution',
@@ -26,7 +29,7 @@ test('latest edition is a content-first Daily Brief', async ({ page }) => {
     'Review depth',
     'Estimated reading time',
   ]) {
-    await expect(readFirst.getByText(label, { exact: true })).toBeVisible();
+    await expect(firstPriorityPaper.getByText(label, { exact: true })).toBeVisible();
   }
 });
 

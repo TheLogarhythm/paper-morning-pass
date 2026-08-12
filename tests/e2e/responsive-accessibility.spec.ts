@@ -178,12 +178,14 @@ test.describe('representative responsive layouts', () => {
       const mainBox = await page.getByRole('main').boundingBox();
       expect(mainBox).not.toBeNull();
       expect(mainBox!.width).toBeLessThanOrEqual(768);
-      const paperCard = page.locator('.paper-card');
-      await expect(paperCard).toHaveCount(1);
-      const cardBox = await paperCard.boundingBox();
-      expect(cardBox).not.toBeNull();
-      expect(cardBox!.x).toBeGreaterThanOrEqual(0);
-      expect(cardBox!.x + cardBox!.width).toBeLessThanOrEqual(viewport.width);
+      const paperCards = page.locator('.paper-card');
+      expect(await paperCards.count()).toBeGreaterThan(0);
+      for (const paperCard of await paperCards.all()) {
+        const cardBox = await paperCard.boundingBox();
+        expect(cardBox).not.toBeNull();
+        expect(cardBox!.x).toBeGreaterThanOrEqual(0);
+        expect(cardBox!.x + cardBox!.width).toBeLessThanOrEqual(viewport.width);
+      }
 
       await page.goto(`${basePath}/archive`);
       const controls = page.locator('.archive-filters, .archive-filters select, .archive-filters input');
