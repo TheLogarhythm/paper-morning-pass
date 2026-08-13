@@ -1604,5 +1604,585 @@
         "checked_at": "2026-08-12T22:01:00.709Z"
       }
     ]
+  },
+  {
+    "paper_id": "8ec0d3d3-286e-5a59-9087-8d34895d5dc1",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.11272"
+      }
+    ],
+    "title": "A Geodesic Cut-Cell Prior for Neural Skinning",
+    "authors": [
+      "Wenchao Ma",
+      "Surya Dwarakanath",
+      "Yizhak Ben-Shabat",
+      "Dario Kneubühler",
+      "Haomiao Jiang",
+      "Sharon X. Huang",
+      "Hsueh-Ti Derek Liu"
+    ],
+    "affiliations": [],
+    "abstract": "Cut-cell skinning supplies neural skinning models with a fast graph approximation of volumetric geodesic distance. Axis-aligned ray intersections and winding-number queries build a graph that preserves separation between nearby surface parts, enabling a scalable geometric prior for in-the-wild meshes.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-13"
+      },
+      {
+        "source": "arxiv_cs_gr",
+        "date": "2026-08-13"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.11272"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.11272"
+      },
+      {
+        "kind": "project",
+        "label": "Project page",
+        "url": "https://wenchao-m.github.io/CutCell.github.io/"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.GR recent",
+        "url": "https://arxiv.org/list/cs.GR/recent"
+      }
+    ],
+    "tags": [
+      "neural-skinning",
+      "character-animation",
+      "geodesic-distance",
+      "geometric-priors"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.11272",
+        "checked_at": "2026-08-13T22:01:04.886Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "70aaa535-de9e-580b-a1d1-20ff1e909034",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.11928"
+      }
+    ],
+    "title": "Seed2GS: Camera-Free, Training-Free Object Extraction from 3D Gaussian Scenes via a Single Reference-View Grounding",
+    "authors": [
+      "Zongjian Ding",
+      "Yudong Gao",
+      "Jiale Liu",
+      "Xinglin Yu",
+      "Junxing Ren",
+      "Dong Wei",
+      "Yajing Chen",
+      "Shan Huang",
+      "Mingjun Cheng",
+      "Min Li"
+    ],
+    "affiliations": [],
+    "abstract": "Seed2GS extracts an object from a frozen Gaussian-splat scene without the original reconstruction cameras or scene-specific representation training. It fixes identity in one grounded reference mask, lifts a conservative seed into 3D, expands coverage through visibility-adaptive virtual orbits and tracking, and fits one temporary foreground logit per Gaussian.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-13"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.11928"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.11928"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "3d-gaussian-splatting",
+      "object-extraction",
+      "3d-editing",
+      "open-vocabulary-segmentation"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.11928",
+        "checked_at": "2026-08-13T22:01:04.886Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "e3146949-e839-5d31-a2a9-8e36c54b5122",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.11745"
+      }
+    ],
+    "title": "LiveAnimate: Stable Long-Form Streaming Human Animation in Real-Time",
+    "authors": [
+      "Yuxuan Zhang",
+      "Haozhong Xiong",
+      "Yubo Huang",
+      "Jiayi Song",
+      "Jinpeng Yu",
+      "Haofan Wang",
+      "Jiaming Liu",
+      "Ruihua Huang",
+      "Liwei Wang"
+    ],
+    "affiliations": [],
+    "abstract": "LiveAnimate converts a 14-billion-parameter bidirectional video diffusion transformer into a block-causal three-step generator for pose-driven streaming animation. A bounded cache combines a permanent reference anchor, pose-retrieved history, and a short rolling window to resist long-horizon identity and appearance drift.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-13"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.11745"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.11745"
+      },
+      {
+        "kind": "project",
+        "label": "Project page",
+        "url": "https://liveanimate.github.io/"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "human-animation",
+      "video-diffusion",
+      "streaming-generation",
+      "long-video"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.11745",
+        "checked_at": "2026-08-13T22:01:04.886Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "195afd6d-33a9-5fe0-867e-d4633e372de1",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.12314"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.12314"
+      }
+    ],
+    "title": "StateFlow: Building, Evolving, and Accessing 3D World States for Previsualization",
+    "authors": [
+      "Yuyang Yin",
+      "Zixiang Li",
+      "Longxuan Deng",
+      "Hongkai Li",
+      "Shifang Zhao",
+      "Junnan Liu",
+      "Weirong Huang",
+      "Mengyu Wang",
+      "Tianxiao Fu",
+      "Yikai Wang",
+      "Peng-Shuai Wang",
+      "Xiaojie Jin",
+      "Yao Zhao",
+      "Yunchao Wei"
+    ],
+    "affiliations": [],
+    "abstract": "StateFlow organizes generative previsualization around a persistent, editable 3D world state rather than one-shot video synthesis. It constructs a world from generated views, applies structured state transitions while retaining memory, and uses render feedback to refine camera trajectories before optional video-model enhancement.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-13"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-13"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.12314"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.12314"
+      },
+      {
+        "kind": "project",
+        "label": "Project page",
+        "url": "https://yuyangyin.github.io/StateFlow/"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-13"
+      }
+    ],
+    "tags": [
+      "previsualization",
+      "3d-world-state",
+      "controllable-generation",
+      "camera-planning"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.12314",
+        "checked_at": "2026-08-13T22:01:04.886Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "49a9b502-7863-5527-bad9-b595085233b3",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.11938"
+      }
+    ],
+    "title": "Surfsvr: 2D Surface Priors as 3D Geometric Regularizers for Sparse Voxel Reconstruction",
+    "authors": [
+      "Yan Di",
+      "Chengxi Li",
+      "Yaoxing Wang",
+      "Mengge Liu",
+      "Zhigang Li",
+      "Ruida Zhang",
+      "Mingyang Li",
+      "Pengyuan Wang",
+      "Shan Gao",
+      "Xiangyang Ji"
+    ],
+    "affiliations": [],
+    "abstract": "SurfSVR converts coherent 2D surface regions into persistent 3D regularizers for sparse voxel reconstruction. Planar or quadratic surface models guide voxel subdivision, depth and normal optimization, pruning, and floater suppression in weakly textured or sparsely observed areas.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-13"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.11938"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.11938"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "3d-reconstruction",
+      "sparse-voxels",
+      "surface-priors",
+      "multiview-geometry"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.11938",
+        "checked_at": "2026-08-13T22:01:04.886Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "ad396485-85b6-5fba-8bef-c28e08075a46",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.12179"
+      }
+    ],
+    "title": "Map-Det3D: Metric Feed-Forward 3D Reconstruction Prior for Multi-view 3D Object Detection from Streaming Inputs",
+    "authors": [
+      "Yung-Hsu Yang",
+      "Luigi Piccinelli",
+      "Samuel Rota Bulò",
+      "Sunghwan Hong",
+      "Denis Rozumny",
+      "Johannes Schönberger",
+      "Zuria Bauer",
+      "Hermann Blum",
+      "Peter Kontschieder",
+      "Marc Pollefeys"
+    ],
+    "affiliations": [],
+    "abstract": "Map-Det3D repurposes a feed-forward metric 3D reconstruction model as the geometric backbone for online object detection from a short RGB video window. It predicts boxes directly in reconstructed metric space instead of detecting in 2D and lifting uncertain depth and scale afterward.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-13"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.12179"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.12179"
+      },
+      {
+        "kind": "project",
+        "label": "Project page",
+        "url": "https://royyang0714.github.io/map-det3d/"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "3d-object-detection",
+      "feed-forward-reconstruction",
+      "metric-geometry",
+      "streaming-video"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.12179",
+        "checked_at": "2026-08-13T22:01:04.886Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "44dd7f58-06f5-52f2-8b92-69596cd53eb7",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.11601"
+      }
+    ],
+    "title": "How Can Driving World Models Do Counterfactual Prediction?",
+    "authors": [
+      "Jiaru Zhang",
+      "Can Cui",
+      "Yi Xu",
+      "Xin Ye",
+      "Ruqi Zhang",
+      "Ziran Wang"
+    ],
+    "affiliations": [],
+    "abstract": "This work argues that action-conditioned driving prediction is not automatically counterfactual because it ignores the factual continuation needed for causal abduction. A controlled benchmark and a training-free evidence-transfer pipeline test how much episode-specific information can be preserved under an alternative ego action.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-13"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.11601"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.11601"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "driving-world-models",
+      "counterfactual-reasoning",
+      "causal-inference",
+      "video-prediction"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.11601",
+        "checked_at": "2026-08-13T22:01:04.886Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "c91e7045-71d9-5166-9ef5-64a8fa690acf",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.11562"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.11562"
+      }
+    ],
+    "title": "From Synthesis to Removal: Physics-Grounded Reflection Simulation and Diffusion-Based Video Dereflection",
+    "authors": [
+      "Zepeng Wang",
+      "Jiagao Hu",
+      "Fuhao Li",
+      "Yuxuan Chen",
+      "Fei Wang",
+      "Daiguo Zhou"
+    ],
+    "affiliations": [],
+    "abstract": "S2R closes the video-dereflection data loop with physics-grounded synthesis, a diffusion removal model, and a dedicated benchmark. Structure-space augmentation models blur, ghosting, and reflectance variation, while the removal model adapts video diffusion and adds one-step pixel-geometric refinement.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-13"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-13"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.11562"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.11562"
+      },
+      {
+        "kind": "project",
+        "label": "Project page",
+        "url": "https://codingwzp.github.io/VideoDereflection_S2R"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-13"
+      }
+    ],
+    "tags": [
+      "video-dereflection",
+      "physics-grounded-synthesis",
+      "video-diffusion",
+      "image-restoration"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.11562",
+        "checked_at": "2026-08-13T22:01:04.886Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "5594fb6f-58d8-53f4-8ce1-a7ca150016c4",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.12307"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.12307"
+      }
+    ],
+    "title": "AI4AI at Test-Time: Strong-to-Weak Capability Transfer via Harnesses",
+    "authors": [
+      "Cheng Qian",
+      "Wenting Zhao",
+      "Liangwei Yang",
+      "Heng Wang",
+      "Jielin Qiu",
+      "Heng Ji",
+      "Silvio Savarese",
+      "Huan Wang",
+      "Shelby Heinecke"
+    ],
+    "affiliations": [],
+    "abstract": "AI4AI studies whether a stronger model can transfer capability to a weaker model at inference time by building a task harness rather than updating model weights. The harnesses move unstable reasoning into deterministic code, routing, and answer-format enforcement.",
+    "source_dates": [
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-13"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.12307"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.12307"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-13"
+      }
+    ],
+    "tags": [
+      "test-time-compute",
+      "agent-harnesses",
+      "capability-transfer",
+      "language-models"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.12307",
+        "checked_at": "2026-08-13T22:01:04.886Z"
+      }
+    ]
   }
 ]

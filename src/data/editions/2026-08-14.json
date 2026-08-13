@@ -1,0 +1,289 @@
+{
+  "delivery_date": "2026-08-14",
+  "generated_at": "2026-08-13T22:01:04.886Z",
+  "publication_status": "complete",
+  "coverage": [
+    {
+      "source": "arxiv_cs_cv",
+      "dates": [
+        "2026-08-13"
+      ],
+      "status": "complete"
+    },
+    {
+      "source": "arxiv_cs_gr",
+      "dates": [
+        "2026-08-13"
+      ],
+      "status": "complete"
+    },
+    {
+      "source": "huggingface_papers",
+      "dates": [
+        "2026-08-13"
+      ],
+      "status": "complete"
+    }
+  ],
+  "editorial_theme": "Geometric priors and persistent representations for controllable 3D, animation, and world modeling.",
+  "entries": [
+    {
+      "paper_id": "8ec0d3d3-286e-5a59-9087-8d34895d5dc1",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "full_paper",
+      "verdict": "The strongest graphics paper today: a simple, production-minded geometric prior materially improves several neural skinning systems while remaining fast enough for large training corpora.",
+      "contribution": "The method approximates volumetric geodesics with a cut-cell graph built from axis-aligned ray casts and winding-number classification, then converts bone-to-vertex graph distances into normalized skinning weights that can replace or augment priors in RigNet, UniRig, and Puppeteer.",
+      "why_it_matters": "Purely learned skinning captures semantics but can generalize poorly, while classical geometric weights are robust but expensive or semantically blind. This work demonstrates a practical hybrid in which geometry supplies locality and separation and the network handles material and shape semantics.",
+      "evidence": "On the de-duplicated Articulation-XL 2.0 split, adding the prior to UniRig reduces average L1 error from 0.768 to 0.447 and deformation error from 25.29 to 14.18. Cut-cell graph construction takes 0.029 seconds at resolution 64 in the reported CPU benchmark, versus 2.50 seconds for Mandoline and 13.37 seconds for fTetWild on the tested subset.",
+      "limitation": "Winding-number inside/outside classification still assumes a roughly closed volume and can fail on inverted triangles or thin shells. Disconnected components fall back to Euclidean nearest-joint assignment, which can bind them to unrelated nearby joints, and the finer graph costs more geodesic computation than cage representations.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.11272"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.11272"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.11272"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.11272"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.11272"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "70aaa535-de9e-580b-a1d1-20ff1e909034",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "full_paper",
+      "verdict": "A highly practical 3DGS editing primitive: it separates the one-time question of object identity from multi-view coverage, avoiding both per-scene feature training and dependence on missing reconstruction cameras.",
+      "contribution": "Seed2GS selects one reference mask from several open-vocabulary proposals, conservatively lifts it to Gaussians, renders visibility-adaptive virtual orbits, propagates the seed through tracking, and optimizes only a temporary foreground logit while freezing the scene representation.",
+      "why_it_matters": "Prebuilt Gaussian assets often omit original images and cameras, yet editing still requires a clean object subset. A query-time extraction tool that leaves the representation untouched makes transform, removal, duplication, and recoloring workflows considerably more accessible.",
+      "evidence": "The paper reports 92.1% mIoU on LERF-MASK at 9.3 seconds mean query latency, 3.7 points above the strongest scene-trained baseline and 7.6 points above the closest camera-free baseline, plus 95.7% mIoU on 3D-OVS. Its fixed-reference control retains 91.1% mIoU, and the trajectory and propagation ablations account for substantial gains.",
+      "limitation": "A bad initial grounding propagates through the whole pipeline; severe occlusion, same-class ambiguity, absent geometry, and large viewpoint shifts remain failure modes. The favorable-reference sweep does not represent arbitrary views, and runtime excludes process startup and scene/model loading.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.11928"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.11928"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.11928"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.11928"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.11928"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "e3146949-e839-5d31-a2a9-8e36c54b5122",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "full_paper",
+      "verdict": "A strong systems-and-model contribution for interactive animation: it makes bounded-memory, long-horizon diffusion streaming concrete rather than treating speed and stability as separate demonstrations.",
+      "contribution": "LiveAnimate first adapts a bidirectional DiT into a reference-anchored block-causal model, then distills it under self-generated history to three denoising steps. Its PR-Sink cache retains the first block, one pose-matched historical block, and three recent blocks with position-consistent key reuse.",
+      "why_it_matters": "Interactive avatars require constant latency and identity stability over minutes, not just attractive short clips. The combination of training against rollout errors, selective long-range retrieval, and explicit parallel-system optimization provides a useful recipe beyond this particular avatar model.",
+      "evidence": "On a 24-pair, three-minute benchmark, the paper reports 19.63 FPS for 12-frame blocks on two H100 GPUs, with 0.611-second steady-state block latency and bounded memory. Final-segment DINO similarity falls from 0.818 to 0.805 without the dynamic sink and to 0.693 without the static sink, supporting their complementary roles.",
+      "limitation": "Generation is currently limited to 480-by-480, one person, and little camera motion. The real-time figure relies on two H100 GPUs and excludes independently pipelined VAE decoding from the critical-path timing, so ordinary-hardware deployment remains distant.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.11745"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.11745"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.11745"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.11745"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.11745"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "195afd6d-33a9-5fe0-867e-d4633e372de1",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "verdict": "A timely generative-graphics direction that makes an editable 3D state—not a prompt or a video—the persistent source of truth for iterative previsualization.",
+      "contribution": "StateFlow constructs a coherent world from generated dual views, maps user edits into structured state transitions that preserve prior scene memory, and uses rendered feedback to correct camera plans before higher-fidelity video synthesis.",
+      "why_it_matters": "Film, game, and design previsualization is inherently iterative and spatial. An explicit world state offers edit locality, reusable cameras, and inspectable geometry that one-shot video generators cannot provide reliably.",
+      "evidence": "The abstract reports high-quality 3D worlds for video creation and game-like prototyping and links a project page, but provides no numerical comparison in the abstract.",
+      "limitation": "The available abstract does not quantify 3D consistency, edit success, or user-study outcomes, so the apparent controllability advantage needs full-paper and project-demo inspection.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.12314"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.12314"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.12314"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.12314"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.12314"
+          ]
+        }
+      ],
+      "estimated_minutes": 7
+    },
+    {
+      "paper_id": "49a9b502-7863-5527-bad9-b595085233b3",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "SurfSVR turns image-space surface coherence into persistent constraints throughout sparse-voxel reconstruction rather than lifting noisy depth pointwise. Its planar-or-quadratic region models guide subdivision, optimization, pruning, and floater removal, and the abstract reports consistent state-of-the-art results on three public benchmarks. The absence of quantitative margins and unreleased code make this a method to inspect, not yet a result to take at face value.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.11938"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "ad396485-85b6-5fba-8bef-c28e08075a46",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "Map-Det3D moves monocular video detection into metric space by tuning a feed-forward reconstruction prior and predicting 3D boxes directly, avoiding the brittle 2D-detect-then-lift pattern. The ECCV 2026 abstract reports strong online performance and transfer without adaptation, and code and models are linked. Exact benchmark gains and compute cost require paper-level inspection.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.12179"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "44dd7f58-06f5-52f2-8b92-69596cd53eb7",
+      "tier": "worth_skimming",
+      "lane": "broader_vision",
+      "review_depth": "abstract",
+      "editorial_note": "This paper identifies a useful causal mismatch: conditioning a driving world model on an alternative action does not abduct episode-specific facts from the observed continuation, so a plausible future may not be the matched counterfactual. A controlled simulator benchmark shows the gap, and a simple training-free evidence-transfer construction improves recovered content and perceptual distance. The analysis assumes a short horizon in which surrounding agents do not react to the changed ego action, so its clean diagnosis is not yet the general interactive case.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.11601"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "c91e7045-71d9-5166-9ef5-64a8fa690acf",
+      "tier": "worth_skimming",
+      "lane": "broader_vision",
+      "review_depth": "abstract",
+      "editorial_note": "S2R is an unusually complete treatment of video reflections: physics-grounded synthesis creates paired data, a one-step diffusion-based remover targets temporal consistency, and a new benchmark covers full-reference and real-world human evaluation. The abstract reports state-of-the-art results and inference faster than non-diffusion baselines, but the benchmark and training data are introduced together, making external generalization the key question.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.11562"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "5594fb6f-58d8-53f4-8ce1-a7ca150016c4",
+      "tier": "worth_skimming",
+      "lane": "general_ai",
+      "review_depth": "abstract",
+      "editorial_note": "AI4AI asks whether a strong model can transfer capability at test time by constructing a deterministic harness for a weaker model, with no weight updates. Across four Theory-of-Mind benchmarks, average target performance rises from 0.49 to 0.91; the authors attribute most gains to code, benchmark-specific routing, and answer formatting rather than more free-form reasoning. The use of 5% benchmark data to iteratively design each harness makes contamination and task-specific engineering important caveats.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.12307"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "exceptional_length": true,
+  "validation_status": "validated"
+}
