@@ -1,0 +1,317 @@
+{
+  "delivery_date": "2026-08-15",
+  "generated_at": "2026-08-14T22:00:24.401Z",
+  "publication_status": "complete",
+  "coverage": [
+    {
+      "source": "arxiv_cs_cv",
+      "dates": [
+        "2026-08-14"
+      ],
+      "status": "complete"
+    },
+    {
+      "source": "arxiv_cs_gr",
+      "dates": [
+        "2026-08-14"
+      ],
+      "status": "complete"
+    },
+    {
+      "source": "huggingface_papers",
+      "dates": [
+        "2026-08-14"
+      ],
+      "status": "complete"
+    }
+  ],
+  "editorial_theme": "Part-aware 3D generation, geometry-grounded acceleration, and physical reasoning from vision.",
+  "entries": [
+    {
+      "paper_id": "7946a5b9-88dd-57f6-a59d-d2ca495fb5e0",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "full_paper",
+      "verdict": "The standout graphics paper today: subtractive part–remainder generation is an elegant way to obtain editable, variable-cardinality 3D assets without sacrificing the coherence of the assembled whole.",
+      "contribution": "SCULPT initializes from a complete TRELLIS.2 latent, then reuses one coupled flow-transformer interface to denoise an extracted part and its remainder at every step. Native sparse supports may overlap at interfaces, while composition loss, support clipping, and an explicit empty state keep the rollout grounded in the original object.",
+      "why_it_matters": "Part-aware asset creation is more useful than monolithic image-to-3D output for animation, materials, fabrication, and editing. Modeling the remainder explicitly shifts boundary completion into the generator and turns unknown part count into rollout length rather than a fixed slot budget.",
+      "evidence": "On 200 PartObjaverse objects, SCULPT reports part-level Chamfer distance 0.0107 and F1@.05 0.7599 versus 0.0136 and 0.7025 for OmniPart. Reassembled-object Chamfer improves from 0.0032 to 0.0020, and F1@.05 from 0.8732 to 0.9212; it also narrowly improves object geometry over TRELLIS.2 plus PartField.",
+      "limitation": "The quantitative benchmark is small and close to the curated Objaverse-derived training domain; out-of-domain evidence is only six examples. Training uses 32 GPUs for 800,000 stage-wise steps, and an unresolved remainder at the safety cap becomes an extra part rather than demonstrating learned semantic termination.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.13541"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.13541"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.13541"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.13541"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.13541"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "15a2264a-f193-557b-845a-1b6313f89f49",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "full_paper",
+      "verdict": "A sharp, graphics-specific acceleration idea: reuse across geometrically corresponding views instead of blindly caching along diffusion time, where missed multi-view harmonization creates seams.",
+      "contribution": "GeoCache computes each denoising step for anchor views, transports the anchor's change in predicted clean signal through rendered position-map correspondences, and adds that delta to each target view's retained state. Periodic all-view evaluation re-grounds poorly covered surfaces, and sampler-specific conversion preserves the expected solver parameterization.",
+      "why_it_matters": "Multi-view texture diffusion repeatedly processes the same surface from different cameras, but conventional temporal caches discard the cross-view corrections that keep texture coherent. Geometry-aware delta transport exploits the actual redundancy while remaining training-free and portable across backbones.",
+      "evidence": "On Hunyuan3D-2.1 Paint, the main setting reports a 2.21-times denoiser-loop speedup with MV-LPIPS 0.0293 and MV-PSNR 33.60, outperforming other methods above two-times speedup on fidelity. On MVPainter it reports 3.61-times loop speedup with MV-LPIPS 0.0240; results also cover SyncMVD and a distilled substrate.",
+      "limitation": "The impressive figures primarily describe denoiser-loop savings: the default Hunyuan pipeline improves only 1.11 times for painting and 1.07 times end to end. Accuracy depends on position-map correspondence and anchor visibility, and performance degrades on long trajectories or sparsely observed surfaces.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.13255"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.13255"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.13255"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.13255"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.13255"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "9e3b2679-bb29-5a1a-967e-ac48b0a08c91",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "full_paper",
+      "verdict": "A compelling vision–graphics intersection: it moves monocular hand–object understanding from contact labels toward dense physical interaction on both meshes, and backs simulation supervision with a small real sensing study.",
+      "contribution": "EgoPHI combines image features, hand and object geometry, graph-based interaction reasoning, and iterative pose refinement to predict per-vertex contact and normal force. A SOFA-based pipeline augments existing interaction data, while FTIR-instrumented objects provide real force maps for validation.",
+      "why_it_matters": "Dense forces expose how an object is manipulated, not merely where it is touched, supporting imitation, grasp analysis, and physically grounded interaction reconstruction. The combination of simulation, geometric registration, and real sensing is a useful pattern for supervision that is otherwise nearly impossible to capture at scale.",
+      "evidence": "On ARCTIC, EgoPHI reduces hand-force MAE from HACO's 6.62 N to 4.03 N and predicts object forces unavailable to the baseline. Its simulated-versus-real validation reports per-frame MAE of 0.36 N for a cylinder and 0.25 N for a cube, with Spearman correlations 0.760 and 0.604 respectively.",
+      "limitation": "The model is single-frame, requires an object mesh, assumes uniform stiffness, predicts only normal force, and lacks mass or other properties needed for global equilibrium. Real evaluation covers just a cube and cylinder from eight participants, so transfer to curved, compliant, or heterogeneous objects is unproven.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.13014"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.13014"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.13014"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.13014"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.13014"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "8857b612-3aaf-5bcb-a5d4-df4e77cf77ea",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "verdict": "A valuable diagnosis-and-repair paper for text-to-3D: it explains why latent-space SDS can look semantically correct to the model while visibly accumulating high-frequency pixel artifacts.",
+      "contribution": "PixSDS identifies weakly constrained directions in the VAE encoder as the source of pixel drift, then decodes a latent SDS lookahead and uses that clean image as a gradient-repair direction in pixel optimization without retraining the prior or changing the renderer.",
+      "why_it_matters": "Many 3D generation pipelines inherit SDS artifacts without a clear causal account. A lightweight, VAE-consistent correction can be immediately relevant to optimization-based graphics pipelines and may generalize beyond this particular objective.",
+      "evidence": "The abstract cites controlled 2D SDS tests, VAE-only optimization, simplified analysis, and text-to-3D experiments that substantially reduce structured artifacts while preserving semantics; public code is linked. It does not provide numerical margins in the abstract.",
+      "limitation": "This brief reviewed the abstract rather than the full experiments, so the size, consistency, and compute cost of the gains remain unchecked. The method also retains the base SDS objective and therefore does not address its other geometric or semantic failure modes.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.12997"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.12997"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.12997"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.12997"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.12997"
+          ]
+        }
+      ],
+      "estimated_minutes": 7
+    },
+    {
+      "paper_id": "811b1c46-8ddb-59a8-be73-88ef4de82828",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "verdict": "A clean geometric correction to feed-forward 3DGS: explicit spatial state gives query tokens the locality that a purely latent representation does not reliably learn.",
+      "contribution": "LocusGS augments every Gaussian query with a refined 3D center and radius, uses anchor-to-ray bias to gather spatially relevant observations, and decodes Gaussians around the anchor so query groups occupy coherent local regions.",
+      "why_it_matters": "Query-based reconstruction is easier to inspect and control when each token corresponds to a genuine scene region. Spatial grounding may improve not only rendering but also part selection, editing, and structured downstream reasoning over Gaussian scenes.",
+      "evidence": "The abstract reports improved novel-view rendering over query-based Gaussian-token baselines under the same Gaussian budget, together with analyses showing coherent anchor layouts and more structured Gaussian groups. The project page provides an interactive viewer for anchor groups and comparisons.",
+      "limitation": "The abstract gives no numerical gains, dataset breakdown, runtime, or comparison with stronger non-query feed-forward methods. Whether the explicit anchors help downstream editing or semantics is plausible but not evaluated in the material reviewed here.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.12825"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.12825"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.12825"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.12825"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.12825"
+          ]
+        }
+      ],
+      "estimated_minutes": 7
+    },
+    {
+      "paper_id": "17ae2f7b-5762-5265-8b96-ddcf08a54b68",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "This paper treats 4D plant reconstruction as structured growth rather than independent per-time geometry, combining symbolic botanical rules with geodesic flow to preserve hierarchy and correspondence. A new ten-day, dual-species dataset with dense geometry and semantics is useful in its own right, and the WACV submission reports better geometry and correspondence than prior methods. Exact gains, sensitivity to sparse observations, and generalization beyond two species need full-paper inspection.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.13007"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "bc4d6b90-3686-5ae4-a37b-fe7cac27d738",
+      "tier": "worth_skimming",
+      "lane": "broader_vision",
+      "review_depth": "abstract",
+      "editorial_note": "Princigram targets an important failure hidden by visual plausibility: generated physics diagrams can have wrong forces, coordinates, states, or equations. Its structured physical reasoning schema supports 4.3 million curated images, 115,037 expert-level annotations, and a fact-decomposed benchmark derived from each diagram's own annotation. The abstract says structured supervision improves faithfulness but omits numerical margins, and model-judge dependence makes human verification important.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.13112"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "52ffad1c-4552-5c31-a225-48b78e48c9f6",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "PlayWorld replaces fixed action replay with multimodal agents that adapt their actions to achieve the same long-horizon goal in different world models. Its 171 scenarios separate geometry consistency, interaction fidelity, and persistent evolution of visible and hidden state; nine current models remain unreliable, especially spatially and over time. The agent itself becomes part of the measurement loop, so robustness to player policy and evaluator bias is the main methodological question.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.13552"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "25fc406a-7e84-585b-8ec3-c083b02ae293",
+      "tier": "worth_skimming",
+      "lane": "general_ai",
+      "review_depth": "abstract",
+      "editorial_note": "AutoDesign treats the surrounding agent harness as an object that can improve recursively from rollout feedback, demonstrated on paper-to-poster generation. Across seven agent-model configurations, the learned harness raises the average PosterBench score from 54.99 to 67.39; one 40-minute run uses 253 tool calls and 11 edits for under $3. Because the benchmark and optimizer come from the same work and the task is narrow, independent replication is needed before generalizing the result to agentic design broadly.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.13560"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "exceptional_length": true,
+  "validation_status": "validated"
+}

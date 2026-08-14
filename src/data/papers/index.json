@@ -2184,5 +2184,597 @@
         "checked_at": "2026-08-13T22:01:04.886Z"
       }
     ]
+  },
+  {
+    "paper_id": "7946a5b9-88dd-57f6-a59d-d2ca495fb5e0",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.13541"
+      }
+    ],
+    "title": "SCULPT: Subtractive Composition for 3D Part Generation",
+    "authors": [
+      "Sikuang Li",
+      "Chen Yang",
+      "Jiemin Fang",
+      "Jiazhong Cen",
+      "Yuhe Wei",
+      "Jichen Pang",
+      "Wei Shen",
+      "Qi Tian"
+    ],
+    "affiliations": [],
+    "abstract": "SCULPT begins with a complete object in TRELLIS.2's structured 3D latent space and repeatedly predicts one extracted part together with the updated remainder. Coupled denoising, overlapping native sparse supports, and an explicit empty-remainder state make part count adaptive while retaining geometry, materials, and a shared object frame.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-14"
+      },
+      {
+        "source": "arxiv_cs_gr",
+        "date": "2026-08-14"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.13541"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.13541"
+      },
+      {
+        "kind": "project",
+        "label": "Project page",
+        "url": "https://sculpt-part.github.io/"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.GR recent",
+        "url": "https://arxiv.org/list/cs.GR/recent"
+      }
+    ],
+    "tags": [
+      "3d-generation",
+      "part-generation",
+      "structured-latents",
+      "asset-editing"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.13541",
+        "checked_at": "2026-08-14T22:00:24.401Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "15a2264a-f193-557b-845a-1b6313f89f49",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.13255"
+      }
+    ],
+    "title": "GeoCache: Training-Free Acceleration of Multi-View Texture Diffusion via Geometric Delta Transport",
+    "authors": [
+      "Haotang Li",
+      "Zhenyu Qi",
+      "Shaohan Henry Wang",
+      "Kebin Peng",
+      "Yutong Zhao",
+      "Zi Wang",
+      "Bo Liu",
+      "Huanrui Yang",
+      "Sen He"
+    ],
+    "affiliations": [],
+    "abstract": "GeoCache accelerates multi-view texture diffusion without training by denoising a subset of anchor views and transporting their per-step clean-signal changes through geometry correspondences. Target views retain their own state, while periodic full-view passes restore regions poorly covered by the anchors.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-14"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.13255"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.13255"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "3d-texturing",
+      "multiview-diffusion",
+      "inference-acceleration",
+      "geometric-correspondence"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.13255",
+        "checked_at": "2026-08-14T22:00:24.401Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "9e3b2679-bb29-5a1a-967e-ac48b0a08c91",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.13014"
+      }
+    ],
+    "title": "EgoPHI: Estimating Contact and Force from Egocentric Vision",
+    "authors": [
+      "Andela Ilic",
+      "Rachel Schuchert",
+      "Yijing Jiang",
+      "Christian Holz"
+    ],
+    "affiliations": [],
+    "abstract": "EgoPHI predicts dense contact maps and normal-force distributions on hand and object meshes from one egocentric RGB frame plus known object geometry. Physics simulation supplies scalable per-vertex supervision, while graph reasoning and iterative pose refinement align the interacting meshes before force estimation.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-14"
+      },
+      {
+        "source": "arxiv_cs_gr",
+        "date": "2026-08-14"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.13014"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.13014"
+      },
+      {
+        "kind": "project",
+        "label": "Project page",
+        "url": "https://siplab.org/projects/EgoPHI"
+      },
+      {
+        "kind": "code",
+        "label": "Code",
+        "url": "https://github.com/eth-siplab/EgoPHI"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.GR recent",
+        "url": "https://arxiv.org/list/cs.GR/recent"
+      }
+    ],
+    "tags": [
+      "hand-object-interaction",
+      "force-estimation",
+      "egocentric-vision",
+      "physics-supervision"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.13014",
+        "checked_at": "2026-08-14T22:00:24.401Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "8857b612-3aaf-5bcb-a5d4-df4e77cf77ea",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.12997"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.12997"
+      }
+    ],
+    "title": "PixSDS: Why Latent SDS Makes Noisy Pixels",
+    "authors": [
+      "Vsevolod Skorokhodov"
+    ],
+    "affiliations": [],
+    "abstract": "PixSDS diagnoses structured texture artifacts in latent score distillation as VAE-induced pixel drift: images can move along weakly encoded pixel-space directions while their latents remain clean. Its lightweight repair decodes a latent lookahead and uses that image as a VAE-consistent optimization direction.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-14"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-14"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.12997"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.12997"
+      },
+      {
+        "kind": "project",
+        "label": "Project page",
+        "url": "https://sevashasla.github.io/pixsds-webpage/"
+      },
+      {
+        "kind": "code",
+        "label": "Code",
+        "url": "https://github.com/sevashasla/PixSDS"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-14"
+      }
+    ],
+    "tags": [
+      "text-to-3d",
+      "score-distillation",
+      "vae",
+      "texture-artifacts"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.12997",
+        "checked_at": "2026-08-14T22:00:24.401Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "811b1c46-8ddb-59a8-be73-88ef4de82828",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.12825"
+      }
+    ],
+    "title": "LocusGS: Spatially Grounded Tokens for Feed-Forward 3D Gaussian Splatting",
+    "authors": [
+      "Wenyu Li",
+      "Sidun Liu",
+      "Tongrui Hu",
+      "Peng Qiao",
+      "Yong Dou"
+    ],
+    "affiliations": [],
+    "abstract": "LocusGS gives each query token an explicit 3D center and support radius that are refined through the decoder. Anchor-to-ray bias gathers locally relevant multi-view observations, and anchor-centered decoding keeps each token's Gaussians spatially coherent rather than scattering them across the scene.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-14"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.12825"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.12825"
+      },
+      {
+        "kind": "project",
+        "label": "Project page",
+        "url": "https://leo-frank.github.io/LocusGS_viewer/"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "3d-gaussian-splatting",
+      "feed-forward-reconstruction",
+      "spatial-tokens",
+      "novel-view-synthesis"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.12825",
+        "checked_at": "2026-08-14T22:00:24.401Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "17ae2f7b-5762-5265-8b96-ddcf08a54b68",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.13007"
+      }
+    ],
+    "title": "Structure-aware Riemannian Growth Fields for 4D Plant Modeling",
+    "authors": [
+      "Meng-Yu Jennifer Kuo",
+      "Ryo Kawahara"
+    ],
+    "affiliations": [],
+    "abstract": "This work models plant development as continuous geodesic flow constrained by botanical structure, combining symbolic growth rules with Riemannian geometry. A new ten-day, dual-species dataset provides dense geometry and semantic annotations for evaluating shape evolution and temporal correspondence.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-14"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.13007"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.13007"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "4d-modeling",
+      "plant-growth",
+      "riemannian-geometry",
+      "temporal-correspondence"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.13007",
+        "checked_at": "2026-08-14T22:00:24.401Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "bc4d6b90-3686-5ae4-a37b-fe7cac27d738",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.13112"
+      }
+    ],
+    "title": "Towards Physics-Faithful Generation of Scientific Diagrams",
+    "authors": [
+      "Minghui Zhang",
+      "Jinxin Shi",
+      "Yifan Chang",
+      "Liangliang Zhao",
+      "Yuandong Pu",
+      "Qian Yu",
+      "Ming Hu",
+      "Hanxiao Zhang",
+      "Yun Gu",
+      "Yirong Chen",
+      "Yu Qiao",
+      "Bo Zhang",
+      "Xiangchao Yan",
+      "Bin Fu",
+      "Yihao Liu"
+    ],
+    "affiliations": [],
+    "abstract": "Princigram trains scientific-diagram generation with a fixed, subdiscipline-specific reasoning schema that separates visible facts from physical inferences and types mathematics symbolically. The accompanying pipeline annotates millions of physics images and evaluates each result through item-specific questions about forces, objects, and states.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-14"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.13112"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.13112"
+      },
+      {
+        "kind": "source",
+        "label": "arXiv cs.CV recent",
+        "url": "https://arxiv.org/list/cs.CV/recent"
+      }
+    ],
+    "tags": [
+      "scientific-diagrams",
+      "physics-reasoning",
+      "multimodal-generation",
+      "evaluation"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.13112",
+        "checked_at": "2026-08-14T22:00:24.401Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "52ffad1c-4552-5c31-a225-48b78e48c9f6",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.13552"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.13552"
+      }
+    ],
+    "title": "PlayWorld: Benchmarking World Models with Agent Players over Long-Horizon Objectives",
+    "authors": [
+      "Kaixin Ding",
+      "Xi Chen",
+      "Minghong Cai",
+      "Zhiyuan Xu",
+      "Yiyang Wang",
+      "Yuxiang Lu",
+      "Junyi Li",
+      "Shuyang Chen",
+      "Yuan Gao",
+      "Xin Tao",
+      "Pengfei Wan",
+      "Hengshuang Zhao"
+    ],
+    "affiliations": [],
+    "abstract": "PlayWorld evaluates interactive video world models by asking multimodal agent players to pursue 171 long-horizon objectives rather than replaying one fixed action sequence. It measures geometry consistency, interaction fidelity, and whether visible and hidden scene state evolves persistently.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-14"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-14"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.13552"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.13552"
+      },
+      {
+        "kind": "code",
+        "label": "Code and data",
+        "url": "https://github.com/kxding/PlayWorld"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-14"
+      }
+    ],
+    "tags": [
+      "world-models",
+      "long-horizon-evaluation",
+      "spatial-consistency",
+      "interactive-video"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.13552",
+        "checked_at": "2026-08-14T22:00:24.401Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "25fc406a-7e84-585b-8ec3-c083b02ae293",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.13560"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.13560"
+      }
+    ],
+    "title": "AutoDesign: Meta-Harness Optimization for Long-Horizon Agentic Design",
+    "authors": [
+      "Yaxin Luo",
+      "Haobin Jiang",
+      "Jialv Zou",
+      "Xu Huang",
+      "Wenhao Yan",
+      "Haodong Li",
+      "Zhengrong Yue",
+      "Jing Li",
+      "Xiaofu Chen",
+      "Xiaohan Zhao",
+      "Jiacheng Liu",
+      "Jiacheng Cui",
+      "Zhiqiang Shen",
+      "Xiaotong Li"
+    ],
+    "affiliations": [],
+    "abstract": "AutoDesign uses a meta-harness optimizer to revise the tools and instructions around a code agent from rollout feedback. On academic paper-to-poster generation, the learned harness improves performance across several agent-model configurations and supports long autonomous editing trajectories.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-14"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-14"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.13560"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.13560"
+      },
+      {
+        "kind": "code",
+        "label": "Code",
+        "url": "https://github.com/Yaxin9Luo/AutoDesign"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-14"
+      }
+    ],
+    "tags": [
+      "agent-harnesses",
+      "design-automation",
+      "test-time-optimization",
+      "multimodal-agents"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.13560",
+        "checked_at": "2026-08-14T22:00:24.401Z"
+      }
+    ]
   }
 ]
