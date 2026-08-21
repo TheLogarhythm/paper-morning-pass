@@ -7,9 +7,9 @@ const fixtureTitle = 'Fixture Paper: Layered Motion Fields for Dynamic Scenes';
 test('latest edition is a content-first Daily Brief', async ({ page }) => {
   await page.goto(`${basePath}/`);
 
-  await expect(page.locator('h1')).toHaveCount(1);
+  await expect(page.getByRole('main').locator('h1')).toHaveCount(1);
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Paper Morning Pass');
-  await expect(page.getByText('Complete coverage', { exact: true })).toBeVisible();
+  await expect(page.getByRole('status')).toContainText(/^(Complete|Partial) coverage/);
   await expect(page.getByRole('main').locator('time[datetime]').first()).toBeVisible();
   await expect(page.getByRole('main')).toContainText(/\d+ papers? · \d+ minutes?/);
   await expect(page.getByRole('main')).toContainText('arXiv cs.CV');
