@@ -52,7 +52,7 @@
       ]
     },
     "huggingface_papers": {
-      "processed_through": "2026-08-14",
+      "processed_through": "2026-08-20",
       "recent_counts": [
         {
           "date": "2026-08-10",
@@ -73,6 +73,10 @@
         {
           "date": "2026-08-14",
           "count": 30
+        },
+        {
+          "date": "2026-08-20",
+          "count": 129
         }
       ]
     }

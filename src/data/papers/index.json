@@ -2776,5 +2776,714 @@
         "checked_at": "2026-08-14T22:00:24.401Z"
       }
     ]
+  },
+  {
+    "paper_id": "6fb31664-0696-59a4-b4bd-dae51b23945f",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.14783"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.14783"
+      }
+    ],
+    "title": "MegaParts: Scaling Part-Aware 3D Object Generation to 300 Parts via Token-Efficient Autoregressive Modeling",
+    "authors": [
+      "Manwen Liao",
+      "Xinyu Lian",
+      "Jian Mao",
+      "Kaixu Chen",
+      "Li Luo",
+      "Jinghao Yan",
+      "Wanshui Gan",
+      "Qiao Yu",
+      "Weitian Zhang",
+      "Chunhua Shen",
+      "Guang Chen",
+      "Bo Dai",
+      "Xudong Xu",
+      "Zhaoyang Lyu"
+    ],
+    "affiliations": [],
+    "abstract": "MegaParts combines an adaptive-length vector-quantized part tokenizer with long-context autoregressive modeling to generate structured objects containing as many as 300 parts and sequences as long as 256k tokens.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-18"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-18"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.14783"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.14783"
+      },
+      {
+        "kind": "project",
+        "label": "Project page",
+        "url": "https://expmaster.github.io/megaparts_webpage"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-18"
+      }
+    ],
+    "tags": [
+      "part-aware-generation",
+      "3d-generation",
+      "autoregressive-modeling",
+      "shape-tokenization"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.14783",
+        "checked_at": "2026-08-21T11:34:11.540Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "8da98319-e99f-59e0-a1f0-bf5e83e4efab",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.16485"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.16485"
+      }
+    ],
+    "title": "HiFi-BRep: High-Fidelity Latent Representation for Robust B-Rep Generation",
+    "authors": [
+      "Junhao Hou",
+      "Chenqi Luo",
+      "Pufan Wang",
+      "Jiaying Lu",
+      "Yusheng Liu",
+      "Feiwei Qin",
+      "Meie Fang",
+      "Kun Zhou"
+    ],
+    "affiliations": [],
+    "abstract": "HiFi-BRep uses topology-aware encoding and a parallel geometry-topology decoder with differentiable manifold constraints to improve the structural validity of generated boundary representations.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-18"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-18"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.16485"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.16485"
+      },
+      {
+        "kind": "code",
+        "label": "Code",
+        "url": "https://github.com/1nnoh/HiFi-BRep"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-18"
+      }
+    ],
+    "tags": [
+      "boundary-representation",
+      "cad",
+      "3d-generation",
+      "topology"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.16485",
+        "checked_at": "2026-08-21T11:34:11.540Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "eb7e8ea4-53cb-52c1-8bb4-a507d7cc8b69",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.17975"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.17975"
+      }
+    ],
+    "title": "aDSL: Agentic 3D Creation via Joint Agent-Program Design",
+    "authors": [
+      "Rui-Huan Wang",
+      "Si-Tong Wei",
+      "Jia-Qi He",
+      "Heng-Yi Wei",
+      "Baoquan Chen",
+      "Peng-Shuai Wang"
+    ],
+    "affiliations": [],
+    "abstract": "aDSL co-designs a relational 3D domain-specific language and a Plan-Execute-Critic multi-agent workflow so language models can build editable geometry without relying on brittle absolute coordinates.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-19"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-19"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.17975"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.17975"
+      },
+      {
+        "kind": "code",
+        "label": "Code",
+        "url": "https://github.com/sig-pku/aDSL"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-19"
+      }
+    ],
+    "tags": [
+      "agentic-3d",
+      "domain-specific-language",
+      "procedural-modeling",
+      "multi-agent-systems"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.17975",
+        "checked_at": "2026-08-21T11:34:11.540Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "bc7bb1d2-b9c9-5913-bbef-d0b7d3b68857",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.14530"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.14530"
+      }
+    ],
+    "title": "Marionette: Predicting World States, Rendering Geometry, Painting Appearance",
+    "authors": [
+      "Zian Meng",
+      "Zhen Li",
+      "Chuanhao Li",
+      "Qiang Li",
+      "Kaipeng Zhang"
+    ],
+    "affiliations": [],
+    "abstract": "Marionette predicts an explicit 276-dimensional 3D world state, converts it to pose and occlusion controls with a fixed graphics bridge, and uses video diffusion only for appearance synthesis.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-17"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-17"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.14530"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.14530"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-17"
+      }
+    ],
+    "tags": [
+      "world-models",
+      "explicit-state",
+      "game-generation",
+      "video-diffusion"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.14530",
+        "checked_at": "2026-08-21T11:34:11.540Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "f4c4c8a4-e348-57a3-a544-8bb2358497d0",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.17988"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.17988"
+      }
+    ],
+    "title": "GS-Voxel: Fitting-Free Structured Latents for Large-Scale 3DGS Generation",
+    "authors": [
+      "Ming Qian",
+      "Zijian Wang",
+      "Minchao Sun",
+      "Jincheng Xiong",
+      "Hang Zhang",
+      "Mu Xu",
+      "Chi Wang",
+      "Baoquan Chen"
+    ],
+    "affiliations": [],
+    "abstract": "GS-Voxel deterministically converts optimized Gaussian splats into sparse active voxels, learns factorized geometry and attribute latents, and supports tiled image-conditioned generation of large aerial scenes.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-19"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-19"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.17988"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.17988"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-19"
+      }
+    ],
+    "tags": [
+      "3d-gaussian-splatting",
+      "structured-latents",
+      "aerial-scenes",
+      "sparse-voxels"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.17988",
+        "checked_at": "2026-08-21T11:34:11.540Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "3ef9d7ac-7c15-5d2a-ace7-c2f14b78ec84",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.15659"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.15659"
+      }
+    ],
+    "title": "WorldRover: A Scalable Synthetic Video Data Engine for World Exploration with Rich Annotations",
+    "authors": [
+      "Xiaojie Xu",
+      "Zhengyuan Lin",
+      "Runyi Li",
+      "Yihao Liu",
+      "Kaipeng Zhang",
+      "Yongtao Ge"
+    ],
+    "affiliations": [],
+    "abstract": "WorldRover is an Unreal Engine data pipeline for long-range environment traversals with synchronized RGB, geometry, camera, action, flow, and tracking supervision across multiple viewpoints and conditions.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-18"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-18"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.15659"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.15659"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-18"
+      }
+    ],
+    "tags": [
+      "synthetic-data",
+      "world-exploration",
+      "video",
+      "3d-supervision"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.15659",
+        "checked_at": "2026-08-21T11:34:11.540Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "8338e77a-2f89-5764-b4f0-cb6476185104",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.15265"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.15265"
+      }
+    ],
+    "title": "VibeWorlding: Can Multimodal Agents Construct 3D Open Worlds End-to-End?",
+    "authors": [
+      "Yansong Ning",
+      "Jingwen Ye",
+      "Zhongkai Wu",
+      "Yang Sun",
+      "Yiqin Zhu",
+      "Xingyi Li",
+      "Weidong Zhang",
+      "Hao Liu"
+    ],
+    "affiliations": [],
+    "abstract": "VibeWorlding supplies assets, seed worlds, multimodal queries, a 3D tool sandbox, and a verifier for evaluating and reinforcement-learning agents that construct open worlds end to end.",
+    "source_dates": [
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-18"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "Hugging Face paper",
+        "url": "https://huggingface.co/papers/2608.15265"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.15265"
+      },
+      {
+        "kind": "code",
+        "label": "Code",
+        "url": "https://github.com/usail-hkust/VibeWorlding-Gym"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-18"
+      }
+    ],
+    "tags": [
+      "3d-agents",
+      "open-worlds",
+      "multimodal-agents",
+      "reinforcement-learning"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.15265",
+        "checked_at": "2026-08-21T11:34:11.540Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "0f0ed52a-0b73-51ac-9c4a-8a705cf27997",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.16859"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.16859"
+      }
+    ],
+    "title": "HarnessEval-W: Agentifying the Evaluation of Visual Worlds",
+    "authors": [
+      "Weiliang Chen",
+      "Haowen Sun",
+      "Jun Gao",
+      "Jiawei Chi",
+      "Hanyang Wang",
+      "Qiyu Dai",
+      "Yihao Li",
+      "Hao Li",
+      "Jingnan Gao",
+      "Yi-Hsin Hung",
+      "Xingzhuo Guo",
+      "Shangchen Miao",
+      "Zhiyuan Shi",
+      "Xiang Li",
+      "Fengrui Tian",
+      "Weihua Du",
+      "Ziqi Huang",
+      "Shenyuan Gao",
+      "Siqiao Huang",
+      "Mingyu Liu",
+      "Yifei Li",
+      "Shizun Wang",
+      "Xi Wang",
+      "Tianqi Zhang",
+      "Xue Luo",
+      "Xiyin Ren",
+      "Jinshan Ren",
+      "Xiaoyang Shen",
+      "Xiaobo Hu",
+      "Zhiyang Dou",
+      "Mingyu Ding",
+      "Yichao Yan",
+      "Xinchao Wang",
+      "Yizhou Wang",
+      "Shilong Liu",
+      "Wenzhao Zheng",
+      "Yueqi Duan",
+      "Yuan Gong",
+      "Ziwei Liu",
+      "Ming-Yu Liu",
+      "Jialong Wu",
+      "Jiangran Lyu",
+      "Fangfu Liu"
+    ],
+    "affiliations": [],
+    "abstract": "HarnessEval-W decomposes world-model evaluation into tool-equipped subproblems and returns an evidence tree rather than only a scalar score, with experiments spanning 18 models and 330 cases.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-18"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-18"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.16859"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.16859"
+      },
+      {
+        "kind": "code",
+        "label": "Code",
+        "url": "https://github.com/MirroS-Lab/HarnessEval-W"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-18"
+      }
+    ],
+    "tags": [
+      "world-models",
+      "evaluation",
+      "agentic-evaluation",
+      "visual-reasoning"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.16859",
+        "checked_at": "2026-08-21T11:34:11.540Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "4fe7d60f-4f3e-5ac9-b6a3-ddfe44df3892",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.14441"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.14441"
+      }
+    ],
+    "title": "PACE-Bench: Benchmarking Physics Adaptation via Code Evolution in Dynamic Environments",
+    "authors": [
+      "Yuhao Zhan",
+      "Bingxiang He",
+      "Zecong Tang",
+      "Chaojun Xiao"
+    ],
+    "affiliations": [],
+    "abstract": "PACE-Bench tests whether self-evolving agents can repair code after physical parameters or mechanisms change across 144 source-to-target adaptation pairs in six simulation domains.",
+    "source_dates": [
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-18"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "Hugging Face paper",
+        "url": "https://huggingface.co/papers/2608.14441"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.14441"
+      },
+      {
+        "kind": "code",
+        "label": "Code",
+        "url": "https://github.com/thunlp/PACE-Bench"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-18"
+      }
+    ],
+    "tags": [
+      "agent-evaluation",
+      "physics-simulation",
+      "code-evolution",
+      "adaptation"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.14441",
+        "checked_at": "2026-08-21T11:34:11.540Z"
+      }
+    ]
+  },
+  {
+    "paper_id": "56879d3a-3f53-5416-bf31-c6483dfaaf03",
+    "external_ids": [
+      {
+        "kind": "arxiv",
+        "value": "2608.18746"
+      },
+      {
+        "kind": "huggingface",
+        "value": "2608.18746"
+      }
+    ],
+    "title": "Decision-Metric Alignment in Latent World Models: Diagnostics and Action-Conditioned Objectives for MPC Planning",
+    "authors": [
+      "Jiawei Wang",
+      "Ke Rui",
+      "Yushen Zuo",
+      "Yichun Feng",
+      "Minglei Li"
+    ],
+    "affiliations": [],
+    "abstract": "This work distinguishes easy-to-probe latent information from the rank alignment needed by model-predictive control and proposes Spearman diagnostics plus action-conditioned objectives for latent world models.",
+    "source_dates": [
+      {
+        "source": "arxiv_cs_cv",
+        "date": "2026-08-20"
+      },
+      {
+        "source": "huggingface_papers",
+        "date": "2026-08-20"
+      }
+    ],
+    "links": [
+      {
+        "kind": "paper",
+        "label": "arXiv abstract",
+        "url": "https://arxiv.org/abs/2608.18746"
+      },
+      {
+        "kind": "pdf",
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2608.18746"
+      },
+      {
+        "kind": "source",
+        "label": "Hugging Face Papers date",
+        "url": "https://huggingface.co/papers?date=2026-08-20"
+      }
+    ],
+    "tags": [
+      "latent-world-models",
+      "model-predictive-control",
+      "representation-learning",
+      "planning"
+    ],
+    "provenance": [
+      {
+        "field": "metadata",
+        "url": "https://arxiv.org/abs/2608.18746",
+        "checked_at": "2026-08-21T11:34:11.540Z"
+      }
+    ]
   }
 ]

@@ -1,0 +1,350 @@
+{
+  "delivery_date": "2026-08-21",
+  "generated_at": "2026-08-21T11:34:11.540Z",
+  "publication_status": "partial",
+  "coverage": [
+    {
+      "source": "arxiv_cs_cv",
+      "dates": [
+        "2026-08-15",
+        "2026-08-16",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20"
+      ],
+      "status": "degraded",
+      "detail": "The source response was missing a requested date."
+    },
+    {
+      "source": "arxiv_cs_gr",
+      "dates": [
+        "2026-08-15",
+        "2026-08-16",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20"
+      ],
+      "status": "degraded",
+      "detail": "The source response was malformed or structurally invalid."
+    },
+    {
+      "source": "huggingface_papers",
+      "dates": [
+        "2026-08-15",
+        "2026-08-16",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20"
+      ],
+      "status": "complete"
+    }
+  ],
+  "editorial_theme": "Structured representations for controllable 3D creation, valid geometry, and inspectable world models.",
+  "entries": [
+    {
+      "paper_id": "6fb31664-0696-59a4-b4bd-dae51b23945f",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "full_paper",
+      "verdict": "The standout graphics paper in this catch-up: it treats token efficiency as the key systems constraint for scaling editable part-aware object generation from a few components to genuinely complex assemblies.",
+      "contribution": "MegaParts learns adaptive-length discrete tokens for individual part geometry, then autoregressively emits object bounds, part bounds, and shape tokens in one structured sequence, using long-context training to reach 300 parts and 256k tokens.",
+      "why_it_matters": "Part structure is useful only if generation remains controllable at realistic object complexity. Compressing simple pieces while allocating more tokens to difficult geometry is a promising bridge between semantic assembly and high-fidelity mesh generation.",
+      "evidence": "On PartObjaverse-Tiny, the paper reports FID 43.40 versus 54.81 for TRELLIS-text and 55.58 for Cube, with CLIP similarity 0.27. Under bounding-box conditioning, part Chamfer distance is 3.01e-2 versus 8.59 for FullPart and 8.01 for XPart, alongside part IoU 0.63 and bounding-box IoU 0.94.",
+      "limitation": "The method is computationally heavy at training and inference time and currently generates geometry without textures or materials. It also does not model semantic labels, physical or functional relationships between parts, and relies partly on curated private data.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.14783"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.14783"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.14783"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.14783"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.14783"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "8da98319-e99f-59e0-a1f0-bf5e83e4efab",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "full_paper",
+      "verdict": "A strong CAD-generation paper whose most useful idea is to make geometric and topological validity part of the learned representation and decoder rather than a fragile post-processing cascade.",
+      "contribution": "A topology-aware encoder removes padding and prevents cross-entity feature contamination, while a single-stage decoder predicts faces, edges, vertices, and their incidence in parallel under differentiable manifold constraints.",
+      "why_it_matters": "B-Rep generation must produce compilable, manifold solids rather than merely plausible point or surface samples. The paper directly addresses the structural failures that often prevent neural CAD outputs from entering downstream modeling tools.",
+      "evidence": "On DeepCAD, HiFi-BRep reports 72.20% valid solids versus 43.20% for DTGBrepGen, with 90.38% compilability versus 92.48%. On ABC it reaches 32.66% validity versus 24.88%, although its 35.61% compilability trails the baseline's 50.55%, showing both the gain and the remaining domain sensitivity.",
+      "limitation": "Failures still include inconsistent trimming, missing surface patches, T-junctions, non-manifold edges, and degenerate or sliver geometry. The ABC compilability result also shows that stronger validity on one benchmark does not imply uniformly better CAD robustness.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.16485"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.16485"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.16485"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.16485"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.16485"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "eb7e8ea4-53cb-52c1-8bb4-a507d7cc8b69",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "full_paper",
+      "verdict": "A persuasive example of interface-model co-design: instead of asking an LLM to become better at fragile geometric bookkeeping, it gives the model a language organized around the spatial relations it can reason about.",
+      "contribution": "The aDSL language exposes composable relational operators, while specialized planning, execution, and critic agents iteratively synthesize and repair programs using rendered and execution feedback without task-specific training.",
+      "why_it_matters": "Editable programmatic 3D assets offer much better control than opaque generated meshes, but only if agents can produce stable programs. Designing the representation around semantic structure may be more scalable than endlessly patching general-purpose code generation.",
+      "evidence": "Across 200 text prompts and 100 reference shapes, aDSL reports 100% execution success. On ShapeNet it reaches CLIP 29.63 and VQA 65.34; on ABO, 30.39 and 68.10; and on Objaverse, 29.07 and 69.37, outperforming the reported code-generation baselines across these settings.",
+      "limitation": "Complex appearance and material effects remain outside the DSL's expressive range, and a 2D visual critic can misread 3D relations. Runs average roughly 187-195 seconds per round, 4.25-5.23 rounds, and 30-33k input tokens per round, while depending on proprietary LLMs.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.17975"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.17975"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.17975"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.17975"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.17975"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "bc7bb1d2-b9c9-5913-bbef-d0b7d3b68857",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "full_paper",
+      "verdict": "A clear architectural argument for explicit world state: geometry and interaction constraints become inspectable and repairable, while the diffusion model is relieved of maintaining them implicitly over long rollouts.",
+      "contribution": "Marionette predicts articulated skeletons, metric trajectories, and rotations in a 276-dimensional state; a fixed renderer derives pose and occlusion controls; a video diffusion model then paints appearance conditioned on those controls.",
+      "why_it_matters": "World models become more useful for graphics and games when behavior can be edited by changing state rather than prompting pixels. The separation also makes physical rule interventions testable without retraining the appearance model.",
+      "evidence": "Mismatching the action stream changes root-aligned joint error by 31% across 48 held-out segments. State-space terrain and separation rules cut ground penetration by 66% and prevent two characters from drifting to 21.2 meters apart. Reported FVD is 831, versus 975 for the pixel-autoregressive comparison.",
+      "limitation": "Identity and appearance can drift because the explicit state does not fully condition character identity, and unrecorded entities may appear without a corresponding state. Evidence is currently concentrated on a narrow game-character domain.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.14530"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.14530"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.14530"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.14530"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.14530"
+          ]
+        }
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "paper_id": "f4c4c8a4-e348-57a3-a544-8bb2358497d0",
+      "tier": "read_first",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "verdict": "A promising representation paper for large 3D Gaussian scenes: it obtains sparse structured latents directly from optimized splats and makes generation scale with occupied space rather than a fixed primitive budget.",
+      "contribution": "GS-Voxel performs fitting-free conversion to active voxels while retaining sub-voxel Gaussian attributes, factorizes geometry and local appearance in a sparse VAE, and uses overlap-aware tiled flow inference for satellite-conditioned aerial generation.",
+      "why_it_matters": "Most generative backbones want regular tensors, while real 3DGS assets are unordered and highly variable in size. A deterministic bridge that preserves rendering attributes could make city-scale Gaussian generation and editing substantially more tractable.",
+      "evidence": "The abstract establishes the representation, image-conditioned flow model, and tiled large-area use case, but gives no numerical reconstruction, rendering, or generation comparison.",
+      "limitation": "Without full-paper quantitative results, it is not yet possible to judge how much fidelity is lost during voxelization, how seams behave across tiles, or how the method compares in compute and quality with alternative structured 3DGS latents.",
+      "claim_provenance": [
+        {
+          "field": "verdict",
+          "urls": [
+            "https://arxiv.org/abs/2608.17988"
+          ]
+        },
+        {
+          "field": "contribution",
+          "urls": [
+            "https://arxiv.org/abs/2608.17988"
+          ]
+        },
+        {
+          "field": "why_it_matters",
+          "urls": [
+            "https://arxiv.org/abs/2608.17988"
+          ]
+        },
+        {
+          "field": "evidence",
+          "urls": [
+            "https://arxiv.org/abs/2608.17988"
+          ]
+        },
+        {
+          "field": "limitation",
+          "urls": [
+            "https://arxiv.org/abs/2608.17988"
+          ]
+        }
+      ],
+      "estimated_minutes": 7
+    },
+    {
+      "paper_id": "3ef9d7ac-7c15-5d2a-ace7-c2f14b78ec84",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "WorldRover is infrastructure rather than a new model, but the combination is unusually useful: minute-scale Unreal traversals keep RGB, metric depth, camera trajectories, actions, geometry, optical flow, and long-range 2D/3D tracks synchronized while replaying the same route across first-person, third-person, 360-degree, and environmental variants. The key questions are asset diversity, simulator bias, and whether WorldRover-10M improves downstream world models beyond cheaper synthetic mixtures.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.15659"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "8338e77a-2f89-5764-b4f0-cb6476185104",
+      "tier": "worth_skimming",
+      "lane": "graphics_3d_4d",
+      "review_depth": "abstract",
+      "editorial_note": "VibeWorlding turns end-to-end 3D world construction into a concrete agent benchmark with 2,616 assets, 323 seed worlds, 6,828 multimodal queries, an MCP tool sandbox, and rubric-based verification. Frontier systems remain below 60% success, while reinforcement learning reportedly lifts the open VibeWorlder-30B-A3B to the best Pass@1. Because the benchmark, environment, verifier, and trained agents come from the same project, independent evaluation will matter.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://huggingface.co/papers/2608.15265"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "0f0ed52a-0b73-51ac-9c4a-8a705cf27997",
+      "tier": "worth_skimming",
+      "lane": "broader_vision",
+      "review_depth": "abstract",
+      "editorial_note": "HarnessEval-W replaces a single opaque world-model score with a hierarchy of context-specific sub-agents, diagnostic tools, evidence, and a parent verdict. The reported study spans 18 models and 330 cases and claims close human-preference alignment. This is an appealing direction for inspectable evaluation, though the abstract does not quantify agreement, cost, judge-model sensitivity, or whether evidence trees remain faithful when the agents themselves make mistakes.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.16859"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "4fe7d60f-4f3e-5ac9-b6a3-ddfe44df3892",
+      "tier": "worth_skimming",
+      "lane": "general_ai",
+      "review_depth": "abstract",
+      "editorial_note": "PACE-Bench asks a sharper question than fixed-environment coding benchmarks: can an agent diagnose and repair a once-working design after the physics changes? Across 144 adaptation pairs, Reflexion with Qwen3-14B solves 35.9%, while GPT-5.5 reaches 66.7% only on the Statics subset. Simulator feedback helps, but memory anchors agents to early designs and broad search often fails to converge; even revealing the physical change does not eliminate the mechanism-redesign bottleneck.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://huggingface.co/papers/2608.14441"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "paper_id": "56879d3a-3f53-5416-bf31-c6483dfaaf03",
+      "tier": "worth_skimming",
+      "lane": "broader_vision",
+      "review_depth": "abstract",
+      "editorial_note": "This paper makes a useful distinction for latent world models: a representation may decode task variables well while Euclidean latent distance still ranks candidate plans incorrectly. Plan-Real and CEM-stage Spearman diagnose that decision-metric alignment, and action-conditioned objectives reportedly improve convergence and online success despite similar probe scores. Exact task breadth, margins, and robustness to different planners require full-paper inspection.",
+      "claim_provenance": [
+        {
+          "field": "editorial_note",
+          "urls": [
+            "https://arxiv.org/abs/2608.18746"
+          ]
+        }
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "exceptional_length": true,
+  "validation_status": "validated"
+}
